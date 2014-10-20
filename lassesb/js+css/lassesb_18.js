@@ -19,25 +19,33 @@ function IsFileProtocol() {
 var sLocRoot = null
 function GetLocRoot() {
 	if (sLocRoot==null) {
-		if (!IsFileProtocol()) {
-			sLocRoot = document.location.toString()
-			var iSlashSlashIx = sLocRoot.search('//')
-			//alert(sLocRoot.substr(iSlashSlashIx + 2))
-			var iSlashIx = sLocRoot.substr(iSlashSlashIx + 2).search('/') + iSlashSlashIx + 2
-			//alert(iSlashSlashIx)
-			//alert(iSlashIx)
-			sLocRoot = sLocRoot.substr(0, iSlashIx + 1)
-			//alert(sLocRoot)
+		//alert('hest')
+		var iCutIx = 0
+		sLocRoot = document.location.toString()
+		var iLassesbIx = sLocRoot.search('/lassesb/')
+		if (iLassesbIx >= 0) {
+			iCutIx = iLassesbIx + 9
 		}
 		else {
-			sLocRoot = document.location.toString()
-			var iLassesbIx = sLocRoot.search('/lassesb/')
-			sLocRoot = sLocRoot.substr(0, iLassesbIx + 9)
-			sLocRoot = sLocRoot.replace(/ /g, '%20')
+			if (!IsFileProtocol()) {
+				// HTML:
+				var iSlashSlashIx = sLocRoot.search('://')
+				//alert(sLocRoot.substr(iSlashSlashIx + 2))
+				iCutIx = sLocRoot.substr(iSlashSlashIx + 3).search('/') + iSlashSlashIx + 3 + 1
+				//var iSlashIx = sLocRoot.substr(iSlashSlashIx + 2).search('/') + iSlashSlashIx + 2
+				//alert(iSlashSlashIx)
+				//alert(iSlashIx)
+				//sLocRoot = sLocRoot.substr(0, iSlashIx + 1)
+				//alert(sLocRoot)
+			}
+			else {
+				// FILE:
+			}
 		}
+		sLocRoot = sLocRoot.substr(0, iCutIx)
+		sLocRoot = sLocRoot.replace(/ /g, '%20')
+		//alert('sLocRoot = ' + sLocRoot)
 	}
-	var iHashIx = sLocRoot.search('#')
-	if (iHashIx >= 0) sLocRoot = sLocRoot.substr(iHashIx)
 	return sLocRoot
 } // GetLocRoot
 
@@ -45,26 +53,19 @@ function GetLocRoot() {
 var sLocOffset = null
 function GetLocOffset() {
 	if (sLocOffset==null) {
-		if (!IsFileProtocol()) {
-			sLocOffset = document.location.toString()
-			var iColonSlashSlashIx = sLocOffset.search('://')
-			if (iColonSlashSlashIx >= 0) {
-				sLocOffset = sLocOffset.substr(iColonSlashSlashIx + 3)
-				var iIx = sLocOffset.search('/')
-				if (iIx >= 0) sLocOffset = sLocOffset.substr(iIx)
-			}
-			while ((sLocOffset > '') && (sLocOffset[0] == '/')) sLocOffset = sLocOffset.substr(1)
-			//alert(sLocOffset)
+		var sRoot = GetLocRoot()
+		var iRootLen = sRoot.length
+		sLocOffset = document.location.toString()
+		var sRest = sLocOffset.substr(iRootLen, sLocOffset.length-1)
+		var iLastSlashIx = sRest.lastIndexOf('/')
+		if (iLastSlashIx >= 0) {
+			sRest = sRest.substr(0, iLastSlashIx+1)
 		}
-		else {
-			sLocOffset = document.location.toString()
-			var iBolgenIx = sLocOffset.search('/lassesb/')
-			sLocOffset = sLocOffset.substr(iBolgenIx + 9)
-			sLocOffset = sLocOffset.replace(/ /g, '%20')
-		}
+		//sLocOffset = sRoot + sRest
+		sLocOffset = sRest
+		var iHashIx = sLocOffset.search('#')
+		if (iHashIx >= 0) sLocOffset = sLocOffset.substr(0, iHashIx)
 	}
-	var iHashIx = sLocOffset.search('#')
-	if (iHashIx >= 0) sLocOffset = sLocOffset.substr(0, iHashIx)
 	return sLocOffset
 } // GetLocOffset
 
@@ -136,9 +137,10 @@ function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
 } // CreateHeaderOverview_FindOrMakeName
 
 function CreateHeaderOverview_Display() {
-	var dollarBody = $('body')
-	var sBodyWidth = dollarBody.css('width')
-	dollarBody.css('width', 'inherit')
+	var dollarBody = $(document)
+	var sBodyWidth = dollarBody.width()
+	//alert(sBodyWidth)
+//	dollarBody.css('width', 'inherit')
 	$('td.header-overview').show()
 	bHeaderOverviewVisible = true
 	//MyOnResize()
@@ -148,47 +150,55 @@ var bHeaderOverviewVisible = false
 
 function CreateHeaderOverview() {
 	// Find out if there is already an overview column
-	var dollarHeaderOverview = $('td.header-overview')
+	var dollarHeaderOverview = $('div.header-overview')
 	if (dollarHeaderOverview.length == 0) {
-		var dollarBody = $('body')
-		var sBodyWidth = dollarBody.css('width')
-	//	dollarBody.css('width', 'inherit')
-		var sBodyOrg = dollarBody.html()
-		//alert(sBodyOrg)
-		dollarBody.html(
-			'<table cellpadding="0" cellspacing="0" style="width:100%;">'
-			+ '<tr>'
-			+ '<td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
-			+ '<td class="header-overview"><center>(header overview)</center></td></tr></table>'
-		)
+		var dollarTD_HO = $('td.header-overview')
+		if (dollarTD_HO.length == 0) {
+			var dollarBody = $('body')
+			var sBodyWidth = dollarBody.css('width')
+		//	dollarBody.css('width', 'inherit')
+			var sBodyOrg = dollarBody.html()
+			//alert(sBodyOrg)
+			dollarBody.html(
+				'<table cellpadding="0" cellspacing="0" style="width:100%;"><tr>'
+				+ '	<td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
+				+ '	<td class="header-overview"><div class="header-overview">'
+				+ '		<center>(header overview)</center>'
+				+ '	</div></td>'
+				+ '</tr></table>'
+			)
+		}
+		else {
+			dollarTD_HO.html('<div class="header-overview"></div>')
+		}
 	}
+	dollarHeaderOverview = $('div.header-overview')
+
 	var sOverview = '<h4>Overskrifter på siden</h4><hr class="colored" />'
 	$(document).find('*').each(function(){
 		var dollarThis = $(this)
 		if (dollarThis.is('h3')) {
 			sScrollTo = CreateHeaderOverview_FindOrMakeName(dollarThis)
 			sOverview += '' 
+				+ '<table cellpadding="0" cellspacing="0"><tr><td class="ho-h3">'
 				+ '<a href="#' + sScrollTo + '">'
-				+ dollarThis.text() + '</a><br />';
+				+ dollarThis.text() + '</a>'
+				+ '</td></tr></table>';
 		}
 		else if (dollarThis.is('h4')) {
 			sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
 			sOverview += '<table cellpadding="0" cellspacing="0" width="100%"><tr><td style="width:5px;">-&nbsp;</td>' 
-				+ '<td><a href="#' + sName + '">'
+				+ '<td class="ho-h4"><a href="#' + sName + '">'
 				+ dollarThis.text() + '</a></td></tr></table>';
 		}
 		else if (dollarThis.is('h5')) {
 			sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
 			sOverview += '<table cellpadding="0" cellspacing="0" width="100%"><tr><td style="width:5px;">&nbsp;&nbsp;&nbsp;-&nbsp;</td>'
-				+ '<td><a href="#' + sName + '">'
+				+ '<td class="ho-h5"><a href="#' + sName + '">'
 				+ dollarThis.text() + '</a></td></tr></table>';
 		}
 	})
-	$('td.header-overview').html(
-		'<table cellpadding="0" cellspacing="0"><tr><td>'
-		+ sOverview
-		+ '</td></tr></table>'
-	).css('font-size','inherit')
+	dollarHeaderOverview.html(sOverview)
 	
 	// LSB - Added 2012-08-06
 	CreateHeaderOverview_Display()
@@ -272,7 +282,7 @@ function findObjTop(obj) {
 var bMyOnResize_Installed = false
 function MyOnResize() {
 	if (IsTinyScreen()) return
-	
+
 	var dMain = $('div.main')
 	if (dMain.size() == 0) return
 	//alert(dollarScrollDiv)
@@ -280,20 +290,37 @@ function MyOnResize() {
 	var dHosting = $('div.hosting')
 	//alert(dMain.offset().top)
 	var dWindow = $(window)
-	var dHO = $('td.header-overview')
+	var dHO = $('div.header-overview')
 	if (bHeaderOverviewVisible) {
-		dHO.css('display','none')
+		dHO.css('overflow','hidden')
+		dHO.height('30px')//.width(-920+$(document).width())
+		dHO.hide()
+		//dHO.css('display','none')
 	}
 	var iHeight = dWindow.height() - dMain.offset().top - dHosting.height() - 21
 	dHO.height((dWindow.height()-20) + 'px')
 	if (bHeaderOverviewVisible) {
-		dHO.css('display','block').css('position','relative').css('overflow','auto')
+		//dHO.css('display','block')//.css('overflow','auto')
+		//dHO.css('display','block').css('position','relative').css('overflow','auto')
 		//dHO.css('display','inline-table').css('position','relative').css('overflow','auto')
 	}
 	// LSB - Added 2012-07-30
 	iHeight -= 2 // Border-top på div.hosting
+	//dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto').css('display', 'block')
+	dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto')
+	dMain.show()
+	//alert($(document).height())
+	if (bHeaderOverviewVisible) {
+		dHO.css('overflow','auto').css('font-size','inherit')
+		dHO.show()
+		dHO.width('inherit')
+		var idHO_width = -920+$(window).width()
+		dHO.width(idHO_width)
+		$('td.header-overview').width(idHO_width)
+		//alert(idHO_width)
+		//dHO.width('inherit')
+	}
 	// .. LSB
-	dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto').css('display', 'block')
 	//$('td.body').css('height','100px').css('overflow','hidden')
 	//$('td.body').css('border','1px solid red')
 	//$('body').css('overflow','hidden')
@@ -407,7 +434,7 @@ function ModifyH1AndTitle() {
 	//var bSame = (strH2 == strH1)
 	//if (!bSame) strTitle += ' / ' + strH2
 	strTitle += ' - Lasse Steen Bohnstedt'
-	dollarH1.html('<table width="100%"><tr><td class="h1_extra">Lasse <span style="color:#FFB;">jcxz100</span></td><td id="idH1Orig" style="text-align:center;width:800px;">' + strH1 + '</td></tr></table>')
+	dollarH1.html('<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="h1_extra"><span>&nbsp;LasseSB&nbsp;</span><br/>jcxz100</td><td id="idH1Orig">' + strH1 + '</td></tr></table>')
 	document.title = strTitle
 	
 } // ModifyH1AndTitle
@@ -801,7 +828,7 @@ function MyReady_Part2() {
 				$('#idNavMobile').html('error loading NavMobile.html<br>try reloading page')
 			}
 			$('td.nav').hide()
-			$('td.main').width('1000px')
+			$('td.main').width('920px')
 			DoneLoading()
 		})
 	}
@@ -832,7 +859,7 @@ function MyPrint_1() {
 	$('.h1_extra').hide()
 	$('.hosting').width(iMainWidth)
 	$('div.main').height('auto').css('overflow', 'auto')
-	$('td.header-overview').hide()
+	$('div.header-overview').hide()
 	//window.print()
 	window.setTimeout('MyPrint_2()', 100)
 } // MyPrint_1
@@ -849,7 +876,7 @@ function MyPrint_2() {
 
 function MyPrint_3() {
 	$('td.nav').show()
-	$('td.header-overview').show()
+	$('div.header-overview').show()
 	$('h1').width('auto')
 	$('.h1_extra').show()
 	$('.hosting').width('auto')

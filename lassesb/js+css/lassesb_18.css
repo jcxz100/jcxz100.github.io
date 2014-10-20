@@ -18,8 +18,9 @@
 
 a 
 {
-    text-decoration: none;
-    color: Blue;
+	text-decoration: none;
+	color: #98F;/*Blue;*/
+	/*font-family: sans-serif;*/
 }
 
 a:hover 
@@ -37,14 +38,16 @@ a.n:hover {
 
 a.nav 
 {
-    font-weight: bold;
+    /*font-weight: bold;*/
     display: block;
-    width: 196px;
+    width: 86px;
     padding: 5px;
     margin-top: 2px;
     background: White;
     font-family: Sans-Serif;
-    font-size: larger;
+    font-size: 15px;
+	color: #98F;
+	vertical-align: middle;
 }
 
 a.nav:hover 
@@ -54,9 +57,21 @@ a.nav:hover
 
 a.udskriv
 {
+    display: block;
+    width: 86px;
+    padding: 5px;
+    margin-top: 2px;
+    background: White;
     font-family: Sans-Serif;
-    font-size: larger;
-    font-weight: bold;
+    font-size: 15px;
+    /*font-weight: bold;*/
+	color: #98F;
+	vertical-align: middle;
+}
+
+a.udskriv:hover 
+{
+    background-color: #EEF;
 }
 
 area:hover
@@ -68,9 +83,8 @@ area:hover
 
 body 
 {
-    width: 1000px;
+	width: 100%;
 	padding: 0px; margin: 0px;
-	/*background-color: #FFFFF0; /*Ivory;*/
 }
 
 div 
@@ -90,11 +104,22 @@ div.creative_commons
     display: none;
 }
 
+div.header-overview
+{
+	overflow: hidden;
+	height: 30px;
+/*	width: 100%;*/
+	padding: 10px;
+	margin: 0px;
+	display: none;
+/*	font-size: 1px;*/
+}
+
 div.hosting 
 {
     text-align: center;
     background: #FF7; /*White; /*#0D4; /*#98F;*/
-    border-top: 2px solid Orange; /*#98F;*/
+    border-top: 2px solid orange; /*#98F;*/
 }
 
 div.main 
@@ -132,10 +157,12 @@ div.p{
 
 h1 {
 	font-family: Serif;
-    margin: 0px;
-    padding-top: 5px; padding-bottom: 5px;
-    background-color: #98F;/*#EEF;*/
-    text-align: center;
+	font-size: 30px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #98F;/*#EEF;*/
 }
 
 h2
@@ -348,7 +375,7 @@ td {
 
 td.body
 {
-    width: 1000px;
+    width: 910px;
 }
 
 td.broedtekst
@@ -370,9 +397,21 @@ td.cd-list-first
 
 td.h1_extra
 {
-    color: Black;
-    text-align: center;
-    width: 200px;
+	color:#FFB;
+	text-align: center;
+	width: 106px;
+	font-size: 16px;
+	vertical-align: middle;
+	border: 2px solid #0D4;
+	border-top: 0px;
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+td.h1_extra span
+{
+	border-bottom: 2px solid #0D4;;
+	color: black;
 }
 
 td.h4
@@ -382,19 +421,39 @@ td.h4
 	vertical-align: top;
 }
 
+td.ho-h3
+{
+	font-family: sans-serif;
+	font-size: 12px;
+	padding-top: 2px;
+}
+
+td.ho-h4
+{
+	font-family: sans-serif;
+	font-size: 11px;
+	padding-bottom: 1px;
+}
+
+td.ho-h5
+{
+	font-family: sans-serif;
+	font-size: 10px;
+	padding-bottom: 1px;
+}
+
 td.header-overview
 {
-    overflow: auto;
-	height: 100px;
-    padding: 10px;
-    display: none;
-	font-size: 1px;
+/*	width: 100%;*/
+	padding: 0px;
+	margin: 0px;
+/*	border: 1px solid green;*/
 }
 
 td.loading 
 {
     text-align: center;
-    width: 1000px;
+    width: 910px;
     border: 2px solid #98F;
     font-size: xx-large;
     font-family: Sans-Serif;
@@ -412,7 +471,7 @@ td.main
 
 td.nav 
 {
-    width:200px;
+    width:97px;
     padding: 2px;
     padding-top: 0px;
     background: #0D4;/*#98F;*/
@@ -438,6 +497,12 @@ td.tdLoading
 td.versionsBlock {
     /*border:1px solid blue;*/
     padding-left:1em;
+}
+
+td#idH1Orig {
+	text-align: center;
+	width: 800px;
+	padding-top: 5px; padding-bottom: 5px;
 }
 
 th
