@@ -1,0 +1,17 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 18
+-----------------------------------------------
+
+Tidsstempel: 18-03-2014  0:01:15,16
+
+ Directory of W:\lassesb\Musik\Hjemmelavede\Loke\Gamle\Loke-1.2
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40            12.044 index.html
+03-02-2014  18:40            82.944 Loke-1.2---becifringer.doc
+03-02-2014  18:40            63.669 Loke-1.2---becifringer.pdf
+03-02-2014  18:40             1.529 Loke-fix-for-69-og-nyere.html
+03-02-2014  18:40             4.650 Mix69.html

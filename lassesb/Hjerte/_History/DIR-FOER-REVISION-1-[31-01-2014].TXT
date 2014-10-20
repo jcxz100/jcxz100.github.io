@@ -1,0 +1,11 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Hjerte
+
+30-01-2014  10:15                 0 DIR-_A-D.TXT
+14-07-2009  20:14             3.433 hjerte.gif
+14-07-2009  20:14             3.767 hjerte2.gif
+06-08-2012  21:10             1.365 index.html
+               4 File(s)          8.565 bytes
+               0 Dir(s)  59.136.417.792 bytes free

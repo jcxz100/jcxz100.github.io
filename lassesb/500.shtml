@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 500 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="da">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+	
+	<title>lassesb</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/Favicon.ico" />
+	<link rel="shortcut icon" type="image/png" href="/Favicon.png" />
+	<link rel="Stylesheet" type="text/css" href="/js+css/lassesb_18.css" />
+	<link rel="author" href="https://plus.google.com/u/0/104986257594883514409" />
+	<script type="text/javascript" src="/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="/js+css/lassesb_18.js"></script>
+</head>
+<body>
+	<h1 style="color:#F00;">Fejlkode 500</h1>
+	<table class="main"><tr><td class="nav">
+		&nbsp;
+	</td><td class="main">
+		<div class="main">
+			<h2 style="color:#F00;">Server fejl</h2>
+			Serveren udstødte lige en bøvs.<br />
+			<br />
+			Det er ikke godt at vide, hvad der egentlig skete!<br />
+			<br />
+			Prøv at genindlæse, eller vælg ny destination i navigationsbarren til venstre.
+		</div>
+	</td></tr></table>
+	<div class="hosting"></div>
+</body>
+</html>

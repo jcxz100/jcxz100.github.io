@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Velkommen -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+	
+	<title>Omdirigerer...</title>
+	<link rel="Stylesheet" type="text/css" href="bolgen_01.css" />
+	<link rel="shortcut icon" type="image/x-icon" href="Favicon.ico" />
+	
+	<meta name="google-site-verification" content="VvqJPG9_AHHELxdguP2lxaW3hxwGjNwzce-QMwXWS6w" />
+</head>
+<body style="width:100%;">
+	<h1>SFO Bølgen</h1>
+	<br />
+	<br />
+	<br />
+	<br />
+	<center>
+		<table cellpadding="10" border="1"><tr><td style="background: #FF8; text-align:center;">
+			<div style="font-size: 200%;">
+				Omdirigerer...
+				<div id="idDiv" style="text-align:center;">...</div>
+			</div>
+		</td></tr></table>
+		<div>
+			(eller
+			<a id="idHref" href="http://www.soendervangskolen-hammel.dk/">klik her</a>)
+		</div>
+		<div style="margin-top: 50px;">
+			<a href="http://lassesb.host-ed.me/Hvem-mig$/" style="color: #CCF">Lasse Steen Bohnstedt</a>
+		</div>
+	</center>
+	
+	<script type="text/javascript">
+		function myOnTimer() {
+			var oHref = document.getElementById("idHref")
+			var oDiv = document.getElementById("idDiv")
+			if (oDiv && oHref) {
+				var iTimeout = 11
+				var sTimeout = oDiv.innerHTML
+				//alert(sTimeout)
+				if (sTimeout != "...") iTimeout = 1.0 * sTimeout
+				iTimeout--
+				oDiv.innerHTML = iTimeout
+				if (iTimeout > 0)
+					window.setTimeout("myOnTimer()", 1000)
+				else {
+					oDiv.innerHTML = "..."
+					document.location = oHref.href
+				}
+			}
+		} // myOnTimer
+		
+		myOnTimer()
+	</script>
+</body>
+</html>

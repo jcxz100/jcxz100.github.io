@@ -1,0 +1,22 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 30
+-----------------------------------------------
+
+Tidsstempel: 21-03-2014 11:01:07,42
+
+ Directory of W:\lassesb\Musik\Hjemmelavede\Loke
+
+-----------------------------------------------
+
+_History
+Historik
+Ideer
+lyd
+
+20-03-2014  00:46             6.441 Baggrund.html
+20-03-2014  00:49             8.626 En-svaer-proces.html
+03-02-2014  18:40               586 Genvej til lassesb.sln.lnk
+20-03-2014  00:50            11.190 index.html
+18-03-2014  08:10            74.752 Loke-1.4---Becifringer.doc
+18-03-2014  08:10           128.811 Loke-1.4---Becifringer.pdf
+03-02-2014  18:40            53.518 Loki,_by_Maarten_Eskil_Winge_1890.jpg

@@ -1,0 +1,11 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Oversaettelser
+
+28-01-2014  11:07             6.148 .DS_Store
+28-01-2014  11:07             4.096 ._.DS_Store
+30-01-2014  10:20                 0 DIR-_A-D.TXT
+05-03-2013  17:24             3.548 index.html
+               4 File(s)         13.792 bytes
+               0 Dir(s)  59.136.380.928 bytes free

@@ -1,0 +1,12 @@
+----------------------------------------------- 
+Autogenereret før svn revision commit 4 
+----------------------------------------------- 
+ 
+Tidsstempel: 31-01-2014  8:34:12,25 
+ 
+ Directory of O:\Web.svn\lassesb\Musik\HJEMME~1\Chimp 
+ 
+_History 
+ 
+30-01-2014  10:19               340 DIR-_A-D.TXT 
+22-01-2013  16:00             2.772 index.html 

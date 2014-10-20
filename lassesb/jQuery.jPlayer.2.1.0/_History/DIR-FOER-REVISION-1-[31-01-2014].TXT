@@ -1,0 +1,10 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\jQuery.jPlayer.2.1.0
+
+30-01-2014  10:16                 0 DIR-_A-D.TXT
+01-09-2011  15:26             8.452 Jplayer.swf
+01-09-2011  16:44            42.856 jquery.jplayer.min.js
+               3 File(s)         51.308 bytes
+               0 Dir(s)  59.136.413.696 bytes free

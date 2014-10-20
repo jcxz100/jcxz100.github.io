@@ -1,0 +1,14 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 18
+-----------------------------------------------
+
+Tidsstempel: 18-03-2014  0:01:09,00
+
+ Directory of W:\lassesb\Musik\Hjemmelavede\Loke\Gamle\Loke-1.0
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40             5.290 Loke-1.0.html
+03-02-2014  18:40            51.963 Loke-tanker-1.0.pdf

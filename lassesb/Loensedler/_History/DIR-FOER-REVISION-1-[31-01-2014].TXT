@@ -1,0 +1,41 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Loensedler
+
+12-08-2011  22:46            14.828 2010-07_Loenspecifikation-jun_jul-2010.pdf
+12-08-2011  22:46            14.408 2010-10_Loenspecifikation-oktober-2010.pdf
+12-08-2011  22:47            14.794 2010-10_Loenspecifikation-sep_okt-2010.pdf
+12-08-2011  22:47            14.934 2010-11_Loenspecifikation-november-2010.pdf
+12-08-2011  22:48            66.801 2010-12_Bilag-julehilsen.pdf
+12-08-2011  22:47            14.335 2010-12_Loenspecifikation-december-2010.pdf
+12-08-2011  22:48            13.621 2010-12_Loenspecifikation-nov_dec-2010_(sjette-ferieuge).pdf
+12-08-2011  22:50           312.957 2011-01_Bilag-Feriefondens-folder-for-2011.pdf
+12-08-2011  22:50           531.447 2011-01_Bilag-Nytaarshilsen.pdf
+12-08-2011  22:49            15.227 2011-01_Loenspecifikation-januar-2011.pdf
+12-08-2011  22:50            15.293 2011-02_Loenspecifikation-februar-2011.pdf
+12-08-2011  22:50            15.320 2011-03_Loenspecifikation-marts-2011.pdf
+12-08-2011  22:51            15.288 2011-04_Loenspecifikation-april-2011.pdf
+12-08-2011  22:51            15.223 2011-05_Loenspecifikation-maj-2011.pdf
+12-08-2011  22:51            15.261 2011-06_Loenspecifikation-juni-2011.pdf
+12-08-2011  22:52            15.880 2011-07_Loenspecifikation-juli-2011.pdf
+29-09-2011  21:11            15.703 2011-08_Loenspecifikation-august-2011.pdf
+29-09-2011  21:13             9.326 2011-09_Loenspecifikation-september-2011.pdf
+25-03-2012  12:31             9.284 2011-10_Loenspecifikation-oktober-2011.pdf
+25-03-2012  12:30             9.490 2011-11_Loenspecifikation-november-2011.pdf
+25-03-2012  12:29             9.451 2011-12_Loenspecifikation-december-2011.pdf
+25-03-2012  12:26             9.458 2012-01_Loenspecifikation-januar-2012.pdf
+25-03-2012  12:28           175.556 2012-02_Feriefonden-2012.pdf
+25-03-2012  12:20             9.597 2012-02_Loenspecifikation-februar-2012.pdf
+04-08-2012  09:37             9.437 2012-03-Loenspecifikation-marts-2012.pdf
+04-08-2012  09:36             9.587 2012-04-Loenspecifikation-april-2012.pdf
+04-08-2012  09:36         2.021.872 2012-04-Mosaik-maj-2012 (27-04-2012).pdf
+04-08-2012  09:35             9.512 2012-05-Loenspecifikation-maj-2012.pdf
+04-08-2012  09:34             9.523 2012-06-Loenspecifikation-juni-2012.pdf
+04-08-2012  09:33            10.794 2012-07-Loenspecifikation-juli-2012.pdf
+06-10-2012  12:16             9.338 2012-08-Loenspecifikation-august-2012.pdf
+30-01-2014  10:16                 0 DIR-_A-D.TXT
+06-01-2010  22:15               538 Genvej til jcxz100.sln.lnk
+22-01-2013  16:00             5.142 index.html
+              34 File(s)      3.439.225 bytes
+               0 Dir(s)  59.136.409.600 bytes free

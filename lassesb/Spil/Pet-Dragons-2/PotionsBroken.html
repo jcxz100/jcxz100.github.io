@@ -1,0 +1,1134 @@
+<!DOCTYPE HTML>
+<!-- Spil/Pet-Dragons-2/Potions.html -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" /> 
+
+	<title>Pet Dragons 2 Potions Calculator</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/Favicon.ico" />
+	<link rel="shortcut icon" type="image/png" href="DarWe-favicon.png" />
+	<link rel="Stylesheet" type="text/css" href="/js+css/lassesb_18.css" />
+	<script type="text/javascript" src="/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="/js+css/lassesb_18.js"></script>
+
+	<meta name="keywords" content="Pet Dragons 2, cheapest, potions, fully potioned, calculator, pd2, DarWe, Lasse Steen Bohnstedt, jcxz100" lang="en" />
+	
+	<style type="text/css">
+		input[type="text"] {width: 5.5em; text-align: right;}
+		th { border-bottom: 2px solid #98F;}
+	</style>
+</head>
+
+<body>
+	<h1>Pet Dragons 2</h1>
+	<table class="main"><tr><td class="nav">
+		&nbsp;
+	</td><td class="main">
+		<div class="main">
+			<h2>Potions</h2>
+			<center>
+				<a href="https://apps.facebook.com/petdragonstwo/" target="_blank">
+					<img alt="bannersm.png" src="bannersm.png" />
+				</a>
+			</center>
+			
+			<h3>A calculator for potions</h3>
+			
+			<h4>What's this?</h4>
+			<div class="broedtekst">
+				This is a calculator that takes as input the raw text of your Stats.
+				It then calculates the cheapest way for you to be fully potioned.
+				If there is more than one "cheapest way", it will chose the one
+				with the fewest potions in it.<br />
+				It has a lot of options, and you can modify the intermediate results freely.<br />
+				<br />
+				And really, that's all you need to know :)<br />
+				(Except maybe for the
+				<a href="#Known-bugs-(incl.-fixed)">buglist</a>
+				at the bottom of the page.)
+			</div>
+			<h5>For those interested...</h5>
+			<div class="broedtekst">
+				Internal features:
+				<ul>
+					<li>Recursive, checked traversing of a predefined list of potions.</li>
+					<li>Calculation of needed Damage Reduction using
+						<a href="http://forums.liquidfyre.com/index.php?topic=4419.0"
+							target="_blank"
+						>the best guesses</a> from a lot of players.
+					</li>
+					<li>A mixture of javascript (speed) and jQuery (ease).</li>
+					<li>More than 600 lines of slightly messed up js code - most written in only 1 day :)</li>
+				</ul>
+			</div>
+			
+			<h4>Input - Your Stats</h4>
+			<table class="broedtekst"><tr>
+			<td>
+<textarea id="idSecret" style="display:none;" cols="1" rows="60">
+The stats of DarWe 2010-02-27 (for test)
+----------------------------------------
+
+Weight:
+4,356
+100% Synergy
+
+Strength:
+8,011.95 (+3,602.99)
+59% Synergy
+
+Treasure:
+950,972
+86% Synergy
+
+Toughness:
+6,091.45
+75% Synergy
+
+Cave Size:
+1,131,858
+100% Synergy
+
+Speed:
+4,369.89 (+2,184.94)
+45% Synergy
+
+Stealth:
+260.17
+
+Vision:
+8,358.47 (+4,179.23)
+
+Multi-Opponent:
+18,516.27 (+5,001.39)
+</textarea>
+				Paste the raw text of
+				your<span
+					onclick="$('#idTextarea').html($('#idSecret').html());onClick_translate();"
+				>&nbsp;</span>Stats
+				below, then click
+				<input type="button" value="Translate"
+					onclick="onClick_translate()" /><br />
+				<textarea id="idTextarea"
+					title="Absolutely nothing is saved of this - not even in a cookie.
+All calculations are done 'client-side' (i.e. in javascript) in your browser."
+					cols="1" rows="60" style="height:16em; width:100%;"
+				></textarea>
+				<h5>Don't worry :)</h5>
+				Absolutely nothing is saved of this - not even in a cookie.<br />
+				All calculations are done 'client-side' (i.e. in javascript) in your browser.
+			</td>
+			<td>&nbsp;&nbsp;&nbsp;</td>
+			<td style="border-left: 2px solid #98F; padding-left: 5px;">
+				<h5 style="margin-top:0;padding-top:0;">Various options</h5>
+				<div id="idDRGroup" style="margin-bottom:10px;">
+					<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td>- Prohibit Damage Reduction?</td>
+						<td><input id="idProhibitDR" type="checkbox" onchange="fixCheckboxDependencies();calculateAgain()" /></td>
+					</tr>
+					<tr id="idAvoidDRSpan">
+						<td>- Avoid Damage Reduction?</td>
+						<td><input id="idAvoidDR" type="checkbox" onchange="fixCheckboxDependencies();calculateAgain()" /></td>
+					</tr>
+					<tr id="idIgnoreDRSpan">
+						<td>- Ignore Damage Reduction?</td>
+						<td><input id="idIgnoreDR" type="checkbox" onchange="fixCheckboxDependencies();calculateAgain()" /></td>
+					</tr>
+					</table>
+				</div>
+				
+				<div id="idGoldGroup" style="margin-bottom:10px;">
+					<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td>- Max gold protection?</td>
+						<td><input id="idProtection" type="checkbox" checked onchange="calculateAgain()" /></td>
+					</tr>
+					<tr id="idStealingSpan">
+						<td>- Max gold stealing?</td>
+						<td><input id="idStealing" type="checkbox" checked onchange="calculateAgain()" /></td>
+					</tr>
+					</table>
+				</div>
+				
+				<div id="idEEGroup" style="margin-bottom:10px;">
+					<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td>- Your Elemental Alignment%:&nbsp;</td>
+						<td><input id="idAlignment" type="text" value="100" onchange="calculateAgain()" style="width:3em;" /></td>
+					</tr>
+					<tr>
+						<td>- Is 23% EE enough?</td>
+						<td style="text-align:right;"><input id="idEE23Pct" type="checkbox" onchange="calculateAgain()" /></td>
+					</tr>
+					</table>
+				</div>
+				
+				<div id="idCutGroup">
+					- Cut Vision at 4 x Speed?
+					<input id="idCutVision" type="checkbox" onchange="calculateAgain()" /><br />
+				</div>
+
+				<h5>Assumptions about opponent</h5>
+				<div id="idStatsAGroup" style="margin-bottom:10px;">
+					- Training:
+					<select id="idTraining" onchange="onChange_weightA()">
+						<option value="1.0">yellow (soft capped)</option>
+						<option value="1.1">yellow * 1.1</option>
+						<option value="1.2">yellow * 1.2</option>
+						<option value="1.3">yellow * 1.3</option>
+						<option value="1.4">yellow * 1.4</option>
+						<option value="1.5" selected>crimson (hard capped)</option>
+					</select><br />
+					- Use Tim the Enchanter's formula?
+					<input id="idUseTims" type="checkbox" checked /><br />
+				</div>
+				
+				<div id="idChaoticSpan">
+					- Could the attacker be chaotic?
+					<input id="idChaotic" type="checkbox" onchange="calculateAgain()" /><br />
+				</div>
+			</td>
+			</tr>
+			</table>
+
+			<h4>Intermediate</h4>
+			<h5>Translation of raw text</h5>
+			<div class="broedtekst">
+				These are translated from the &lt;textarea&gt; field above.<br />
+				But you may also enter or edit values directly here.
+				When you leave the edited field, the result will be automatically updated.<br />
+				<br />
+			</div>
+			<table class="broedtekst" style="width:auto;">
+				<tr>
+					<th>Stat</th>
+					<th>You</th>
+					<td></td>
+					<th>Attacker</th>
+				</tr>
+				<tr>
+					<td>Weight:&nbsp;</td>
+					<td><input id="idWeightU" type="text" onchange="onChange_weightU()" /></td>
+					<td>
+						&nbsp;<input type="button"
+							value="* 2 ="
+							onclick="onChange_weightU()"
+							title="A raider can max be twice your size"
+						/>&nbsp
+					</td>
+					<td><input id="idWeightA" type="text" onchange="onChange_weightA()" /></td>
+					<td>&nbsp;</td>
+					<td>Max hit</td>
+					<td>&nbsp;</td>
+					<td>incl P&A</td>
+					<td>&nbsp;</td>
+					<td>Max chaos</td>
+				</tr>
+				<tr>
+					<td>Strength:&nbsp;</td>
+					<td><input id="idStrengthU" type="text" onchange="onChange_inputsU()" /></td>
+					<td>&nbsp;</td>
+					<td><input id="idStrengthA" type="text" onchange="onChange_strengthA()" /></td>
+					<td>
+						&nbsp;<input type="button"
+							value="/ 10 ="
+							onclick="onChange_strengthA()"
+							title="A hit is max 10% of strength"
+						/>&nbsp
+					</td>
+					<td><input id="idHitA" type="text" onchange="onChange_hitA()" /></td>
+					<td>
+						&nbsp;<input type="button"
+							value="* 1.5 ="
+							onclick="onChange_hitA()"
+							title="Potions and armor boosts max 50%"
+						/>&nbsp
+					</td>
+					<td><input id="idHitAPotsAndArmor" type="text" onchange="onChange_chaosA()" /></td>
+					<td>
+						&nbsp;<input type="button"
+							value="* 1.8 ="
+							onclick="onChange_hitAPotsAndArmor()"
+							title="Chaos boosts max 80%"
+						/>&nbsp
+					</td>
+					<td><input id="idHitAChaos" type="text" onchange="onChange_chaosA()" /></td>
+				</tr>
+				<tr>
+					<td>Toughness:&nbsp;</td>
+					<td><input id="idToughnessU" type="text" onchange="onChange_inputsU()" /></td>
+					<td>&nbsp;</td>
+					<td><input id="idToughnessA" type="text" disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td>Speed:&nbsp;</td>
+					<td><input id="idSpeedU" type="text" onchange="onChange_inputsU()" /></td>
+					<td>&nbsp;</td>
+					<td><input id="idSpeedA" type="text" disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td>Vision:&nbsp;</td>
+					<td><input id="idVisionU" type="text" onchange="onChange_inputsU()" /></td>
+					<td>&nbsp;</td>
+					<td><input id="idVisionA" type="text" disabled="disabled" /></td>
+				</tr>
+			</table>
+			
+			<h5>What You Need</h5>
+			<table id="idNeeds" class="broedtekst" style="width:auto;">
+			<tr><td>
+				(Results will appear here)<br />
+			</td></tr>
+			</table>
+			
+			<h4>Output - Your Potions</h4>
+			<table id="idOutput" class="broedtekst" style="width:auto;">
+			<tr><td>
+				(Results will appear here)<br />
+				Click <input type="button" onclick="displayPots()" value="this button" />
+				to display all potions (for debugging).
+			</td></tr>
+			</table>
+			
+			<div id="idJoke" style="display:none;">
+				<h5>Purchase</h5>
+				<div class="broedtekst">
+					To buy the calculated <span id="idPotionsInCheapest">0</span> potions, click:
+					<input type="button" value="Buy now!"
+						onclick="alert('Yeah, that would be cool, huh? ;-)')"
+					/>
+				</div>
+			</div>
+			
+			<h3>Known bugs (incl. fixed)</h3>
+			<table class="broedtekst">
+			<tr><th>#)</th><th>Found</th><th>What?</th><th>&nbsp;Fixed&nbsp;</th><th>How?</th></tr>
+			<tr>
+				<td>11)&nbsp;</td><td>2012-08-31&nbsp;</td>
+				<td>BUG: This slot is ready for *your* bug :)</td>
+				<td>&nbsp;-&nbsp;</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>10)&nbsp;</td><td>2012-08-31&nbsp;</td>
+				<td>BUG: "Avoid DR" will sometimes offer higher DR (and price) than "Ignore DR.</td>
+				<td>&nbsp;-&nbsp;</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>9)&nbsp;</td><td>2012-08-31&nbsp;</td>
+				<td>BUG: An extremely high vision need combined with high strength may still list Greens, even if they're not necessary.</td>
+				<td>&nbsp;-&nbsp;</td>
+				<td>-</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>8)&nbsp;</td><td>2012-08-30&nbsp;</td>
+				<td>BUG: Simply doesn't work for some people.</td>
+				<td>&nbsp;2012-08-31&nbsp;</td>
+				<td>*blush* Fixed a typo ("4" instead of "5")! - it basically meant I had a line like this: "if speed boost is numerically lower than DR boost, then mark this set as the best so far" - utter rubbish...</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>7)&nbsp;</td><td>2012-08-30&nbsp;</td>
+				<td>BUG: Introduced with fix 1) + 6) a very high vision stat can still give you unnecessary DR in spite of "avoid DR".</td>
+				<td>&nbsp;2012-08-31&nbsp;</td>
+				<td>On "avoid DR" it will now first try to ban all DR's; if that gives too low vision, it will try with Pirates allowed; if that gives too low strength it will allow it all, and just aim for as good a vision boost as possible.</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>6)&nbsp;</td><td>2012-08-30&nbsp;</td>
+				<td>BUG: After fix 1) a very high vision stat can still break traversing.</td>
+				<td>&nbsp;2012-08-30&nbsp;</td>
+				<td>Have forced traversing to exhaust all combos of Greens.</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>5)&nbsp;</td><td>2012-08-30&nbsp;</td>
+				<td>Cosmetic: The "Options" section is all over the place.</td>
+				<td>&nbsp;2012-08-30&nbsp;</td><td>Tables and margins ;-)</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>4)&nbsp;</td><td>2012-08-30&nbsp;</td>
+				<td>Cosmetic: After fix 1) list is no longer sorted after size.</td>
+				<td>&nbsp;2012-08-30&nbsp;</td>
+				<td>Resorted (copy of) list in original order after done traversing.</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>3)&nbsp;</td><td>2012-08-29&nbsp;</td>
+				<td>Bug? Even with "Avoid DR" it may give you DR if your stats are high enough.</td>
+				<td>&nbsp;2012-08-30&nbsp;</td>
+				<td>Not really a bug... but I have now introduced an option for "prohibit DR".</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>2)&nbsp;</td><td>2012-08-29&nbsp;</td>
+				<td>BUG: A very high stat (e.g. vision) will give you all potions.</td>
+				<td>&nbsp;2012-08-31&nbsp;</td>
+				<td>Will downsize very high needs before traversing. Then displays what you lack.</td>
+			</tr>
+			<tr style="color:Gray;">
+				<td>1)&nbsp;</td><td>2012-08-29&nbsp;</td>
+				<td>BUG: Sometimes won't find the cheapest set (traversing bug).</td>
+				<td>&nbsp;2012-08-30&nbsp;</td>
+				<td>Sorted array for price. Have forced traversing to exhaust all combos of Pirates.</td>
+			</tr>
+			</table>
+
+			<div class="opdateret">2012-08-31</div>
+		</div>
+	</td></tr></table>
+	<div class="hosting"></div>
+	
+	<script type="text/javascript"><!--
+		var bSuppress = false
+		var bUseTims = true
+
+		var oTextArea = null
+		var sArea = ""
+
+		var oWgU = null
+		var oStU = null
+		var oToU = null
+		var oSpU = null
+		var oViU = null
+		var sWgU = ""
+		var sStU = ""
+		var sToU = ""
+		var sSpU = ""
+		var sViU = ""
+
+		var oWgA = null
+		var oStA = null
+		var oToA = null
+		var oSpA = null
+		var oViA = null
+		var oHiA = null
+		var oPAA = null
+		var oChA = null
+		var sWgA = ""
+		var sStA = ""
+		var sToA = ""
+		var sSpA = ""
+		var sViA = ""
+		var sHiA = ""
+		var sPAA = ""
+		var sChA = ""
+		
+		function BindObjects() {
+			// We need to *not* do this immediately, because we reposition main
+			// contents of page (may make pointers insane).
+			if (oTextArea) return // Already done it
+
+			oTextArea = document.getElementById('idTextarea')
+
+			oWgU = document.getElementById('idWeightU')
+			oStU = document.getElementById('idStrengthU')
+			oToU = document.getElementById('idToughnessU')
+			oSpU = document.getElementById('idSpeedU')
+			oViU = document.getElementById('idVisionU')
+
+			oWgA = document.getElementById('idWeightA')
+			oStA = document.getElementById('idStrengthA')
+			oToA = document.getElementById('idToughnessA')
+			oSpA = document.getElementById('idSpeedA')
+			oViA = document.getElementById('idVisionA')
+			oHiA = document.getElementById('idHitA')
+			oPAA = document.getElementById('idHitAPotsAndArmor')
+			oChA = document.getElementById('idHitAChaos')
+		} // BindObjects
+		
+		var aryNeeds = new Array()
+		var aryNeeds_adjusted = new Array()
+		
+		var aryHeaders = ['Order','Size','Type','Strength','Speed','D.R.','Vision','Prots%','Grabs%','EE%','Cost']
+		var iAryLen = 0
+		var aryPots = new Array()
+		aryPots[iAryLen++] = [0,'dummy','this is a quick and dirty workaround for a "fencepost" bug :)','','','','','','','','$0']
+		aryPots[iAryLen++] = [1,'vial','capsaicin','100','50','','','','','','$125']
+		aryPots[iAryLen++] = [2,'vial','EE','','','','','','','5','$250']
+		aryPots[iAryLen++] = [3,'vial','carrot','','','','250','','','','$500']
+		aryPots[iAryLen++] = [4,'vial','sand','','','30','','','','','$650']
+		aryPots[iAryLen++] = [5,'vial','green','300','','15','-200','','','','$750']
+		aryPots[iAryLen++] = [6,'vial','ninja','400','400','','','15','','','$1.250']
+		aryPots[iAryLen++] = [7,'vial','pirate','','','40','400','','15','','$1.250']
+		aryPots[iAryLen++] = [8,'flask','capsaicin','400','200','','','','','','$500']
+		aryPots[iAryLen++] = [9,'flask','EE','','','','','','','8','$750']
+		aryPots[iAryLen++] = [10,'flask','carrot','','','','1000','','','','$1.500']
+		aryPots[iAryLen++] = [11,'flask','sand','','','120','','','','','$2.250']
+		aryPots[iAryLen++] = [12,'flask','green','1200','','60','-800','','','','$2.250']
+		aryPots[iAryLen++] = [13,'flask','ninja','1600','1600','','','18','','','$3.200']
+		aryPots[iAryLen++] = [14,'flask','pirate','','','160','1600','','18','','$3.200']
+		aryPots[iAryLen++] = [15,'bottle','capsaicin','1600','800','','','','','','$1.125']
+		aryPots[iAryLen++] = [16,'bottle','EE','','','','','','','10','$2.250']
+		aryPots[iAryLen++] = [17,'bottle','carrot','','','','4000','','','','$4.500']
+		aryPots[iAryLen++] = [18,'bottle','sand','','','480','','','','','$6.750']
+		aryPots[iAryLen++] = [19,'bottle','green','4800','','240','-3200','','','','$6.750']
+		aryPots[iAryLen++] = [20,'bottle','ninja','6400','6400','','','21','','','$9.600']
+		aryPots[iAryLen++] = [21,'bottle','pirate','','','640','6400','','21','','$9.600']
+		aryPots[iAryLen++] = [22,'jug','capsaicin','6400','3200','','','','','','$3.375']
+		aryPots[iAryLen++] = [23,'jug','EE','','','','','','','12','$6.750']
+		aryPots[iAryLen++] = [24,'jug','carrot','','','','16000','','','','$13.500']
+		aryPots[iAryLen++] = [25,'jug','sand','','','1920','','','','','$20.250']
+		aryPots[iAryLen++] = [26,'jug','green','19200','','960','-12800','','','','$20.250']
+		aryPots[iAryLen++] = [27,'jug','ninja','25600','25600','','','23','','','$28.800']
+		aryPots[iAryLen++] = [28,'jug','pirate','','','2560','25600','','23','','$28.800']
+		aryPots[iAryLen++] = [29,'barrel','capsaicin','25600','12800','','','','','','$10.125']
+		aryPots[iAryLen++] = [30,'barrel','EE','','','','','','','15','$20.250']
+		aryPots[iAryLen++] = [31,'barrel','carrot','','','','64000','','','','$40.500']
+		aryPots[iAryLen++] = [32,'barrel','sand','','','7680','','','','','$60.750']
+		aryPots[iAryLen++] = [33,'barrel','green','76800','','3840','-51200','','','','$60.750']
+		aryPots[iAryLen++] = [34,'barrel','ninja','102400','102400','','','25','','','$86.400']
+		aryPots[iAryLen++] = [35,'barrel','pirate','','','10240','102400','','25','','$86.400']
+		
+		var iCheapest = 0
+		var iPotionsInBest = 0
+		var iBestDR = 0
+		var iLackingVisionBest = 0
+		var aryAccum = new Array(aryHeaders.length)
+		var aryUnused = new Array(iAryLen)
+		
+		function translateValue(sHeader) {
+			var iIx = sArea.indexOf(sHeader)
+			var sAfter = sArea.substr(iIx + sHeader.length)
+			
+			sAfter = sAfter.match(/\:?\s*[,\.0-9]*/).toString().replace(/[\s:,]*/g,'')
+			return sAfter
+		} // translateValue
+		
+		function onClick_translate() {
+			BindObjects()
+			
+			sArea = oTextArea.value
+			bSuppress = true
+			
+			oWgU.value = myRnd(translateValue('Weight'))
+			oStU.value = translateValue('Strength')
+			oToU.value = translateValue('Toughness')
+			oSpU.value = translateValue('Speed')
+			oViU.value = translateValue('Vision')
+			
+			bSuppress = false
+			onChange_weightU()
+		} // onClick_translate
+		
+		function onChange_weightU() {
+			BindObjects()
+			
+			sWgU = oWgU.value
+
+			if (bSuppress) return;
+			bSuppress = true;
+			
+			oWgA.value = myRnd(2 * oWgU.value)
+			sWgU = oWgU.value
+			sWgA = oWgA.value
+			
+			bSuppress = false
+
+			onChange_weightA(true)
+			onChange_inputsU(true)
+			calculatePotions()
+		} // onChange_weightU
+		
+		function onChange_inputsU(bNoCalcPots) {
+			BindObjects()
+			
+			sStU = oStU.value
+			sToU = oToU.value
+			sSpU = oSpU.value
+			sViU = oViU.value
+
+			if (bSuppress) return;
+			bSuppress = true
+
+			
+			bSuppress = false
+			if (!bNoCalcPots) calculatePotions()
+		} // onChange_inputsU
+		
+		function onChange_weightA(bNoCalcPots) {
+			BindObjects()
+			
+			sWgA = myRnd(oWgA.value)
+
+			if (bSuppress) return;
+			bSuppress = true
+
+			var fInputWeight = new Number(sWgA)
+			var fTgh_yellow = Math.pow(fInputWeight, 1.0483) * 0.77
+			var fStr_yellow = Math.pow(fInputWeight, (821527/781250)) * 0.9848388355
+			var fSpd_yellow = Math.pow(fInputWeight, 0.9) * 2
+			if (bUseTims) {
+				fTgh_yellow = Math.pow((fInputWeight + 6.77), 1.0520) * 0.7355
+				fStr_yellow = fTgh_yellow * 4/3
+				fSpd_yellow = Math.pow(fInputWeight, 0.9) * 2
+			}
+
+			var fFactor = $('#idTraining').val()
+			oStA.value = sStA = myRnd(fStr_yellow * fFactor)
+			oToA.value = sToA = myRnd(fTgh_yellow * fFactor)
+			oSpA.value = sSpA = myRnd(fSpd_yellow * fFactor)
+			oViA.value = sViA = '(' + myRnd(fSpd_yellow * fFactor * 2) + ')'
+						
+			bSuppress = false
+			onChange_strengthA(bNoCalcPots)
+		} // onChange_weightA
+		
+		function onChange_strengthA(bNoCalcPots) {
+			BindObjects()
+			
+			sStA = oStA.value
+			
+			if (bSuppress) return;
+			bSuppress = true
+			
+			oHiA.value = sHiA = myRnd(sStA / 10.0)
+			
+			bSuppress = false
+			onChange_hitA(bNoCalcPots)
+		} // onChange_strengthA
+		
+		function onChange_hitA(bNoCalcPots) {
+			BindObjects()
+			
+			sHiA = oHiA.value
+		
+			if (bSuppress) return;
+			bSuppress = true
+			
+			oPAA.value = sPAA = myRnd(1.5 * sHiA)
+			
+			bSuppress = false
+			onChange_hitAPotsAndArmor(bNoCalcPots)
+		} // onChange_hitA
+
+		function onChange_hitAPotsAndArmor(bNoCalcPots) {
+			BindObjects()
+			
+			sPAA = oPAA.value
+		
+			if (bSuppress) return;
+			bSuppress = true
+			
+			oChA.value = sChA = myRnd(1.8 * sPAA)
+			
+			bSuppress = false
+			if (!bNoCalcPots) calculatePotions()
+		} // onChange_hitAPotsAndArmor
+		
+		var bHasCalculated = false
+				
+		function getAvoidDRSortOrder(pot) {
+			var arySortOrder = ['','capsaicin','green','pirate','carrot','ninja','EE','sand']
+			//var arySortOrder = ['','capsaicin','carrot','green','pirate','ninja','EE','sand']
+			if (pot[0] == 0) return 0
+			var i
+			for (i=0; i<arySortOrder.length; i++) {
+				if (pot[2] == arySortOrder[i]) return i
+			}
+			
+			// Something is wrong - program is broken
+			alert(pot[2])
+			return -1
+		} // getAvoidDRSortOrder
+
+		function calculatePotions() {
+			calculateNeeds()
+			
+			var i
+			
+			aryUnused[0] = true // Part of a quick and dirty workaround for a "fencepost" bug :)
+			for (i = 1; i < iAryLen; i++) aryUnused[i] = false
+			var aryUnused_backup = new Array().concat(aryUnused)
+
+			// Sort array - best to use first
+			if (bAvoidDR) {
+				aryPots.sort(function(a,b){
+					var iRes = 0
+					
+					// 1) First sort types in order for avoiding DR
+					var iSortA = getAvoidDRSortOrder(a)
+					var iSortB = getAvoidDRSortOrder(b)
+					iRes = iSortA - iSortB
+					
+					if (iRes == 0) {
+						// It's same types
+
+						// 2) Sort cheapest first
+						var iCostA = new Number(a[a.length-1].toString().replace(/\$*\.*/g,''))
+						var iCostB = new Number(b[b.length-1].toString().replace(/\$*\.*/g,''))
+						iRes = iCostA - iCostB
+						if (iRes == 0) {
+							// 5) Sort in original order - nah :)
+						}
+					}
+					
+					return iRes
+				})
+			}
+			else {
+				aryPots.sort(function(a,b){
+					var iRes = 0
+					// 1) If we ignore DR, move sand last so we skip them fast
+					if (bIgnoreDR) {
+						var bSandA = a[2] == "sand"
+						var bSandB = b[2] == "sand"
+						if (bSandA) {
+							if (!bSandB) iRes = 1
+						}
+						else if (bSandB) iRes = -1
+					}
+
+					if (iRes == 0) {
+						// 2) Move annoying green potions last (or second last):
+						var bGreenA = a[2] == "green"
+						var bGreenB = b[2] == "green"
+						if (bGreenA) {
+							if (!bGreenB) iRes = 1
+						}
+						else if (bGreenB) iRes = -1
+					}
+
+					if (iRes == 0) {
+						//if ((!bAvoidDR) && (!bIgnoreDR || bGrabs)) {
+						if (!bIgnoreDR) {
+							// DR is OK
+							// 2a) Sort carrots second last - they cost more than they're worth
+							var bCarrotA = a[2] == "carrot"
+							var bCarrotB = b[2] == "carrot"
+							if (bCarrotA) {
+								if (!bCarrotB) iRes = 1
+							}
+							else if (bCarrotB) iRes = -1
+							else {
+								// Sort pirates first, so we don't spend time
+								// exhausting them until we absolutely need to
+								var bPirateA = (a[2] == "pirate") || (a[0] == "0")
+								var bPirateB = (b[2] == "pirate") || (b[0] == "0")
+								if (bPirateA) {
+									if (!bPirateB) iRes = -1
+								}
+								else if (bPirateB) iRes = 1
+							}
+						}
+						else {
+							// DR is bad for you!
+							// 2b) Sort carrots first - they're a good way to avoid DR
+							var bCarrotA = (a[2] == "carrot") || (a[0] == "0")
+							var bCarrotB = (b[2] == "carrot") || (b[0] == "0")
+							if (bCarrotA) {
+								if (!bCarrotB) iRes = -1
+							}
+							else if (bCarrotB) iRes = 1
+							else {
+								// Sort pirates second, so we don't spend time
+								// exhausting them until we absolutely need to
+								var bPirateA = (a[2] == "pirate") || (a[0] == "0")
+								var bPirateB = (b[2] == "pirate") || (b[0] == "0")
+								if (bPirateA) {
+									if (!bPirateB) iRes = -1
+								}
+								else if (bPirateB) iRes = 1
+							}
+						}
+					}
+
+					if (iRes == 0) {
+						// 4) Sort cheapest first*/
+						var iCostA = new Number(a[a.length-1].toString().replace(/\$*\.*/g,''))
+						var iCostB = new Number(b[b.length-1].toString().replace(/\$*\.*/g,''))
+						iRes = iCostA - iCostB
+						if (iRes == 0) {
+							// 5) Sort in original order - nah :)
+						}
+					}
+
+					return iRes
+				})
+			}
+
+			// To avoid use of DR we must now mark them - using the sorted order
+			if (bAvoidDR) {
+				// Kill all that has any DR in them
+				for (i = 0; i < iAryLen; i++) {
+					var aryThis = aryPots[i]
+					if (new Number(aryThis[5]) > 0) aryUnused[i] = true
+				}
+				
+				if (!bProhibitDR) {
+					// We didn't explicitly *forbid* DR, so see
+					// if vision boost is sufficient
+
+					// Calculate the max boosts and cost			
+					displayPots(true)
+					
+					var iVisBoost = aryAccum[6]
+					if (iVisBoost < aryNeeds[3]) {
+						// Not enough vision without DR - allow DR again
+						aryUnused = new Array().concat(aryUnused_backup)
+						
+						// But first let's try and allow only pirates
+						for (i = 0; i < iAryLen; i++) {
+							var aryThis = aryPots[i]
+							switch (aryThis[2]) {
+								case "green":
+								case "sand":
+									aryUnused[i] = true
+									break;
+							}
+						}
+
+						// Calculate the max boosts and cost			
+						displayPots(true)
+						
+						var iStrengthBoost = aryAccum[3]
+						if (iStrengthBoost < aryNeeds[0]) {
+							// Not enough strength without Greens - allow Greens again
+							aryUnused = new Array().concat(aryUnused_backup)
+						}
+					}
+				}
+			}
+/*			else if (bIgnoreDR) {
+				// We don't avoid DR, but we don't need it
+
+				// Calculate the max boosts and cost			
+				displayPots(true)
+				
+				var iVisBoost = aryAccum[6]
+				if (iVisBoost < aryNeeds[3]) {
+					// There's too little vision
+					
+					// First let's try and allow only pirates
+					for (i = 0; i < iAryLen; i++) {
+						var aryThis = aryPots[i]
+						switch (aryThis[2]) {
+							case "green":
+							case "sand":
+								aryUnused[i] = true
+								break;
+						}
+					}
+
+					// Calculate the max boosts and cost			
+					displayPots(true)
+					
+					var iStrengthBoost = aryAccum[3]
+					if (iStrengthBoost < aryNeeds[0]) {
+						// Not enough strength without Greens - allow Greens again
+						aryUnused = new Array().concat(aryUnused_backup)
+					}
+				}
+			}*/
+
+			// Calculate the max boosts and cost			
+			displayPots(true)
+			
+			// Find the best/cheapest set
+			iCheapest = aryAccum[aryHeaders.length-1]
+			iBestDR = bAvoidDR ? aryAccum[5] : 0
+			iLackingVisionBest = aryNeeds[3] - aryNeeds_adjusted[3]
+			iPotionsInBest = aryUnused.length-1
+			removePotions(aryUnused, iAryLen-1, aryAccum)
+			
+			// Display
+			//alert('giraf')
+			displayPots()
+			
+			bHasCalculated = true
+			$('#idPotionsInCheapest').html(iPotionsInBest)
+			$('#idJoke').show()
+		} // calculatePotions
+		
+		var bProhibitDR = false
+		var bAvoidDR = false
+		var bIgnoreDR = false
+		var bGrabs = false
+		
+		function fixCheckboxDependencies() {
+			bProhibitDR = $('#idProhibitDR').attr('checked') ? true : false
+			bAvoidDR = $('#idAvoidDR').attr('checked') ? true : bProhibitDR
+			bIgnoreDR = $('#idIgnoreDR').attr('checked') ? true : bAvoidDR
+			bGrabs = $('#idStealing').attr('checked') ? (!bAvoidDR) : false
+			$('#idAvoidDR').attr('disabled',bProhibitDR)
+			$('#idAvoidDRSpan').css('color', bProhibitDR ? 'Gray' : 'Inherit')
+			$('#idIgnoreDR').attr('disabled',bAvoidDR)
+			$('#idIgnoreDRSpan').css('color', bAvoidDR ? 'Gray' : 'Inherit')
+			$('#idStealing').attr('disabled',bAvoidDR)
+			$('#idStealingSpan').css('color', bAvoidDR ? 'Gray' : 'Inherit')
+			var bDisableChaotic = (bProhibitDR||bAvoidDR||bIgnoreDR)
+			$('#idChaotic').attr('disabled',bDisableChaotic)
+			$('#idChaoticSpan').css('color', bDisableChaotic ? 'Gray' : 'Inherit')
+		} // fixCheckboxDependencies
+		
+		fixCheckboxDependencies()
+		
+		function calculateAgain() {
+			if (bHasCalculated) calculatePotions()
+		} // calculateAgain
+		
+
+		function calculateNeeds() {
+			//var aryHdr = ['Strength','Speed','D.R.','Vision','Prots','Grabs','EE']
+			var aryDivs = [4,4,6,4,1,1,1]
+			var s = '<tr>'
+				+ '<td style="visibility:hidden;">Size&nbsp;</td>'
+				+ '<td style="visibility:hidden;">Type&nbsp;</td>'
+				+ '<th>Strength&nbsp;</th>'
+				+ '<th>Speed&nbsp;</th>'
+				+ '<th>D.R.&nbsp;</th>'
+				+ '<th>Vision&nbsp;</th>'
+				+ '<th>Prots%&nbsp;</th>'
+				+ '<th>Grabs%&nbsp;</th>'
+				+ '<th>EE%&nbsp;</th>'
+				+ '</tr>'
+				+ '<tr>'
+				+ '<td style="visibility:hidden;">bottle&nbsp</td>'
+				+ '<td style="visibility:hidden;">carrot&nbsp</td>'
+			fixCheckboxDependencies()
+			//alert('bIgnoreDR=' + bIgnoreDR + ' bAvoidDR=' + bAvoidDR)
+			aryNeeds[0] = new Number(sStU)
+			aryNeeds[1] = new Number(sSpU)
+			aryNeeds[2] = bIgnoreDR ? 0 : $('#idChaotic').attr('checked') ? new Number(sChA) : new Number(sPAA)
+			aryNeeds[3] = $('#idCutVision').attr('checked') ? Math.min(aryNeeds[1]*4,new Number(sViU)) : new Number(sViU)
+			aryNeeds[4] = $('#idProtection').attr('checked') ? 25 : 0
+			aryNeeds[5] = bGrabs ? 25 : 0
+			aryNeeds[6] = Math.min($('#idAlignment').val(), $('#idEE23Pct').attr('checked') ? 23 : 25)
+			var i
+			for (i = 0; i < aryNeeds.length; i++) {
+				s += '<td style="text-align:center; font-size: 75%; color: Gray;"><span style="border-bottom:1px solid black;">'
+					+ aryNeeds[i] + '</span>&nbsp;<br/>' + aryDivs[i] + '&nbsp;</td>'
+				aryNeeds[i] = Math.round(aryNeeds[i] / aryDivs[i])
+			}
+			s += '</tr><tr><td>&nbsp</td><td>&nbsp</td>'
+			for (i = 0; i < aryNeeds.length; i++) {
+				s += '<td style="text-align:center;">'
+					+ aryNeeds[i] + '&nbsp;</td>'
+			}
+			s += '</tr>'
+			$('#idNeeds').html(s)
+		} // calculateNeeds
+		
+		function removePotions(aryUnusedThis, iPotLevel, aryAccumThis) {
+			if (iPotLevel < 0) return false
+
+			var aryPotThis = aryPots[iPotLevel]
+
+			var i
+			
+			// Test if we meet our needs
+			var bMeetsOurNeeds = true
+			for (i = 0; bMeetsOurNeeds && (i < aryNeeds_adjusted.length); i++) {
+				bMeetsOurNeeds = (aryAccumThis[i+3] >= aryNeeds_adjusted[i])
+			}
+			if (!bMeetsOurNeeds) return false
+			
+			var aryUnusedWithout = new Array().concat(aryUnusedThis)
+			aryUnusedWithout[iPotLevel] = true
+			var aryAccumWithout = new Array().concat(aryAccumThis)
+			for (i = 2; i < aryAccumWithout.length; i++) {
+				var sVal = aryPotThis[i].toString().replace(/\$*\.*/g,'')
+				//alert(sVal)
+				//if (i == aryAccumWithout.length-1) {
+				//	alert('sVal=' + sVal + ' new Number(sVal)=' + new Number(sVal))
+				//}
+				aryAccumWithout[i] -= new Number(sVal)
+			}			
+			var bWithout = removePotions(aryUnusedWithout, iPotLevel-1, aryAccumWithout)
+//			if (bWithout) return true
+			if (bWithout) {
+				switch (aryPotThis[2]) {
+					case 'pirate':
+					case 'carrot':
+						if (!bAvoidDR) return true // We're done
+					case 'green':
+						// Always exhaust posibilities with these annoying types!
+						//bDoExhaust = true
+						break;
+					default:
+						// We're done
+						return true
+				}
+			}
+			
+			var bWith = removePotions(aryUnusedThis, iPotLevel-1, aryAccumThis)
+			if (bWith) return true
+			if (bWithout) return true
+			if (!bMeetsOurNeeds) return false
+
+			// -----
+			// We have met our needs *here* but not in children.
+			
+			// Count potions we used
+			var iPotionsInThis = 0
+			for (i = 0; i < aryUnusedThis.length; i++) {
+				if (!aryUnusedThis[i]) iPotionsInThis++
+			}
+			
+			// Find cost of potions
+			var iCostThis = aryAccumThis[aryAccumThis.length-1]
+			
+			// Maybe avoid DR
+			var iDRThis = aryAccumThis[5]
+			
+			// Maybe boost vision extra
+			var iLackingVisionThis = aryNeeds[3] - aryAccumThis[6]
+			if (iLackingVisionThis < 0) iLackingVisionThis = 0
+
+			// See if it's lowest DR (maybe), better vision, cheapest or fewer potions
+			var bUseThis = false
+			if (bAvoidDR) {
+				if (iDRThis < iBestDR) bUseThis = true
+				else if (iDRThis == iBestDR) {
+					if (iLackingVisionThis < iLackingVisionBest) bUseThis = true
+					else if (iLackingVisionThis == iLackingVisionBest) {
+						if (iCostThis < iCheapest) bUseThis = true
+						else if (iCostThis == iCheapest) {
+							if (iPotionsInThis < iPotionsInBest) bUseThis = true
+						}
+					}
+				}
+			}
+			else {
+				if (iLackingVisionThis < iLackingVisionBest) bUseThis = true
+				else if (iLackingVisionThis == iLackingVisionBest) {
+					if (iCostThis < iCheapest) bUseThis = true
+					else if (iCostThis == iCheapest) {
+						if (iPotionsInThis < iPotionsInBest) bUseThis = true
+					}
+				}
+			}
+			if (bUseThis) {
+				// This is the best so far (less DR or cheapest and maybe has fewer potions)
+				iBestDR = iDRThis
+				iCheapest = iCostThis
+				iPotionsInBest = iPotionsInThis
+				iLackingVisionBest = iLackingVisionThis
+				aryUnused = new Array().concat(aryUnusedThis)
+				//alert('hest')
+			}
+			
+			return true
+		} // removePotions
+		
+		function myRnd(f) {
+			//return Math.round(f * 100.0) / 100.0
+			/*
+			var f = Math.round(f * 100.0) / 100.0
+			var fRound = Math.round(f)
+			var fDecim = (f >= fRound) ? (f - fRound) : (1.0 + f - fRound)
+			var iDecim = Math.round(fDecim * 100)
+			var sReturn = "" + fRound + "."
+			if (iDecim < 10) sReturn += "0"
+			sReturn += "" + iDecim
+			return sReturn*/
+			var s = Math.round(f * 100.0).toString()
+			while (s.length < 3) s = '0' + s
+			return s.substr(0,s.length-2) + '.' + s.substr(s.length-2)
+		} // myRnd
+		
+		//alert(myRnd(1.5))
+		
+		function displayPots(bDontActuallyDisplay) {
+			var aryToShow = new Array()
+			aryAccum = new Array(aryHeaders.length)
+			var i
+			var iPot
+
+			// Init headers and accum counters
+			var s = '<tr>'
+			for (i = 1; i < aryHeaders.length; i++) {
+				if (i>2) s += '<th style="border-bottom: 2px solid #98F; text-align:right;">'
+				else s += '<th style="border-bottom: 2px solid #98F;">'
+				s += aryHeaders[i] + '&nbsp;</th>'
+				aryAccum[i] = 0
+			}
+			s += '</tr>'
+
+			// Find and accumulate used
+			for (iPot = 0; iPot < iAryLen; iPot++) {
+				if (aryUnused[iPot] != true) {
+					var aryPot = aryPots[iPot]
+					aryToShow.push(new Array().concat(aryPot))
+					for (i = 1; i < aryPot.length; i++) {
+						aryAccum[i] += new Number(aryPot[i].replace(/\.*\$*/g,''))
+					}
+				}
+			}
+
+			// Maybe downsize needs
+			for (i = 0; i < aryNeeds.length; i++) {
+				aryNeeds_adjusted[i] = Math.min(aryNeeds[i], aryAccum[i+3])
+			}
+
+			// Skip the rest if we're only accumulating
+			if (bDontActuallyDisplay) return
+
+			// Sort used after size and type (original order)
+//			aryToShow.sort(function(a,b){
+//				return a[0] - b[0]
+//			})
+			
+			// Display the used
+			for (iPot = 0; iPot < aryToShow.length; iPot++) {
+				var aryPot = aryToShow[iPot]
+				s += '<tr>'
+				for (i = 1; i < aryPot.length; i++) {
+					if (i>2) s += '<td style="text-align:right;">'
+					else s += '<td>'
+					s += aryPot[i] + '&nbsp;</td>'
+				}
+				s += '</tr>'
+			}
+			
+			// Add line of accum and of evaluation
+			var sEval = ''
+			s += '<tr>'
+			for (i = 1; i < aryAccum.length; i++) {
+				// Add to line of accum
+				var sVal = aryAccum[i]
+				//if ((i>6)&&(i<10)) {
+				//	if (sVal > 25) sVal = '25&nbsp;<br />(' + sVal + ')'
+				//	//else sVal += '%'
+				//}
+				if (i==10) {
+					if (sVal > 999) {
+						sVal = sVal.toString()
+						sVal = sVal.substr(0, sVal.length - 3) + '.' + sVal.substr(sVal.length - 3)
+					}
+					sVal = '$' + sVal
+				}
+				
+				if (i<=2) s += '<td style="border-top: 2px solid #98F;">&nbsp;</td>'
+				else {
+					s += '<td style="border-top: 2px solid #98F; text-align:right; vertical-align: top;">'
+						+ sVal + '&nbsp;</td>'
+				}
+				
+				// Add to line of eval
+				if ((i<=2) || (i==10)) {
+					sEval += "<td>&nbsp;</td>"
+				}
+				else {
+					var iAccum = aryAccum[i]
+					var iNeed = aryNeeds[i-3]
+					var iEval = iAccum - iNeed
+					if (iEval < 0) {
+						sEval += '<td style="color:Red;text-align:right;">' + iEval + '&nbsp;</td>'
+					}
+					else {
+						sEval += '<td style="color:Gray;text-align:right;">+' + iEval + '&nbsp;</td>'
+					}
+				}
+			}
+			s += '</tr>'
+			
+			// Add line of evaluation
+			s += '<tr>' + sEval + '</tr>'
+
+			// Display it
+			$('#idOutput').html(s)
+		} // displayPots
+
+	//--></script>
+</body>
+</html>

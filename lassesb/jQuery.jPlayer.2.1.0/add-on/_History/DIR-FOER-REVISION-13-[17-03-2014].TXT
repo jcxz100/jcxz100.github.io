@@ -1,0 +1,14 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:35:19,70
+
+ Directory of W:\lassesb\jQuery.jPlayer.2.1.0\add-on
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:30             8.577 jplayer.playlist.min.js
+03-02-2014  18:30            16.490 jquery.jplayer.inspector.js

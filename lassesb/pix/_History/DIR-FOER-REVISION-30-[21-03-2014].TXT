@@ -1,0 +1,19 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 30
+-----------------------------------------------
+
+Tidsstempel: 21-03-2014 11:02:02,05
+
+ Directory of W:\lassesb\pix
+
+-----------------------------------------------
+
+_History
+common
+dots
+media-types
+player
+
+19-03-2014  10:56             2.006 Demo.gif
+19-03-2014  13:43               577 index.html
+19-03-2014  09:50            31.265 TehMe_mini.jpg

@@ -1,0 +1,10 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Taet-nok-paa-til-pjat!
+
+30-01-2014  10:22                 0 DIR-_A-D.TXT
+22-01-2013  16:00             9.544 DotTest.html
+22-01-2013  16:00             7.245 index.html
+               3 File(s)         16.789 bytes
+               0 Dir(s)  59.136.372.736 bytes free

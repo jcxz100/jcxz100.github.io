@@ -1,0 +1,27 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Hvem-mig$
+
+07-03-2012  09:45             1.545 a-d.jpg
+07-03-2012  09:41           163.918 acoustic-guitar.jpg
+07-03-2012  09:59            39.763 astronaut.png
+07-03-2012  09:44             1.351 auditiv.jpg
+07-03-2012  09:40           158.161 bookworm.png
+07-03-2012  10:06            65.190 computer_nerd.jpg
+30-01-2014  10:16                 0 DIR-_A-D.TXT
+27-08-2013  11:51               588 Genvej til lassesb.sln.lnk
+07-03-2012  10:12             7.474 glade-boern.gif
+02-08-2012  08:33             1.513 gplus-32.png
+10-09-2013  14:28            27.521 index.html
+06-03-2012  23:13            93.499 ISFP10pct.png
+06-03-2012  23:12           114.923 ISTP10pct.png
+06-03-2012  23:16             2.939 JobIndex-IstP.png
+07-03-2012  09:45             1.508 kinaestetisk.jpg
+07-03-2012  23:08            11.479 kors3.png
+22-01-2013  16:00            26.046 old.html
+02-08-2012  08:37             3.270 twitter-bird-blue-on-white.png
+07-03-2012  10:12            27.258 varme-haender.jpg
+07-03-2012  09:44             1.458 visuel.jpg
+              20 File(s)        749.404 bytes
+               0 Dir(s)  59.136.413.696 bytes free

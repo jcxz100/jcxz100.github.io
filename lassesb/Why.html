@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	lang="da" xml:lang="da">
+
+<head>
+	<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"/>
+	<title>Why "jcxz100"?</title>
+	<meta name="description" content="Why ""jczx100""?" lang="en-us" />
+	<meta name="description" content="Hvorfor ""jcxz100""?" lang="da" />
+	<meta name="keywords" content="junk" lang="en-us" />
+	<meta name="keywords" content="skrammel" lang="da" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="Favicon.ico"/>
+	<link rel="Stylesheet" type="text/css" href="jcxz100.css" />
+</head>
+
+<script type="text/javascript" src="jcxz100.js"></script>
+
+<body>
+	<script type="text/javascript"><!--
+		if (bIsDanish) document.title = 'Hvorfor "jcxz100"?'
+	//--></script>
+
+	<center>
+	<table id="idBody" class="tblBody" cellpadding="5" cellspacing="0">
+	<tr>
+	<td class="tdNav">
+		<script type="text/javascript"><!--
+			writeNavigation('./')
+		//--></script>
+	</td>
+	<td class="tdSpacing">&nbsp;&nbsp;&nbsp;</td>
+	<td class="tdMain">
+		<table width="100%" cellpadding="0" cellspacing="0">
+		<tr><td>
+			<script type="text/javascript"><!--
+				writeLanguageSelector('./')
+			//--></script>
+			<center>
+			<hr/>
+			<h1 style="display:block;color:#000060;display:none;" class="hidden" lang="en-us">Why "jcxz100"?</h1>
+			<h1 style="display:block;color:#000060;display:none;" class="hidden" lang="da">Hvorfor "jcxz100"?</h1>
+			<hr/>
+			</center>
+		</td></tr>
+
+		<tr><td class="hidden" lang="da">
+			<h2>Hvad betyder "jcxz100"?</h2>
+			<p>
+				<b>JCXZ 100</b> er en Intel 8086/8088 CPU assembler instruktion, som betyder
+				"<b>J</b>ump if register <b>CX</b> is <b>Z</b>ero to absolute address CS:0<b>100</b>hex".
+				<br />
+				CX bruges ofte som tæller (C=counter, X=16 bit register).<br/>
+				Adresse CS:0100 er den adresse, som den første programinstruktion placeres på,
+				når DOS loader en .COM fil.<br />
+				Instruktionen JCXZ er et eksempel på CISC tankegangen
+				(det modsatte af RISC), når den er værst;
+				en-eller-anden ingeniør hos Intel har implementeret den,
+				fordi han troede den ville være smart.
+				I praksis bruges den dog ret sjældent - og når den gør,
+				så er det næsten altid sammen med en unconditional JMP,
+				hvilket indikerer,
+				at der havde været mere brug for en JCX<b>N</b>Z instruktion...
+			</p>
+			<p>
+				Kombinationen "JCXZ 100" er
+				meget usandsynlig at finde i virkelig software, både fordi
+				JCXZ ikke bruges ret meget, og fordi man aldrig
+				looper tilbage til adresse 100h.
+			</p>
+			<p>
+				Koden i billedet nedenfor vil løbe amok,
+				når den gemmes som en .COM fil og dernæst køres fra kommandolinien.
+				Det skyldes at CX så vil indeholde antallet af program-bytes,
+				som blev loadet ind i RAM (altså 2).
+				Da dét er forskeligt fra 0 vil "Jump" delen ikke blive udført.
+				<br/>
+				CPU'en vil derfor loade de efterfølgende ukendte bytes og forsøge at udføre dem,
+				hvilket med overvejende sandsynlighed går galt.
+				<br/>
+				(Hvis man derimod indtaster instruktionen "JCXZ 100" i DEBUG og bare kører uden at gemme først,
+				vil programmet loope uendeligt... det er jo så også skidt ;-)
+				DEBUG starter nemlig med at sætte alle registre til 0.)
+			</p>
+		</td></tr>
+		<tr><td class="hidden" lang="en-us">
+			<h2>What does "jcxz100" mean?</h2>
+			<p>
+				<b>JCXZ 100</b> is an Intel 8086/8088 CPU assembler instruction, short for
+				"<b>J</b>ump if register <b>CX</b> is <b>Z</b>ero to absolute address CS:0<b>100</b>hex".
+				<br />
+				CX is often used as a counter (C=counter, X=16 bit register).<br/>
+				Address CS:0100 is the address where the first instruction-code is placed
+				when DOS loads a .COM file.<br />
+				The JCXZ instruction is an example of CISC way of thinking
+				(the opposite of RISC) at its worst;
+				some engineer at Intel implemented it,
+				because he thought it'd be nifty.
+				In praxis it is rarely used - and when it is,
+				it is almost always paired with an unconditional JMP,
+				which indicates,
+				that a JCX<b>N</b>Z instruction would have been more handy...
+			</p>
+			<p>
+				The combination "JCXZ 100" is
+				very unlikely to be found in actual software, both because
+				JCXZ isn't used much, and also because you never
+				loop back to address 100h.
+			</p>
+			<p>
+				The code in the picture below will run amock
+				when it is saved to a .COM file and then executed from the command line.
+				The reason is that CX gets initiated to
+				the number of program bytes that was loaded into RAM (i.e. 2).
+				As this isn't 0 the "Jump" part won't be effectuated.
+				<br/>
+				So therefore the CPU will load the succeeding unknown bytes and try to execute them,
+				which has every probability of going wrong.				
+				<br/>
+				(If on the other hand you enter the instruction "JCXZ 100" in DEBUG and just execute it without saving it, it will loop infinitely...
+				which of course is bad too ;-)
+				This is because DEBUG initially sets all registers to zero.)
+			</p>
+		</td></tr>
+
+		<tr><td style="text-align:center;">
+		<img alt="jcxz100" src="jcxz100.gif" width="641" height="88"/>
+		<br /><br />
+		</td></tr>
+	
+		<tr><td class="hidden" lang="da">
+			<p>
+				<b>Så... hvorfor?</b><br />
+				Men som sagt, den virkelige grund er, at alle de andre navne, jeg kom på, var taget.
+			</p>
+		</td></tr>
+		<tr><td class="hidden" lang="en-us">
+			<p>
+				<b>So... why?</b><br />
+				But as said before: The actual reason is that all the other names I came up with were already taken.
+			</p>
+		</td></tr>
+
+		</table>
+	</td></tr></table>
+	</center>
+</body>
+
+<script type="text/javascript"><!--
+	showLanguageDependent()
+	
+	//document.title = bIsDanish ? 'Velkommen til "jcxz100"' : 'Welcome to "jczx100"'
+//--></script>
+
+<script type="text/javascript"><!--
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23737120-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+//--></script>
+
+</html>

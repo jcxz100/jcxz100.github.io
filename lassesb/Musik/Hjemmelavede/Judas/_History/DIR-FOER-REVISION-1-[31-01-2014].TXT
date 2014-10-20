@@ -1,0 +1,11 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Hjemmelavede\Judas
+
+30-01-2014  10:19                 0 DIR-_A-D.TXT
+22-01-2013  16:00            10.424 index.html
+30-05-2011  22:56         2.474.979 Judas-1.3.pdf
+29-09-2010  22:44            73.494 Judas.jpg
+               4 File(s)      2.558.897 bytes
+               0 Dir(s)  59.136.385.024 bytes free

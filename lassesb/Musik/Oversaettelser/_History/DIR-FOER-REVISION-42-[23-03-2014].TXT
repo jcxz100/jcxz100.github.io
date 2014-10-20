@@ -1,0 +1,19 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 42
+-----------------------------------------------
+
+Tidsstempel: 23-03-2014 21:14:04,62
+
+ Directory of W:\lassesb\Musik\Oversaettelser
+
+-----------------------------------------------
+
+_History
+Abemand
+De-barmhjertige-soestre
+Den-gule-ubaad
+Ingenting-(absolut-nul)
+Jeg-er-en-astronaut
+Mere
+
+21-03-2014  12:40             3.549 index.html

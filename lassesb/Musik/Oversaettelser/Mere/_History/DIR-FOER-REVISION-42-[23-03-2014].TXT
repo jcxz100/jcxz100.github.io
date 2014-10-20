@@ -1,0 +1,14 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 42
+-----------------------------------------------
+
+Tidsstempel: 23-03-2014 21:14:18,82
+
+ Directory of W:\lassesb\Musik\Oversaettelser\Mere
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40           118.184 crying-statue.jpg
+21-03-2014  12:40             5.449 index.html

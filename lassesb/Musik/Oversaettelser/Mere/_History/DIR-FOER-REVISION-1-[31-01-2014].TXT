@@ -1,0 +1,11 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Oversaettelser\Mere
+
+29-01-2013  22:57           118.184 crying-statue.jpg
+30-01-2014  10:22                 0 DIR-_A-D.TXT
+27-02-2012  13:54               586 Genvej til lassesb.sln.lnk
+06-03-2013  11:40             5.628 index.html
+               4 File(s)        124.398 bytes
+               0 Dir(s)  59.136.376.832 bytes free

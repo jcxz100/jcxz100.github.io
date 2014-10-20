@@ -1,0 +1,19 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 42
+-----------------------------------------------
+
+Tidsstempel: 23-03-2014 21:13:23,49
+
+ Directory of W:\lassesb\Musik
+
+-----------------------------------------------
+
+_History
+Hallelujamusik
+Hjemmelavede
+Oversaettelser
+Taet-nok-paa-til-pjat
+Taet-nok-paa-til-pjat$1
+
+03-02-2014  18:40            36.710 Don't-walk-around-angry.jpg
+21-03-2014  12:40             4.197 index.html

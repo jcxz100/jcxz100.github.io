@@ -1,0 +1,32 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:35:10,64
+
+ Directory of W:\lassesb\Hvem-mig$
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:36           163.918 acoustic-guitar.jpg
+03-02-2014  18:36             1.545 a-d.jpg
+03-02-2014  18:36            39.763 astronaut.png
+03-02-2014  18:36             1.351 auditiv.jpg
+03-02-2014  18:36           158.161 bookworm.png
+03-02-2014  18:36            65.190 computer_nerd.jpg
+03-02-2014  18:36             1.274 DIR-_A-D.TXT
+03-02-2014  18:36               588 Genvej til lassesb.sln.lnk
+03-02-2014  18:36             7.474 glade-boern.gif
+03-02-2014  18:36             1.513 gplus-32.png
+03-02-2014  18:36            27.521 index.html
+03-02-2014  18:36            93.499 ISFP10pct.png
+03-02-2014  18:36           114.923 ISTP10pct.png
+03-02-2014  18:36             2.939 JobIndex-IstP.png
+03-02-2014  18:36             1.508 kinaestetisk.jpg
+03-02-2014  18:36            11.479 kors3.png
+03-02-2014  18:36            26.046 old.html
+03-02-2014  18:36             3.270 twitter-bird-blue-on-white.png
+03-02-2014  18:36            27.258 varme-haender.jpg
+03-02-2014  18:36             1.458 visuel.jpg

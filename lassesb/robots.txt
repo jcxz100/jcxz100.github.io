@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: http://lassesb.host-ed.me/Hvem-mig$.html
+Disallow: http://www.lassesb.host-ed.me/Hvem-mig$.html
+
+Sitemap: http://www.lassesb.host-ed.me/Sitemap.xml

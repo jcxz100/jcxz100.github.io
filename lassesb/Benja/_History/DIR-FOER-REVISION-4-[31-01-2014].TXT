@@ -1,0 +1,14 @@
+----------------------------------------------- 
+Autogenereret før svn revision commit 4 
+----------------------------------------------- 
+ 
+Tidsstempel: 31-01-2014  8:34:08,95 
+ 
+ Directory of O:\Web.svn\lassesb\Benja 
+ 
+_History 
+ 
+30-01-2014  10:13               473 DIR-_A-D.TXT 
+12-08-2013  14:10            51.262 global-communications-icon-128x128.ico 
+12-08-2013  14:10             5.678 global-communications-icon-128x128.jpg 
+12-08-2013  14:28               790 index.html 

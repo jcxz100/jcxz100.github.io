@@ -1,0 +1,15 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:36:30,99
+
+ Directory of W:\lassesb\Musik\Oversaettelser\De-barmhjertige-soestre
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40               414 DIR-_A-D.TXT
+03-02-2014  18:40             4.987 index.html
+03-02-2014  18:40             4.009 Version-1.0.html

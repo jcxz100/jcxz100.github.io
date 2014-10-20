@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- NavMobile.html -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+	
+	<title>NavMobile - SFO Bølgen</title>
+	<link rel="Stylesheet" type="text/css" href="bolgen_01.css" />
+	<link rel="shortcut icon" type="image/x-icon" href="Favicon.ico" />
+</head>
+<body>
+	<script type="text/javascript" src="./jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="./bolgen_01.js"></script>
+	<table id="idNavTable" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+		<tr>
+			<td style="font-size:32pt; font-family:Sans-Serif; vertical-align:middle;">Naviger:&nbsp;&nbsp;</td>
+			<td style="text-align:right;width:100%">
+				<select style="font-size:32pt; font-family:Sans-Serif; text-align:center;width:100%;"
+					onchange="javascript:goNavMobile(this)">
+					<option value="" disabled="disabled" style="text-align:center;">(vælg side)</option>
+					<option value="" style="text-align:center;">Velkommen</option>
+					<option value="Information/" style="text-align:center;">Information</option>
+					<option value="Kalender/" style="text-align:center;">Kalender</option>
+					<!--option value="Ugeplaner/" disabled="disabled" style="text-align:center;text-decoration: line-through;">Ugeplaner</option-->
+					<option value="Billeder/" style="text-align:center;">Billeder</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+</body>
+
+<script type="text/javascript"><!--
+	fixFileProtocolLinks()
+//--></script>
+
+</html>

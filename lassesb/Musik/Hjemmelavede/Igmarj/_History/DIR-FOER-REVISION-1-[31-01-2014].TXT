@@ -1,0 +1,10 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Hjemmelavede\Igmarj
+
+30-01-2014  10:19                 0 DIR-_A-D.TXT
+22-01-2013  16:00             4.653 Igmarj-ide---2012-06-27-11;57.html
+22-01-2013  16:00             4.681 index.html
+               3 File(s)          9.334 bytes
+               0 Dir(s)  59.136.385.024 bytes free

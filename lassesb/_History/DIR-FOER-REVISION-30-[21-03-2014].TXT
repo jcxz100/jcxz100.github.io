@@ -1,0 +1,58 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 30
+-----------------------------------------------
+
+Tidsstempel: 21-03-2014 10:59:47,99
+
+ Directory of W:\lassesb
+
+-----------------------------------------------
+
+_History
+_Zips
+Benja
+bolgen
+Brain-gym-plancher
+Errors
+Hjerte
+Hvem-mig$
+jQuery.jPlayer.2.1.0
+js+css
+Loensedler
+Mad
+Musik
+Papirer
+pdf
+pix
+Spil
+
+19-03-2014  09:50                97 _make-zip-for-upload.bat
+19-03-2014  09:50               163 _zip-exclude-list.txt
+19-03-2014  09:50           206.516 _zip-for-upload.zip
+19-03-2014  09:50            13.449 117108.user.js
+19-03-2014  09:50             1.206 404.shtml
+19-03-2014  09:50             1.095 500.shtml
+19-03-2014  14:12             1.968 CC.html
+19-03-2014  09:50             1.803 CC.html.bak
+19-03-2014  09:50            24.854 Favicon.ico
+19-03-2014  09:50            11.520 Favicon.png
+19-03-2014  09:50            24.854 Favicon-old.ico
+19-03-2014  09:50                53 google49dda7d7dec7638e.html
+19-03-2014  14:12             5.398 index.html
+19-03-2014  09:50             6.384 indexOld.html
+19-03-2014  09:50            94.020 jquery-1.7.min.js
+19-03-2014  09:50             1.517 lassesb.sln
+19-03-2014  09:50            74.752 lassesb.suo
+19-03-2014  09:50             5.328 lyrics.js
+19-03-2014  09:50               647 Mig.html
+19-03-2014  14:06             1.279 Navigation.html
+19-03-2014  14:07             1.575 NavMobile.html
+19-03-2014  09:50               187 robots.txt
+19-03-2014  09:50               276 robots.txt.bak
+19-03-2014  09:50               187 robots.txt.bak2
+19-03-2014  09:50             4.157 Sitemap.xml
+19-03-2014  09:50             2.463 Sitemap.xml.bak
+19-03-2014  09:50             6.395 Why.html
+19-03-2014  09:50             6.304 WishBooks.html
+19-03-2014  09:50             9.193 WishMusic.html
+19-03-2014  09:50            12.912 WishXXXX.js

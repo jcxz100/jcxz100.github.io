@@ -1,0 +1,20 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Spil\Pet-Dragons-2
+
+22-01-2013  16:00            11.141 Balanced-Build.html
+11-04-2012  06:27            43.909 bannersm.png
+27-09-2012  09:25            18.239 DarWe-favicon.png
+30-01-2014  10:23                 0 DIR-_A-D.TXT
+17-12-2009  20:41            66.726 drarwe_onethird_onbluesky_illum_2_WDoV.jpg
+22-01-2013  16:00             4.893 index.html
+22-01-2013  16:00            36.946 Potions.html
+22-01-2013  16:00            37.619 PotionsBroken.html
+22-01-2013  16:00            37.533 PotionsTest.html
+15-11-2012  01:22           171.763 PsyDuck.png
+30-08-2012  19:59               456 _lasse-stats.txt
+31-08-2012  21:11               586 _lassesb.sln.lnk
+30-08-2012  19:59               112 _levi-stats.txt
+              13 File(s)        429.923 bytes
+               0 Dir(s)  59.136.360.448 bytes free

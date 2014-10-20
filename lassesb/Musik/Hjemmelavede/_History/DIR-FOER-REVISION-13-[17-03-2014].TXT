@@ -1,0 +1,20 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:36:09,53
+
+ Directory of W:\lassesb\Musik\Hjemmelavede
+
+-----------------------------------------------
+
+_History
+Chimp
+Igmarj
+Judas
+Loke
+Mester-Mikkel
+Morten-og-prinsessen
+
+03-02-2014  18:38               334 DIR-_A-D.TXT
+03-02-2014  18:40             3.421 index.html

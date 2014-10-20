@@ -1,0 +1,9 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Mad\Broed
+
+30-01-2014  10:17                 0 DIR-_A-D.TXT
+24-08-2012  10:45               592 index.html
+               2 File(s)            592 bytes
+               0 Dir(s)  59.136.405.504 bytes free

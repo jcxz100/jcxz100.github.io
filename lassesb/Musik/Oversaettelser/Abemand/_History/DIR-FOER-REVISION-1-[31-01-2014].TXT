@@ -1,0 +1,10 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Oversaettelser\Abemand
+
+05-09-2012  21:36            22.541 Abemand.jpg
+30-01-2014  10:20                 0 DIR-_A-D.TXT
+06-03-2013  13:08             7.105 index.html
+               3 File(s)         29.646 bytes
+               0 Dir(s)  59.136.380.928 bytes free

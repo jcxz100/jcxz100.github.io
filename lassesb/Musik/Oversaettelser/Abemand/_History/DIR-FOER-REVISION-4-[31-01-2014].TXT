@@ -1,0 +1,13 @@
+----------------------------------------------- 
+Autogenereret før svn revision commit 4 
+----------------------------------------------- 
+ 
+Tidsstempel: 31-01-2014  8:34:13,40 
+ 
+ Directory of O:\Web.svn\lassesb\Musik\OVERSA~1\Abemand 
+ 
+_History 
+ 
+05-09-2012  21:36            22.541 Abemand.jpg 
+30-01-2014  10:20               393 DIR-_A-D.TXT 
+06-03-2013  13:08             7.105 index.html 

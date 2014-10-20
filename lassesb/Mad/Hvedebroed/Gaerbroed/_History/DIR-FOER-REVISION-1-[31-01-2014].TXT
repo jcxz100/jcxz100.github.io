@@ -1,0 +1,54 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Mad\Hvedebroed\Gaerbroed
+
+22-01-2013  16:00             9.799 Brug-nu-bare-koldt-vand-fra-hanen.html
+30-01-2014  10:18                 0 DIR-_A-D.TXT
+22-01-2013  16:00             1.365 Form-to-broed-uden-at-mase-dejen.html
+06-06-2012  09:49           175.566 Franskbroed-2-styk.jpg
+06-06-2012  09:47           165.967 Gulerodsbrud-16-styk.jpg
+06-06-2012  09:48           154.686 Gulerodsbrud-25-styk.jpg
+12-06-2012  13:59           145.187 Gulerodsbrud-dej-0.jpg
+12-06-2012  14:09           129.414 Gulerodsbrud-dej-1.jpg
+12-06-2012  14:08           141.907 Gulerodsbrud-dej-2.jpg
+12-06-2012  14:07           151.773 Gulerodsbrud-dej-3.jpg
+13-06-2012  07:04           184.651 Gulerodsbrud-dej-4.jpg
+06-03-2013  12:30            11.419 Gulerodsbrud.html
+11-04-2013  20:23           118.157 Havregrynsboller-16-styk.jpg
+06-03-2013  12:31            15.416 index.html
+25-08-2012  00:00           156.596 Kartoffel_-og-spinatbrud-16-styk-dej-haevet.jpg
+24-08-2012  23:58           161.122 Kartoffel_-og-spinatbrud-16-styk-dej.jpg
+27-08-2012  12:44           176.968 Kartoffel_-og-spinatbrud-16-styk.jpg
+06-03-2013  12:30            10.281 Kartoffel_-og-spinatbrud.html
+25-09-2012  12:35               709 Kartoffel_gulerodsbrud-med-surdej.txt
+25-09-2012  12:57             1.868 Min-surdej.txt
+11-04-2013  16:46         1.437.076 P4114008.JPG
+11-04-2013  16:46         1.331.500 P4114009.JPG
+01-09-2012  13:05         1.606.988 P9013772.JPG
+01-09-2012  13:06         1.668.532 P9013773.JPG
+04-09-2012  09:08         1.215.686 P9043774.JPG
+04-09-2012  09:08         1.233.914 P9043775.JPG
+04-09-2012  09:08         1.328.790 P9043776.JPG
+04-09-2012  09:08         1.437.632 P9043777.JPG
+04-09-2012  09:09         1.421.790 P9043778.JPG
+21-09-2012  20:49         1.300.540 P9213784.JPG
+22-09-2012  05:33         1.321.658 P9223786.JPG
+22-09-2012  05:46         1.382.922 P9223787.JPG
+22-09-2012  05:46         1.444.824 P9223788.JPG
+22-09-2012  06:11         1.383.916 P9223790.JPG
+22-09-2012  06:12         1.381.734 P9223791.JPG
+22-09-2012  07:51         1.600.724 P9223793.JPG
+22-09-2012  07:52         1.659.004 P9223794.JPG
+22-09-2012  08:02         1.596.344 P9223795.JPG
+22-09-2012  08:02         1.443.946 P9223796.JPG
+22-09-2012  08:03         1.616.208 P9223797.JPG
+25-09-2012  12:05         1.461.184 P9253798.JPG
+25-09-2012  12:32         1.556.066 P9253799.JPG
+25-09-2012  12:32         1.579.662 P9253800.JPG
+25-09-2012  13:04         1.566.190 P9253801.JPG
+25-09-2012  13:05         1.582.144 P9253802.JPG
+25-09-2012  13:47         1.730.502 P9253803.JPG
+25-08-2012  10:53               586 _Genvej til lassesb.sln.lnk
+              47 File(s)     40.202.913 bytes
+               0 Dir(s)  59.136.397.312 bytes free

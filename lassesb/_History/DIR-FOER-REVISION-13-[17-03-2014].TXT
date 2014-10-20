@@ -1,0 +1,95 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:34:21,66
+
+ Directory of W:\lassesb
+
+-----------------------------------------------
+
+_History
+_Zips
+Benja
+bolgen
+Brain-gym-plancher
+Errors
+Hjerte
+Hvem-mig$
+jQuery.jPlayer.2.1.0
+Loensedler
+Mad
+Musik
+Papirer
+pdf
+Spil
+
+03-02-2014  18:40                97 _make-zip-for-upload.bat
+03-02-2014  18:40               163 _zip-exclude-list.txt
+03-02-2014  18:30           206.516 _zip-for-upload.zip
+03-02-2014  18:30            13.449 117108.user.js
+03-02-2014  18:40             1.192 404.shtml
+03-02-2014  18:40             1.081 500.shtml
+03-02-2014  18:30               201 Anim16.gif
+03-02-2014  18:30                59 ArrowRight.gif
+03-02-2014  18:30               967 audio.gif
+03-02-2014  18:30             1.295 audio_32x32.gif
+03-02-2014  18:30             1.963 CC.html
+03-02-2014  18:30             1.803 CC.html.bak
+03-02-2014  18:30             3.820 DIR-_A-D.TXT
+03-02-2014  18:30               179 Dot000.png
+03-02-2014  18:30               179 Dot00F.png
+03-02-2014  18:30            24.854 Favicon.ico
+03-02-2014  18:30            11.520 Favicon.png
+03-02-2014  18:30            24.854 Favicon-old.ico
+03-02-2014  18:30                53 google49dda7d7dec7638e.html
+03-02-2014  18:30             7.568 host-ed-logo.gif
+03-02-2014  18:30             4.664 host-ed-logo-smaller.gif
+03-02-2014  18:40               830 html.png
+03-02-2014  18:40             5.477 index.html
+03-02-2014  18:36             6.370 indexOld.html
+03-02-2014  18:30               840 jcxz100.gif
+03-02-2014  18:30            94.020 jquery-1.7.min.js
+03-02-2014  18:30            26.876 kors.png
+03-02-2014  18:40            12.393 kors2.png
+03-02-2014  18:30             2.659 lassesb.png
+03-02-2014  18:30             1.517 lassesb.sln
+03-02-2014  18:30            74.752 lassesb.suo
+03-02-2014  18:30             6.363 lassesb_11.css
+03-02-2014  18:40            22.032 lassesb_11.js
+03-02-2014  18:30             6.363 lassesb_12.css
+03-02-2014  18:36            23.566 lassesb_12.js
+03-02-2014  18:30             7.105 lassesb_13.css
+03-02-2014  18:30            23.566 lassesb_13.js
+03-02-2014  18:30             7.109 lassesb_14.css
+03-02-2014  18:30            24.898 lassesb_14.js
+03-02-2014  18:30             7.152 lassesb_15.css
+03-02-2014  18:40            24.970 lassesb_15.js
+03-02-2014  18:30             7.152 lassesb_16.css
+03-02-2014  18:36            25.060 lassesb_16.js
+03-02-2014  18:30             7.189 js+css/lassesb_18.css
+03-02-2014  18:30            25.223 js+css/lassesb_18.js
+03-02-2014  18:30             5.328 lyrics.js
+03-02-2014  18:37               647 Mig.html
+03-02-2014  18:30             1.243 Navigation.html
+03-02-2014  18:30             1.778 NavMobile.html
+03-02-2014  18:30               980 pdf.gif
+03-02-2014  18:38               974 play16.gif
+03-02-2014  18:30               565 play16.png
+03-02-2014  18:36               505 play16-grayed.png
+03-02-2014  18:30               509 play16-invert.png
+03-02-2014  18:40             1.200 printer.gif
+03-02-2014  18:30               187 robots.txt
+03-02-2014  18:38               276 robots.txt.bak
+03-02-2014  18:36               187 robots.txt.bak2
+03-02-2014  18:30             4.157 Sitemap.xml
+03-02-2014  18:40             2.463 Sitemap.xml.bak
+03-02-2014  18:30               568 Stop16.png
+03-02-2014  18:30               474 stop16-invert.png
+03-02-2014  18:30            31.265 TehMe_mini.jpg
+03-02-2014  18:30               950 txt.gif
+03-02-2014  18:30             6.395 Why.html
+03-02-2014  18:30             6.290 WishBooks.html
+03-02-2014  18:40             9.172 WishMusic.html
+03-02-2014  18:40            12.912 WishXXXX.js
+03-02-2014  18:30               933 YouTube.gif

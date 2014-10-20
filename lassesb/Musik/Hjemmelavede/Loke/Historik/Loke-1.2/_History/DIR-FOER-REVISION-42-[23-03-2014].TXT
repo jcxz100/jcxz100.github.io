@@ -1,0 +1,17 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 42
+-----------------------------------------------
+
+Tidsstempel: 23-03-2014 21:13:48,59
+
+ Directory of W:\lassesb\Musik\Hjemmelavede\Loke\Historik\Loke-1.2
+
+-----------------------------------------------
+
+_History
+
+21-03-2014  12:40            12.013 index.html
+03-02-2014  18:40            82.944 Loke-1.2---becifringer.doc
+03-02-2014  18:40            63.669 Loke-1.2---becifringer.pdf
+21-03-2014  12:40             1.511 Loke-fix-for-69-og-nyere.html
+21-03-2014  12:40             4.632 Mix-1.2.69.html

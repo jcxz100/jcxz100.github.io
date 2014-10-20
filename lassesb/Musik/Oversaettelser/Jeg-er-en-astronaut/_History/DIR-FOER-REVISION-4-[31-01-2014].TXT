@@ -1,0 +1,12 @@
+----------------------------------------------- 
+Autogenereret før svn revision commit 4 
+----------------------------------------------- 
+ 
+Tidsstempel: 31-01-2014  8:34:13,84 
+ 
+ Directory of O:\Web.svn\lassesb\Musik\OVERSA~1\JEG-ER~1 
+ 
+_History 
+ 
+30-01-2014  10:21               356 DIR-_A-D.TXT 
+22-01-2013  16:00             5.332 index.html 

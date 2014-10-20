@@ -1,0 +1,14 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 42
+-----------------------------------------------
+
+Tidsstempel: 23-03-2014 21:14:06,99
+
+ Directory of W:\lassesb\Musik\Oversaettelser\Abemand
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40            22.541 Abemand.jpg
+21-03-2014  12:40             7.072 index.html

@@ -1,0 +1,15 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 30
+-----------------------------------------------
+
+Tidsstempel: 21-03-2014 10:59:53,93
+
+ Directory of W:\lassesb\Benja
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:30            51.262 global-communications-icon-128x128.ico
+03-02-2014  18:30             5.678 global-communications-icon-128x128.jpg
+19-03-2014  09:50               790 index.html

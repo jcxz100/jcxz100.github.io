@@ -1,0 +1,10 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Oversaettelser\De-barmhjertige-soestre
+
+30-01-2014  10:21                 0 DIR-_A-D.TXT
+22-01-2013  16:00             4.987 index.html
+22-01-2013  16:00             4.009 Version-1.0.html
+               3 File(s)          8.996 bytes
+               0 Dir(s)  59.136.376.832 bytes free

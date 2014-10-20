@@ -1,0 +1,11 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Benja
+
+30-01-2014  10:13                 0 DIR-_A-D.TXT
+12-08-2013  14:10            51.262 global-communications-icon-128x128.ico
+12-08-2013  14:10             5.678 global-communications-icon-128x128.jpg
+12-08-2013  14:28               790 index.html
+               4 File(s)         57.730 bytes
+               0 Dir(s)  59.136.434.176 bytes free

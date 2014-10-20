@@ -1,0 +1,14 @@
+-----------------------------------------------
+Autogenereret før svn revision commit 13
+-----------------------------------------------
+
+Tidsstempel: 17-03-2014 13:36:35,60
+
+ Directory of W:\lassesb\Musik\Oversaettelser\Ingenting-(absolut-nul)
+
+-----------------------------------------------
+
+_History
+
+03-02-2014  18:40               360 DIR-_A-D.TXT
+03-02-2014  18:40             3.105 index.html

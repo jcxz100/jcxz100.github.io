@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="da">
+<head>
+<title>Hjerte</title>
+</head>
+<body>
+<center>
+<table height="100%" width="100%">
+<tr><td align="center" height="100">
+	<font size="+10" id="idHeader" style="visibility:hidden">Tillykke med os!</font>
+</td></tr>
+<tr><td style="position:relative;" align="center">
+	<table cellpadding="0" cellspacing="0"><tr><td style="position:relative">
+		<img alt="" id="idHjerte1" src="hjerte.gif" />
+		<img alt="" id="idHjerte2" src="hjerte2.gif" style="display:none;" />
+	</td></tr></table>
+</td></tr>
+</table>
+</center>
+</body>
+<script type="text/javascript"><!--
+	var o1 = document.getElementById("idHjerte1")
+	var o2 = document.getElementById("idHjerte2")
+	var oHeader = document.getElementById("idHeader")
+	
+	function onTimeOut1()
+	{
+		o1.style.display = 'none'
+		o2.style.display = 'inline'
+		setTimeout(onTimeOut2,200)
+	}
+	function onTimeOut2()
+	{
+		o1.style.display = 'inline'
+		o2.style.display = 'none'
+		var dtNow = new Date()
+		var bShowHeader = (dtNow.getDate()==1)
+		if ((dtNow.getDate() == 22) && (dtNow.getMonth()+1 == 4)) bShowHeader = true
+		if ((dtNow.getDate() == 2) && (dtNow.getMonth()+1 == 6)) bShowHeader = true
+		oHeader.style.visibility = bShowHeader ? "" : "hidden"
+		setTimeout(onTimeOut1,400)
+	}
+	setTimeout(onTimeOut1,400)
+//--></script>
+</html>

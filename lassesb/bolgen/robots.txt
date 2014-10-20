@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+html
+
+Sitemap: http://bolgen.cwahi.net/Sitemap.xml

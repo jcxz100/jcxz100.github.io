@@ -1,0 +1,49 @@
+Weight:
+12,254
+100% Synergy
+	
+	
+Strength:
+27,923.84 (+13,961.92)
+67% Synergy
+	
+	
+Treasure:
+32,689,351
+30% Synergy
+	
+Toughness:
+21,378.87
+67% Synergy
+	
+	
+Cave Size:
+15,234,422
+99% Synergy
+	
+	
+Speed:
+13,161.33 (+6,580.67)
+38% Synergy
+	
+Stealth:
+-14,842.94
+	
+	
+Vision:
+126,226.58 (+50,041.64)
+	
+	
+Multi-Opponent:
+1,243,067.49 (+335,630.22)
+	
+Damage Reduction:
+9045
+	
+	
+Gold Stealing:
+27%
+	
+	
+Gold Protection:
+3%

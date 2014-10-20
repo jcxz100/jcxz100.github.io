@@ -1,0 +1,14 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik
+
+28-01-2014  11:07             6.148 .DS_Store
+28-01-2014  11:06             4.096 ._.DS_Store
+30-01-2014  10:19                 0 DIR-_A-D.TXT
+04-09-2012  16:31            36.710 Don't-walk-around-angry.jpg
+06-03-2013  13:03             3.595 index.html
+17-07-2012  16:17             2.813 jplayer_include.html.bak
+25-08-2012  10:53               586 _Genvej til lassesb.sln.lnk
+               7 File(s)         53.948 bytes
+               0 Dir(s)  59.136.385.024 bytes free

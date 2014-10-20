@@ -1,0 +1,9 @@
+ Volume in drive O is lasses---development
+ Volume Serial Number is BC23-B280
+
+ Directory of O:\Web.svn\lassesb\Musik\Hallelujamusik
+
+30-01-2014  10:19                 0 DIR-_A-D.TXT
+06-03-2013  12:48             5.425 index.html
+               2 File(s)          5.425 bytes
+               0 Dir(s)  59.136.385.024 bytes free
