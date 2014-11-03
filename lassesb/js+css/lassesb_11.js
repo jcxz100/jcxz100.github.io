@@ -86,7 +86,7 @@ function Danify(str) {
 	if (iIx >= 0) {
 		str = str.substr(0, iIx + 4) + '_' + str.substr(iIx + 5, 2) + '_' + str.substr(iIx + 8)
 	}
-	return str.replace(/---/g,' _ ').replace(/;/g,':').replace(/-/g,' ').replace(/ae/g,'æ').replace(/Ae/g,'Æ').replace(/oe/g,'ø').replace(/Oe/g,'Ø').replace(/aa/g,'å').replace(/Aa/g,'Å').replace(/_/g,'-').replace(/\$/g,'?')
+	return str.replace(/---/g,' _ ').replace(/;/g,':').replace(/-/g,' ').replace(/ae/g,'Ã¦').replace(/Ae/g,'Ã†').replace(/oe/g,'Ã¸').replace(/Oe/g,'Ã˜').replace(/aa/g,'Ã¥').replace(/Aa/g,'Ã…').replace(/_/g,'-').replace(/\$/g,'?')
 } // Danify
 
 
@@ -96,7 +96,7 @@ function SetTitleForLinksWithTargetBlank() {
 		var o = document.links[i]
 		if (o.target == "_blank") {
 			if ((o.title == null) || (o.title == "")) {
-				o.title = "åbner i ny fane eller vindue"
+				o.title = "Ã¥bner i ny fane eller vindue"
 			}
 		}
 	}
@@ -107,7 +107,7 @@ function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
 	var sName = dollarHeader.find('a').attr('name')
 	if ((sName == null) || (sName == "")) {
 		sName = dollarHeader.text()
-		sName = sName.replace(/\ -\ /g,'---').replace(/\?/g,'$').replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/ /g,'-').replace(/é/g,'e')
+		sName = sName.replace(/\ -\ /g,'---').replace(/\?/g,'$').replace(/Ã†/g,'AE').replace(/Ã¦/g,'ae').replace(/Ã˜/g,'OE').replace(/Ã¸/g,'oe').replace(/Ã…/g,'AA').replace(/Ã¥/g,'aa').replace(/ /g,'-').replace(/Ã©/g,'e')
 		dollarHeader.html('<a name="' + sName + '"></a>' + dollarHeader.html())
 	}
 	return sName;
@@ -136,7 +136,7 @@ function CreateHeaderOverview() {
 		+ '<td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
 		+ '<td class="header-overview"><center>(header overview)</center></td></tr></table>'
 	)
-	var sOverview = '<h4>Overskrifter på siden</h4><hr class="colored" />'
+	var sOverview = '<h4>Overskrifter pÃ¥ siden</h4><hr class="colored" />'
 	$(document).find('*').each(function(){
 		var dollarThis = $(this)
 		if (dollarThis.is('h3')) {
@@ -265,7 +265,7 @@ function MyOnResize() {
 	dHO.height((dWindow.height()-20) + 'px')
 	// .. LSB
 	// LSB - Added 2012-07-30
-	iHeight -= 2 // Border-top på div.hosting
+	iHeight -= 2 // Border-top pÃ¥ div.hosting
 	// .. LSB
 	dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto').css('display', 'block')
 	
@@ -492,7 +492,7 @@ function LoadJPlayer(sMp3File, bKeepVisible) {
 	str += '>'
 	str += '<img src="/play16.png" /> '
 	if (bEnglish) str += 'Listen to the file <a href="javascript:ClickMyPlay(' + iIx + ')">here on the page</a>.'
-	else str += 'Hør filen <a href="javascript:ClickMyPlay(' + iIx + ')">her på hjemmesiden</a>.'
+	else str += 'HÃ¸r filen <a href="javascript:ClickMyPlay(' + iIx + ')">her pÃ¥ hjemmesiden</a>.'
 	str += '</div>'
 	document.writeln(str)
 
@@ -506,7 +506,7 @@ function LoadJPlayer(sMp3File, bKeepVisible) {
 	str += '<img alt="audio" src="/audio.gif" /> '
 	str += '<a href="' + sMp3File + '" target="_blank">'
 	str += sMp3File + '</a> '
-	str += (bEnglish ? '(right click and chose "Save destination as")' : '(højreklik og vælg "Gem destination som")' )
+	str += (bEnglish ? '(right click and chose "Save destination as")' : '(hÃ¸jreklik og vÃ¦lg "Gem destination som")' )
 	str += '</div>'
 	
 	$(sIdDiv1).after(str)

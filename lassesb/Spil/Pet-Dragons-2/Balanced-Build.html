@@ -3,19 +3,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" /> 
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" /> 
 
 	<title>Balanced Build</title>
 
-	<link rel="shortcut icon" type="image/x-icon" href="/Favicon.ico" />
-	<link rel="shortcut icon" type="image/png" href="DarWe-favicon.png" />
-	<link rel="Stylesheet" type="text/css" href="/js+css/lassesb_18.css" />
-	<link rel="author" href="https://plus.google.com/u/0/104986257594883514409" />
-	<script type="text/javascript" src="/jquery-1.7.min.js"></script>
-	<script type="text/javascript" src="/js+css/lassesb_18.js"></script>
-
 	<meta name="keywords" content="Pet Dragons 2, training, balanced, build, capped, soft-capped, hard-capped, calculator, pd2, DarWe, Lasse Steen Bohnstedt, jcxz100" lang="en" />
 
+	<link rel="author" href="https://plus.google.com/u/0/104986257594883514409" />
+
+   <script type="text/javascript" src="where-am-i.js" onload="wai_hook('', false);"></script>
 </head>
 
 <body>
@@ -141,14 +137,14 @@
 			var fSpd_yellow = Math.pow(fInputWeight, 0.9) * 2
 			//var fSpd_yellow = Math.pow(fInputWeight, 0.95)
 
-			var sTghFormula = "weight<sup>1.0483</sup> · 0.77"
-			var sStrFormula = "weight<sup>(821527/781250)</sup> · 0.9848388355"
-			var sSpeedFormula = "weight<sup>0.9</sup> · 2"
+			var sTghFormula = "weight<sup>1.0483</sup> Â· 0.77"
+			var sStrFormula = "weight<sup>(821527/781250)</sup> Â· 0.9848388355"
+			var sSpeedFormula = "weight<sup>0.9</sup> Â· 2"
 			if (bNewFormula) {
 				fTgh_yellow = Math.pow((fInputWeight+6.77), 1.0520) * 0.7355
-				sTghFormula = "(weight+6.77)<sup>1.0520</sup> · 0.7355"
+				sTghFormula = "(weight+6.77)<sup>1.0520</sup> Â· 0.7355"
 				fStr_yellow = fTgh_yellow * 4/3
-				sStrFormula = "toughness<sub>yellow</sub> · 4/3"
+				sStrFormula = "toughness<sub>yellow</sub> Â· 4/3"
 			}
 			if (bNewSpeed) {
 				//fSpd_yellow = Math.pow(fInputWeight, 0.901646) * 2
@@ -156,7 +152,7 @@
 				//fSpd_yellow = Math.pow(fInputWeight, 0.89125) * 2.2
 				fSpd_yellow = Math.pow(fInputWeight, 0.879) * 2.46
 				//fSpd_yellow = Math.pow(fInputWeight, 0.87921) * 2.456
-				sSpeedFormula = "weight<sup>0.879</sup> · 2.46"
+				sSpeedFormula = "weight<sup>0.879</sup> Â· 2.46"
 			}
 			
 			//alert(fSpd_yellow)
@@ -176,77 +172,77 @@
 				//+ "</b><br/><span class='s'>weight<sup>0.95</sup></span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "<tr><td style='background:black;color:#ffcc00'><b>factor 1.1</b></td><td><b>"
 				+ myRnd(fTgh_yellow*1.1)
-				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> · 1.1</span>"
+				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> Â· 1.1</span>"
 				+ "</td><td><b>"
 				+ myRnd(fStr_yellow*1.1)
-				+ "</b><br/><span class='s'>strength<sub>yellow</sub> · 1.1</span>"
+				+ "</b><br/><span class='s'>strength<sub>yellow</sub> Â· 1.1</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.1)
-				+ "</b><br/><span class='s'>speed<sub>yellow</sub> · 1.1</span>"
+				+ "</b><br/><span class='s'>speed<sub>yellow</sub> Â· 1.1</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.1 * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "<tr><td style='background:black;color:#ff9900'><b>factor 1.2</b></td><td><b>"
 				+ myRnd(fTgh_yellow*1.2)
-				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> · 1.2</span>"
+				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> Â· 1.2</span>"
 				+ "</td><td><b>"
 				+ myRnd(fStr_yellow*1.2)
-				+ "</b><br/><span class='s'>strength<sub>yellow</sub> · 1.2</span>"
+				+ "</b><br/><span class='s'>strength<sub>yellow</sub> Â· 1.2</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.2)
-				+ "</b><br/><span class='s'>speed<sub>yellow</sub> · 1.2</span>"
+				+ "</b><br/><span class='s'>speed<sub>yellow</sub> Â· 1.2</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.2 * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "<tr><td style='background:black;color:#ff6600'><b>factor 1.3</b></td><td><b>"
 				+ myRnd(fTgh_yellow*1.3)
-				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> · 1.3</span>"
+				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> Â· 1.3</span>"
 				+ "</td><td><b>"
 				+ myRnd(fStr_yellow*1.3)
-				+ "</b><br/><span class='s'>strength<sub>yellow</sub> · 1.3</span>"
+				+ "</b><br/><span class='s'>strength<sub>yellow</sub> Â· 1.3</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.3)
-				+ "</b><br/><span class='s'>speed<sub>yellow</sub> · 1.3</span>"
+				+ "</b><br/><span class='s'>speed<sub>yellow</sub> Â· 1.3</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.3 * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "<tr><td style='background:black;color:#ff3300'><b>factor 1.4</b></td><td><b>"
 				+ myRnd(fTgh_yellow*1.4)
-				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> · 1.4</span>"
+				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> Â· 1.4</span>"
 				+ "</td><td><b>"
 				+ myRnd(fStr_yellow*1.4)
-				+ "</b><br/><span class='s'>strength<sub>yellow</sub> · 1.4</span>"
+				+ "</b><br/><span class='s'>strength<sub>yellow</sub> Â· 1.4</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.4)
-				+ "</b><br/><span class='s'>speed<sub>yellow</sub> · 1.4</span>"
+				+ "</b><br/><span class='s'>speed<sub>yellow</sub> Â· 1.4</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.4 * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "<tr><td style='background:black;color:#ff0000'><b>crimson<br/>(hard-capped)</b></td><td><b>"
 				+ myRnd(fTgh_yellow*1.5)
-				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> · 1.5</span>"
+				+ "</b><br/><span class='s'>toughness<sub>yellow</sub> Â· 1.5</span>"
 				+ "</td><td><b>"
 				+ myRnd(fStr_yellow*1.5)
-				+ "</b><br/><span class='s'>strength<sub>yellow</sub> · 1.5</span>"
+				+ "</b><br/><span class='s'>strength<sub>yellow</sub> Â· 1.5</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.5)
-				+ "</b><br/><span class='s'>speed<sub>yellow</sub> · 1.5</span>"
+				+ "</b><br/><span class='s'>speed<sub>yellow</sub> Â· 1.5</span>"
 				+ "</td><td><b>"
 				+ myRnd(fSpd_yellow*1.5 * 2)
-				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>· 2</span>"
+				+ "</b><br/><span class='s'>speed<sup>&nbsp;</sup>Â· 2</span>"
 				+ "</td></tr>"
 				
 				+ "</table>"

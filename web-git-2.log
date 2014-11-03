@@ -1,0 +1,794 @@
+
+-- /home/lsb/Development/Web.git/lassesb/117108.user.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/404.shtml:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/500.shtml:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Benja:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Benja/global-communications-icon-128x128.ico:
+
+-- /home/lsb/Development/Web.git/lassesb/Benja/global-communications-icon-128x128.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Benja/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Benja/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Benja/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/ArrowRight.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/bolgen_01.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/bolgen_01.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/Favicon.ico:
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/jquery-1.7.min.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/Navigation.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/NavMobile.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/printer.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/robots.txt:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/SFO_bolgen.png:
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/Sitemap.xml:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=XML document
+debug: Uncertain what this is - do nothing.
+debug: Full string: "Sitemap.xml: XML document text".
+
+-- /home/lsb/Development/Web.git/lassesb/bolgen/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/CC.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Favicon.ico:
+
+-- /home/lsb/Development/Web.git/lassesb/Favicon.png:
+
+-- /home/lsb/Development/Web.git/lassesb/google49dda7d7dec7638e.html:
+debug: This ought to be html.
+debug: CP=???
+debug: sGrep=
+debug: No, it probably isn't html after all.
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/_History/DIR-FOER-REVISION-1-[31-01-2014].TXT:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/_History/DIR-FOER-REVISION-13-[17-03-2014].TXT:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ISO-8859
+debug: CP=ISO-8859-1
+debug: Converting:
+debug: Success
+
+-- /home/lsb/Development/Web.git/lassesb/_History/DIR-FOER-REVISION-30-[21-03-2014].TXT:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ISO-8859
+debug: CP=ISO-8859-1
+debug: Converting:
+debug: Success
+
+-- /home/lsb/Development/Web.git/lassesb/_History/DIR-FOER-REVISION-42-[23-03-2014].TXT:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ISO-8859
+debug: CP=ISO-8859-1
+debug: Converting:
+debug: Success
+
+-- /home/lsb/Development/Web.git/lassesb/_History/DIR-FOER-REVISION-4-[31-01-2014].TXT:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ISO-8859
+debug: CP=ISO-8859-1
+debug: Converting:
+debug: Success
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte/hjerte2.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte/hjerte.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte/index.html:
+debug: CP=utf-8
+debug: 
+debug: Encoding OK, but lineendings must be converted:
+debug: dos2unix: converting file index.html to Unix format ...
+debug:  Done.
+
+-- /home/lsb/Development/Web.git/lassesb/Hjerte/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/acoustic-guitar.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/a-d.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/astronaut.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/auditiv.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/bookworm.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/computer_nerd.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/glade-boern.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/gplus-32.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/index.html:
+debug: CP=utf-8
+debug: 
+debug: Encoding OK, but lineendings must be converted:
+debug: dos2unix: converting file index.html to Unix format ...
+debug:  Done.
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/ISFP10pct.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/ISTP10pct.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/JobIndex-IstP.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/kinaestetisk.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/kors2.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/kors3.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/kors.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/twitter-bird-blue-on-white.png:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/varme-haender.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/visuel.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Hvem-mig$/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/indexOld.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/jquery-1.7.min.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0/add-on:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0/blue.monday:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0/Jplayer.swf:
+
+-- /home/lsb/Development/Web.git/lassesb/jQuery.jPlayer.2.1.0/jquery.jplayer.min.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/go.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/ip.php:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_11.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_11.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_12.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_12.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_13.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_13.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_14.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_14.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_15.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_15.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_16.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_16.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_17.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_17.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_18.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_18.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_19.css:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/lassesb_19.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/js+css/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-07_Loenspecifikation-jun_jul-2010.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-10_Loenspecifikation-oktober-2010.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-10_Loenspecifikation-sep_okt-2010.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-11_Loenspecifikation-november-2010.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-12_Bilag-julehilsen.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-12_Loenspecifikation-december-2010.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2010-12_Loenspecifikation-nov_dec-2010_(sjette-ferieuge).pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-01_Bilag-Feriefondens-folder-for-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-01_Bilag-Nytaarshilsen.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-01_Loenspecifikation-januar-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-02_Loenspecifikation-februar-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-03_Loenspecifikation-marts-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-04_Loenspecifikation-april-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-05_Loenspecifikation-maj-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-06_Loenspecifikation-juni-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-07_Loenspecifikation-juli-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-08_Loenspecifikation-august-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-09_Loenspecifikation-september-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-10_Loenspecifikation-oktober-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-11_Loenspecifikation-november-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2011-12_Loenspecifikation-december-2011.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-01_Loenspecifikation-januar-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-02_Feriefonden-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-02_Loenspecifikation-februar-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-03-Loenspecifikation-marts-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-04-Loenspecifikation-april-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-04-Mosaik-maj-2012 (27-04-2012).pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-05-Loenspecifikation-maj-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-06-Loenspecifikation-juni-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-07-Loenspecifikation-juli-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/2012-08-Loenspecifikation-august-2012.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/index.html:
+debug: CP=utf-8
+debug: 
+debug: Encoding OK, but lineendings must be converted:
+debug: dos2unix: converting file index.html to Unix format ...
+debug:  Done.
+
+-- /home/lsb/Development/Web.git/lassesb/Loensedler/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/lyrics.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Mad:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-14h35m15P8023659.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-14h35m26P8023660.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h07m52P8023661.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h08m17P8023662.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h10m20P8023663.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h10m33P8023664.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h10m44P8023665.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h19m06P8023666.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-15h19m20P8023667.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h06m23P8023668.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h06m33P8023669.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h27m59P8023670.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h28m08P8023671.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h28m45P8023672.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h28m57P8023673.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h29m09P8023674.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h31m46P8023675.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h31m56P8023676.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/2012-08-02-16h32m05P8023677.JPG:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/Broed:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/Froeken-Jensens-Kogebog-1901.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/hide:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/Hvedebroed:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Mad/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/Mig.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Musik:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Covers:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Don't-walk-around-angry.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Hallelujamusik:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Hjemmelavede:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/index.html:
+debug: CP=utf-8
+debug: 
+debug: Encoding OK, but lineendings must be converted:
+debug: dos2unix: converting file index.html to Unix format ...
+debug:  Done.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Oversaettelser:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Taet-nok-paa-til-pjat:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/Taet-nok-paa-til-pjat$1:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Musik/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/Navigation.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/NavMobile.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2000-xx-xx_laerling_grundfos_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2000-xx-xx_laerling_grundfos_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2002-11-05_laerling_grundfos_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2002-11-05_laerling_grundfos_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2006-05-30_softwareudvikler_grundfos_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2006-05-30_softwareudvikler_grundfos_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2009-03-18_softwareudvikler_KeyToSound_Koblo_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Anbefaling_2009-03-18_softwareudvikler_KeyToSound_Koblo_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1988-06-15_folkeskole_9kl_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1988-06-15_folkeskole_9kl_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1991-06-21_student_mat_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1991-06-21_student_mat_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1997-12-19_skp2_elektronikmekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1998-09-04_skp3_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1998-10-09_skp4_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_1999-06-24_skp5_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2000-05-05_skp6_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2000-10-06_skp7_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2001-05-10_skp8_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2002-03-15_skp9_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2002-10-04_datamekaniker_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Bevis_2002-10-04_datamekaniker_lassesteenbohnstedt.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/index.html:
+debug: CP=utf-8
+debug: 
+debug: Encoding OK, but lineendings must be converted:
+debug: dos2unix: converting file index.html to Unix format ...
+debug:  Done.
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2010-10-24.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2010-10-24.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2011-01-03.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2011-01-03.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2011-08-01.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/SFO_Boelgen_2011-08-01.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Svendebrev_2002-11-24_datamekaniker_lassesteenbohnstedt_hiQ.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Svendebrev_2002-11-24_datamekaniker_lassesteenbohnstedt.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/Svendebrev_2002-11-24_datamekaniker_lassesteenbohnstedt_midQ.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/Papirer/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/pdf:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/114_til-2013-06-29.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/115_2013-2014.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/117_2013-2014.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/117_til-2013-06-29.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/200_2013-2014.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/314_2013-2014.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/314_til-2013-06-29.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Arbejdstider-lasse-2014-08-18.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-07 boerne-tegne.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-07 kvinder.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-07 maend.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-07 oensker.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-07 samling.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-09-boerne.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-09-kvinder.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-09-maend.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-09-oenskeliste.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-2012-09-samling.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-boern-2013-08-01.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-boern-2013-09-07.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-boern-juli-2013.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-must-haves-2013-09-07.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-oensker-2013-08-01.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-oensker-2013-09-07.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-oensker-2014-07-31.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-oensker-2014-08-06.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-oensker-juli-2013.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-samling-2013-08-01.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-samling-2013-09-07.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-samling-2014-07-31.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-samling-2014-08-06.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/Film-samling-juli-2013.pdf:
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/pdf/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/pix:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/common:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/Demo.gif:
+
+-- /home/lsb/Development/Web.git/lassesb/pix/dots:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/pix/media-types:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/player:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/pix/TehMe_mini.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/pix/TehMe_mini_squared.jpg:
+
+-- /home/lsb/Development/Web.git/lassesb/pix/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/robots.txt:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/Sitemap.xml:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=XML document
+debug: Uncertain what this is - do nothing.
+debug: Full string: "Sitemap.xml: XML document text".
+
+-- /home/lsb/Development/Web.git/lassesb/Spil:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Spil/_History:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Spil/index.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/Spil/Pet-Dragons-2:
+debug: Folder.
+
+-- /home/lsb/Development/Web.git/lassesb/Spil/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/where-am-i.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=ASCII
+
+-- /home/lsb/Development/Web.git/lassesb/WishBooks.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/WishMusic.html:
+debug: CP=utf-8
+
+-- /home/lsb/Development/Web.git/lassesb/WishXXXX.js:
+debug: CP=???
+debug: This is NOT html. Proceeding with care.
+debug: CP=utf-8
+debug: 
+debug: -------
+debug: iConverted_encoding: 0
+debug: iConverted_lineendings: 0

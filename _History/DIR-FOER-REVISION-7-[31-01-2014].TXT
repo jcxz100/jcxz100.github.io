@@ -1,5 +1,5 @@
 -----------------------------------------------
-Autogenereret før svn revision commit 7
+Autogenereret fÃ¸r svn revision commit 7
 -----------------------------------------------
 
 Tidsstempel: 31-01-2014 10:59:52,43

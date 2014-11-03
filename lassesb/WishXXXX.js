@@ -187,8 +187,8 @@ function setShowHideWord(bHide, bMouseOver)
 		bIsDanish
 		? (
 			bMouseOver
-			? ("Klik her for " + (bHide ? "at skjule" : "også at vise"))
-			: (bHide ? "(Skjuler" : "(Viser også")
+			? ("Klik her for " + (bHide ? "at skjule" : "ogsÃ¥ at vise"))
+			: (bHide ? "(Skjuler" : "(Viser ogsÃ¥")
 		)
 		: (
 			bMouseOver
@@ -196,7 +196,7 @@ function setShowHideWord(bHide, bMouseOver)
 			: (bHide ? "(Hiding" : "(Including")
 		)
 	)
-	strInner += (bIsDanish ? " dem, jeg har fået" : " the ones I've already gotten")
+	strInner += (bIsDanish ? " dem, jeg har fÃ¥et" : " the ones I've already gotten")
 	strInner += (bMouseOver ? "" : ")")
     pShowHideWord.innerHTML = strInner
 } // setShowHideWord
@@ -291,7 +291,7 @@ function docWriteItemTable(aryItems)
 					{
 					case 0: document.write(bIsDanish ? "diverse kunstnere" : "various artists"); break
 					case 1: document.write(bIsDanish ? "ingen titel" : "untitled"); break
-					case 2: document.write(bIsDanish ? "herrens år" : "anno domini"); break
+					case 2: document.write(bIsDanish ? "herrens Ã¥r" : "anno domini"); break
 					case 3: document.write(bIsDanish ? "uvist" : "unknown"); break
 					}
 					document.write("</font>")
