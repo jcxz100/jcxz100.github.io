@@ -76,7 +76,7 @@ function load_dyn(sFile, bWaitBefore, oOnLoad)
          {
             r = document.createElement('link');
             r.setAttribute('rel', 'shortcut icon');
-            r.setAttribute('type', 'text/x-icon');
+            r.setAttribute('type', 'image/x-icon');
             set_load_event_handlers(r, oOnLoad);
             r.setAttribute('href', sFile);
          };
@@ -86,7 +86,7 @@ function load_dyn(sFile, bWaitBefore, oOnLoad)
          {
             r = document.createElement('link');
             r.setAttribute('rel', 'shortcut icon');
-            r.setAttribute('type', 'text/png');
+            r.setAttribute('type', 'image/png');
             set_load_event_handlers(r, oOnLoad);
             r.setAttribute('href', sFile);
          };
@@ -159,28 +159,21 @@ function go(oOnLoad, bPlayer)
    else
    {
       // Load common stuf:
-      load_dyn(g_sLocRoot + 'js+css/lassesb_19.css', false);
-      load_dyn(g_sLocRoot + 'jquery-1.7.min.js', false);
-      load_dyn(g_sLocRoot + 'js+css/loading_19.js', true);
-      //<link rel="Stylesheet" type="text/css" href="/js+css/lassesb_18.css" />
-      //<script type="text/javascript" src="/jquery-1.7.min.js"></script>
+      load_dyn(g_sLocRoot + 'js+css/jquery-1-11-1/jquery.min.js', true);
+      load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
+      load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
 
       // Maybe load jquery music player:
       if (bPlayer)
       {
-         load_dyn(g_sLocRoot + 'jQuery.jPlayer.2.1.0/blue.monday/jplayer.blue.monday.css', true);
-         load_dyn(g_sLocRoot + 'jQuery.jPlayer.2.1.0/jquery.jplayer.min.js', false);
-         //<link rel="Stylesheet" type="text/css"
-         //      href="/jQuery.jPlayer.2.1.0/blue.monday/jplayer.blue.monday.css" />
-         //<script type="text/javascript"
-         //        src="/jQuery.jPlayer.2.1.0/jquery.jplayer.min.js"></script>
+         load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', true);
+         load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
       }
+
       // Load a bit more common stuff:
-      load_dyn(g_sLocRoot + 'js+css/lassesb_19.js', true, oOnLoad);
-      load_dyn(g_sLocRoot + 'Favicon.ico', true);
+      load_dyn(g_sLocRoot + 'js+css/20_lassesb.js', true, oOnLoad);
       load_dyn(g_sLocRoot + 'Favicon.png', true);
-      //<script type="text/javascript" src="/js+css/lassesb_18.js"></script>
-      //<link rel="shortcut icon" type="image/x-icon" href="/Favicon.ico" />
-      //<link rel="shortcut icon" type="image/png" href="/Favicon.png" />
+      load_dyn(g_sLocRoot + 'Favicon.ico', true);
+      //alert('nedern')
    }
 } // go(oOnLoad, bPlayer)
