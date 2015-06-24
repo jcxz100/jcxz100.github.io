@@ -382,7 +382,7 @@ function LoadCC() {
         if (!bBoth) {
             // One license only:
             var sFile = 'CC_3.0.html'
-            var sModified = $('#idDateModified').html()
+            var sModified = $('[itemprop="dateModified"]').html()
             if (sModified != null) {
               //alert(sModified)
               if (sModified > "2015-06-01") {
