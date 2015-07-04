@@ -335,6 +335,12 @@ p.appetizer a
 /*    color: Black;*/
 }
 
+p.broedtekst
+{
+    padding-left: 5px;
+    line-height: 150%;
+}
+
 p.nb
 {
     vertical-align: text-top;

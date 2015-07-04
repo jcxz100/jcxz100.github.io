@@ -370,27 +370,41 @@ function onCCLoaded(responseText, textStatus) {
 
 function LoadCC() {
     var bBoth = false
+    var b40 = false
     dollarDivCC = $('div.creative_commons')
     sLicensedWork = dollarDivCC.text()
     if (sLicensedWork == '') {
-        bBoth = true
         dollarDivCC = $('div.creative_commons_both')
         sLicensedWork = dollarDivCC.text()
+        if (sLicensedWork != '') {
+            bBoth = true
+        }
+        else {
+            dollarDivCC = $('div.creative_commons_40')
+            sLicensedWork = dollarDivCC.text()
+            if (sLicensedWork != '') {
+                b40 = true
+            }
+        }
     }
 
     if (sLicensedWork != '') {
         if (!bBoth) {
             // One license only:
             var sFile = 'CC_3.0.html'
-            var sModified = $('[itemprop="dateModified"]').html()
-            if (sModified != null) {
-              //alert(sModified)
-              if (sModified > "2015-06-01") {
-                //alert(sModified)
-                // New audio; uses CC 4.0 rather than 3.0:
-                sFile = 'CC_4.0.html'
-              }
+            if (!b40) {
+                var sModified = $('[itemprop="dateModified"]').html()
+                if ((sModified != null) && (sModified != '')) {
+                  //alert(sModified)
+                  if (sModified > "2015-06-01") {
+                    //alert(sModified)
+                    // New audio; uses CC 4.0 rather than 3.0:
+                    b40 = true
+                  }
+                }
             }
+            if (b40) sFile = 'CC_4.0.html'
+
             var sPath = GetLocRoot() + 'js+css/'+sFile+' #idCC-licens'
             //alert(sPath)
             dollarDivCC.load(sPath, function(responseText, textStatus){onCCLoaded(responseText, textStatus)})
@@ -840,6 +854,8 @@ function MyReady_Part2() {
         $('h4').css('fontSize', '22pt')
         $('#idH1Orig').width('500px').css('fontSize', '40pt')
         $('div.creative_commons').css('fontSize', '22pt')
+        $('div.creative_commons_bith').css('fontSize', '22pt')
+        $('div.creative_commons_40').css('fontSize', '22pt')
         $('.broedtekst').css('fontSize', '22pt').css('paddingLeft','10px')
         $('.copyright').css('fontSize', '22pt')
         $('#idNavMobile').load(GetLocRoot() + 'NavMobile.html #idNavToLoad', function(responseText, textStatus) {

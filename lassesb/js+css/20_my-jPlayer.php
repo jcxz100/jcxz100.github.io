@@ -1,20 +1,35 @@
 <?php
 
-  function input_no_end_quotes($tag, $default = '') {
+  function input_sanitized($tag, $default = '', $bAcceptQuotes = false, $bHtmlEncodeQuotes = false) {
     $return = $_GET[$tag];
+    $bDefault = false;
     if (
-      (empty($return))
-      ||
-      ($return == 'undefined')
-      ||
-      (strstr($return, '\'') != '')
-      ||
-      (strstr($return, '"') != '')
+        (empty($return))
+        ||
+        ($return == 'undefined')
     ) {
-      $return = $default;
+        $bDefault = true;
     }
-    return $return;
-  } // input_no_end_quotes
+    else {
+        if (
+            (strstr($return, '\'') != '')
+            ||
+            (strstr($return, '"') != '')
+        ) {
+            if (!$bAcceptQuotes) $bDefault = true;
+            else {
+                if ($bHtmlEncodeQuotes)  {
+                    $return = str_replace(array('\'', '"'), array('&#39;', '$quot;'), $return);
+                }
+                else {
+                    // Do nothing - accept quotes as they are.
+                }
+            }
+        }
+    }
+    if ($bDefault) return $default;
+    else return $return;
+  } // input_sanitized
 
   function get_name_only($path, $bRemoveExt = false) {
     $ixSlash = strrpos($path, '/');
@@ -53,32 +68,34 @@
 
 
   // js + css + flash dir:
-  $dir = input_no_end_quotes('scripts-dir','');
+  $dir = input_sanitized('scripts-dir','');
 
   // index of jplayer:
-  $ix = input_no_end_quotes('index', '1');
+  $ix = input_sanitized('index', '1');
 
   // delay connect?
-  $delay = input_no_end_quotes('delay-connect', '0');
+  $delay = input_sanitized('delay-connect', '0');
 //  if ($ix != '1') $delay = '1';
 
   // What is it?
-  $what =  input_no_end_quotes('what', 'musikken');
+  $what_default = 'musikken';
+  $what =  input_sanitized('what', $what_default, true);
+  $b_what_default = ($what == $what_default);
 
   // audio files:
   $audioName = '';
   //
-  $fallback = input_no_end_quotes('mp4','');
-  $m4a = input_no_end_quotes('m4a',$fallback);
+  $fallback = input_sanitized('mp4','');
+  $m4a = input_sanitized('m4a',$fallback);
   $m4aName = get_name_only($m4a);
   if (!empty($m4aName)) $audioName = $m4aName;
   //
-  $fallback = input_no_end_quotes('ogg','');
-  $oga = input_no_end_quotes('oga',$fallback);
+  $fallback = input_sanitized('ogg','');
+  $oga = input_sanitized('oga',$fallback);
   $ogaName = get_name_only($oga);
   if (!empty($m4aName) && empty($audioaudioName)) $audioName = $ogaName;
   //
-  $mp3 = input_no_end_quotes('mp3','');
+  $mp3 = input_sanitized('mp3','');
   $mp3Name = get_name_only($mp3);
   if (!empty($mp3Name) && empty($audioaudioName)) $audioName = $mp3Name;
   //
@@ -113,44 +130,44 @@
 
 
   // Maybe youtube link:
-  $youtube = input_no_end_quotes('youtube-id');
+  $youtube = input_sanitized('youtube-id');
 
   // Maybe length:
-  $length = input_no_end_quotes('length');
+  $length = input_sanitized('length');
 
 
   // Maybe about text:
-  $about = input_no_end_quotes('about');
+  $about = input_sanitized('about');
 
   // Maybe structure text:
-  $structure = input_no_end_quotes('structure');
+  $structure = input_sanitized('structure');
 
   // Maybe lyrics:
-  $lyrics = input_no_end_quotes('lyrics');
+  $lyrics = input_sanitized('lyrics');
   $lyricsName = get_name_only($lyrics, true);
 
   // Maybe note sheet text:
-  $sheet = input_no_end_quotes('sheet');
+  $sheet = input_sanitized('sheet');
   $sheetName = get_name_only($sheet, true);
 
   // Maybe mix details:
-  $mixDetails = input_no_end_quotes('mix-details');
+  $mixDetails = input_sanitized('mix-details');
   $mixName = get_name_only($mixDetails, true);
 
 
   // Maybe old front page:
-  $front = input_no_end_quotes('front');
+  $front = input_sanitized('front');
 
   // Maybe date of old front page:
-  $fr_date = input_no_end_quotes('front-date');
+  $fr_date = input_sanitized('front-date');
   //echo "<script type='text/javascript'>alert('$fr_date')</script>";
 
   // Maybe thoughts:
-  $thoughts = input_no_end_quotes('thoughts');
+  $thoughts = input_sanitized('thoughts');
   $thoughtsExt = get_ext_only($thoughts);
 
   // Maybe date of thoughts:
-  $th_date = input_no_end_quotes('thoughts-date');
+  $th_date = input_sanitized('thoughts-date');
 
 // ----------------
 
@@ -167,10 +184,11 @@
 <?php if ((!$delay) || (empty($supplied))) echo ' style="display:none;" ' ?>
 >
     <img src="/pix/media-types/audio.gif" alt="audio icon" />
+    Spil
     <a href='javascript:my_jplayers_show_hide(<?php echo $ix; ?>,true)'>
-        Spil <?php echo "$what"; ?></a
+        <?php echo "$what"; ?></a
     >
-    her (i jplayer)<?php if (!empty($length)) echo "; længde: $length"; ?>.
+    i jPlayer<?php if (!empty($length)) echo "; længde: $length"; ?>.
 </div>
 
 <table cellpadding=0 cellspacing=0 border=0>
@@ -187,12 +205,13 @@
                         <div class="jp-controls">
                                 <button class="jp-play" role="button" tabindex="0"
                                     title="Play/pause"
+                                    onclick="javascript:$('#jquery_jplayer_<?php echo "$ix"; ?>').jPlayer('pauseOthers');"
                                 >play</button>
                                 <button class="jp-stop" role="button" tabindex="0"
                                     onclick="javascript:my_jplayers_show_hide(<?php echo $ix; ?>,false)"
                                     title="<?php
-                                        if ($bKeep) echo 'Stop';
-                                        else echo 'Stop og luk';
+                                        if ($delay) echo 'Stop og luk';
+                                        else echo 'Stop';
                                     ?>"
                                 >
                                     stop
@@ -270,8 +289,9 @@
 <?php if (empty($youtube)) echo "<!--\n"; ?>
 <div>
     <img src="/pix/media-types/youtube.gif" alt="youtube icon" />
+    Afspil
     <a href='https://youtube.com/watch?v=<?php echo "$youtube"; ?>' target="_blank">
-        Afspil <?php echo "$what"; ?> </a
+        <?php echo "$what"; ?> </a
     >
     på youtube.
 </div>
@@ -380,7 +400,7 @@
 function my_jplayer_<?php echo $ix; ?>_show_hide(bShow) {
     if (bShow) { // Show: Load audio and (maybe) play it
 
-<?php if ($supplied == '') echo "// No audio supplied.\n/*"; ?>
+<?php if (empty($supplied)) echo "// No audio supplied.\n/*"; ?>
 
         // Make the jplayer divs visible:
         o = $('#id_my_jplayer_wrapper_<?php echo $ix; ?>')
@@ -392,7 +412,10 @@ function my_jplayer_<?php echo $ix; ?>_show_hide(bShow) {
         $('#jquery_jplayer_<?php echo "$ix" ?>').jPlayer({
             ready: function (event) {
                 $(this).jPlayer('setMedia', {
-                    title: '<?php echo "$audioName" ?>',
+                    title: '<?php
+                        if ($b_what_default) echo "$audioName";
+                        else echo "$what";
+                    ?>',
 <?php
   if (!empty($m4a)) {
     echo "                    m4a: '$m4a'";
@@ -414,7 +437,7 @@ function my_jplayer_<?php echo $ix; ?>_show_hide(bShow) {
 ?>
                 });
 <?php if (!$delay) echo "//"; ?>
-                $(this).jPlayer('play',0);
+                $(this).jPlayer('play',0).jPlayer('pauseOthers');
             }, // ready
 
             abort: function(event) {
