@@ -4,14 +4,8 @@
 var g_bHangShown = false;
 
 var g_sLocRoot = null;
-function wai_hook(oOnLoad, bLoadMusicPlayer)
+function wai_hook()
 {
-    if (bLoadMusicPlayer == undefined)
-        bLoadMusicPlayer = false;
-
-    if (oOnLoad == undefined)
-        oOnLoad = 'function(){}';
-
     if (g_sLocRoot == null)
     {
         var s = document.location.toString();
@@ -25,7 +19,7 @@ function wai_hook(oOnLoad, bLoadMusicPlayer)
         try
         {
             r.setAttribute('type', 'text/javascript');
-            r.onload = function(){go(oOnLoad, bLoadMusicPlayer);};
+            //var sSrc = g_sLocRoot + 'js+css/20_go.js';
             var sSrc = g_sLocRoot + 'js+css/go.js';
             r.setAttribute('src', sSrc);
             document.getElementsByTagName('head')[0].appendChild(r);
@@ -33,11 +27,14 @@ function wai_hook(oOnLoad, bLoadMusicPlayer)
         catch (err)
         {
             // That didn't work:
-           if ((g_bHangShown == undefined) || (!g_bHangShown))
-           {
+           if (!g_bHangShown) {
               g_bHangShown = true;
-              alert('Hang that programmer!\n' + err.message);
+              var sHangMsg = 'Hang that programmer!\n' + err.message
+              document.title = err.message
+              alert(sHangMsg);
            }
         }
     }
-} // wai_hook(oOnLoad, bLoadMusicPlayer)
+} // wai_hook()
+
+wai_hook()
