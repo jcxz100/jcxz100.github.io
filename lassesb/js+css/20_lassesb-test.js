@@ -408,7 +408,46 @@ function MyOnResize() {
         document.onresize = MyOnResize
 
         // Also set focus to part of page that can scroll:
-        dMain.attr('tabindex',1).focus().click() // << doesn't work...
+        //alert('bæster')
+        var dAryAs = dMain.find('a')
+        //alert(aryAs)
+        //alert(aryAs.length)
+        //alert(aryAs[0])
+        //var aryA0 = aryAs[0]
+        //alert('demdem')
+        //aryS[0].focus()
+        //dAryAs.focus // <-- fallback (focus last A in div.main)
+        var bFocusDone = false
+        dAryAs.each(function(){
+            if (!bFocusDone) {
+                //alert('hm?')
+                //bFocusDone = true
+                var dThis = $(this)
+                //alert('what?')
+                //alert(dThis)
+                var sHref = dThis.attr('href')
+                //alert(sHref)
+                if ((sHref) && (sHref != '')) {
+                    if (sHref.search('javascript') < 0) {
+                        //dThis.delay(100).focus()
+                        window.setTimeout(
+                            function(){ dThis.focus(); },
+                            1000
+                        )
+                        //alert('set')
+                        bFocusDone = true
+                    }
+                }
+            }
+        })
+        //dNav.html(aryAs[0].attr('href'))
+        if (!bFocusDone) {
+            // Doesn't work...
+            dMain.focus()
+        }
+        //else {
+        //    alert('dotdorthe')
+        //}
     }
 } // MyOnResize
 
