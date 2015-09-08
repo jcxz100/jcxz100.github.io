@@ -144,8 +144,11 @@ function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
     if ((sName == null) || (sName == '')) {
         var sNameNew = dollarHeader.text()
         sNameNew = sNameNew.trim()
-        sNameNew = sNameNew.replace(/[';!=\(\)\.\-\? ]/g,'_').replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
-        sNameNew = sNameNew.replace(/"/g,'\'\'')
+        sNameNew = sNameNew.replace(/["':;!=\(\)\.\-\? ]/g,'_')
+        sNameNew = sNameNew.replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/é/g,'e').replace(/É/g,'E')
         //dollarHeader.html(
         //    '<a name="' + sNameNew + '"></a>'
         //    + dollarHeader.html()
@@ -409,7 +412,9 @@ function MyOnResize() {
 
         // Also set focus to part of page that can scroll:
         //alert('bæster')
-        var dAryAs = dMain.find('a')
+
+        var dAryAs = dMain.find('a#id'+g_sH1Hash)
+        if (dAryAs.length == 0) dAryAs = dMain.find('a')
         //alert(aryAs)
         //alert(aryAs.length)
         //alert(aryAs[0])
@@ -530,8 +535,10 @@ function LoadCC() {
     }
 } // LoadCC
 
+var g_sH1Hash = ''
 
 function ModifyH1AndH2AndTitle() {
+    g_sH1Hash = ''
     var dollarH1 = $('h1')
     var dollarH2 = $('h2')
     var strH1 = dollarH1.text()
@@ -546,6 +553,7 @@ function ModifyH1AndH2AndTitle() {
         var strLast = aryPaths[iAryLen-1]
         var iHashIx = strLast.indexOf('#')
         if (iHashIx >= 0) {
+            g_sH1Hash = strLast.substr(iHashIx+1)
             aryPaths[iAryLen-1] = strLast = strLast.substr(0, iHashIx)
         }
         //alert(strLocOfs)
@@ -588,7 +596,7 @@ function ModifyH1AndH2AndTitle() {
                     }
                 }
                 if (i == iLast) strH2 += '<a itemprop="breadcrumb" title="Scroll til toppen af siden." href="#" onclick="javascript:$(\'div.main\').prop(\'scrollTop\',0);">' + strPathDanified + '</a>'
-                else strH2 += '<a itemprop="breadcrumb" href="' + strHref + '">' + strPathDanified + '/</a> '
+                else strH2 += '<a itemprop="breadcrumb" href="' + strHref + '" title="Tilbage til ' + strPathDanified + '.">' + strPathDanified + '/ </a>'
 
                 strTitle = strPathDanified + strTitle
                 //dollarH2.text('abe: '+strLast)//aryPaths[iAryLen-1])
@@ -597,7 +605,7 @@ function ModifyH1AndH2AndTitle() {
             //dollarH2.html(strH2)
         }
     }
-    strH2 = '<a itemprop="breadcrumb" href="/">/</a> ' + strH2
+    strH2 = '<a itemprop="breadcrumb" href="/" title="Tilbage til velkomstsiden.">/ </a>' + strH2
     if (iAryLen == 0) {
         if (strH1 != strH2) strTitle = strH2 + '/ ' + strTitle
     }
