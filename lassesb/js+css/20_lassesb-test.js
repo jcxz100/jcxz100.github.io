@@ -237,6 +237,7 @@ function CreateHeaderOverview() {
     var sOverview = '<div class="header-overview-head">'
                     + 'Overskrifter p&aring;&nbsp;siden'
                     + '</div>'//<hr class="colored" />'
+                    + '<div class="header-over-view-body">'
     $(document).find('*').each(function(){
         var dollarThis = $(this)
         if (dollarThis.is('h3')) {
@@ -260,6 +261,7 @@ function CreateHeaderOverview() {
                 + dollarThis.text() + '</a></td></tr></table>';
         }
     })
+    sOverview += '</div>'
     dollarDivOverview.html(sOverview)
 
     // LSB - Added 2012-08-06
@@ -365,7 +367,8 @@ function MyOnResize() {
     }
     var iHeight = dWindow.height() - dMain.offset().top - dHosting.height() - 21
     //dHO.height((dWindow.height()-20) + 'px')
-    dHO.height((dWindow.height()-10) + 'px')
+    //dHO.height((dWindow.height()-10) + 'px')
+    dHO.height((dWindow.height()-8) + 'px')
     if (bHeaderOverviewVisible) {
         //dHO.css('display','block')//.css('overflow','auto')
         //dHO.css('display','block').css('position','relative').css('overflow','auto')
@@ -374,13 +377,16 @@ function MyOnResize() {
     // LSB - Added 2012-07-30
     iHeight -= 2 // Border-top på div.hosting
     // LSB - Added 2014-10-27:
-    iHeight -= 5 // Better to small than too big
+    //iHeight -= 5 // Better to small than too big
+    iHeight -= 1 // Better to small than too big
     //dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto').css('display', 'block')
     if (iHeight < 200) iHeight = 200 // always show a little
     dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto')
     dMain.show()
     //alert($(document).height())
     if (bHeaderOverviewVisible) {
+        //$('div.header-overview-head').height(''+$('h1').scrollHeight+'px')
+        $('.header-overview-head').height(100)//''+$('h1').scrollHeight+'px')
         dHO.css('overflow','auto').css('font-size','inherit')
         dHO.show()
         dHO.width('inherit')
@@ -618,10 +624,17 @@ function ModifyH1AndH2AndTitle() {
     //var bSame = (strH2 == strH1)
     //if (!bSame) strTitle += ' / ' + strH2
     strTitle += ' / Lasse Steen Bohnstedt'
-    dollarH1.html('<table width="816px" cellpadding="0" cellspacing="0"><tr><td class="h1_extra"><span>&nbsp;LasseSB&nbsp;</span><p>jcxz100</p></td><td id="idH1Orig">' + strH1 + '</td></tr></table>')
+    dollarH1.html(
+        '<table width="810px" cellpadding="0" cellspacing="0">'
+        +'<tr><td class="h1_extra">'
+        +'<span>&nbsp;LasseSB&nbsp;</span>'
+        +'<p>jcxz100</p></td>'
+        +'<td class="h1_orig" id="idH1Orig">'
+        +strH1
+        +'</td></tr></table>')
     document.title = strTitle
 
-    $('<h2 class="new" style="width: 708px;">' + strH2 + '</h2>').insertBefore('div.main')
+    $('<h2 class="new">' + strH2 + '</h2>').insertBefore('div.main')
 } // ModifyH1AndH2AndTitle
 
 
