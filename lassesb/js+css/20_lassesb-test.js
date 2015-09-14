@@ -436,7 +436,11 @@ function MyOnResize() {
                     if (sHref.search('javascript') < 0) {
                         //dThis.delay(100).focus()
                         window.setTimeout(
-                            function(){ dThis.focus(); },
+                            function(){
+                                dThis.focus();
+                                //dThis.blur()
+                                dMain.focus();
+                            },
                             1000
                         )
                         //alert('set')
@@ -447,8 +451,9 @@ function MyOnResize() {
         })
         //dNav.html(aryAs[0].attr('href'))
         if (!bFocusDone) {
-            // Doesn't work...
+            // Doesn't work on chrome...
             dMain.focus()
+            //dMain.blur()
         }
         //else {
         //    alert('dotdorthe')
