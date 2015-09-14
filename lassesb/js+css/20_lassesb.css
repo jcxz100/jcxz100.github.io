@@ -44,8 +44,8 @@ a.nav
     width: 86px; /*84px; /*86px;*/
     padding: 5px;
     margin-top: 2px;
-    border-left: 2px solid #F4F4F8;
-    border-top: 2px solid #F4F4F8;
+    border-left: 2px solid #E0F8FF;
+    border-top: 2px solid #E0F8FF;
     border-bottom: 2px solid #BBD;
     border-right: 2px solid #BBD;
     background: White;
@@ -74,8 +74,8 @@ a.udskriv
     /*font-weight: bold;*/
     color: #01C; /*#98F;*/
     vertical-align: middle;
-    border-left: 2px solid #F4F4F8;
-    border-top: 2px solid #F4F4F8;
+    border-left: 2px solid #E0F8FF;
+    border-top: 2px solid #E0F8FF;
     border-bottom: 2px solid #BBD;
     border-right: 2px solid #BBD;
 }
@@ -154,7 +154,7 @@ div.header-overview
    padding: 5px;
    padding-bottom: 0px;
    /*margin: 2px;*/
-   /*border: 2px solid #F4F4F8;*/
+   /*border: 2px solid #E0F8FF;*/
    border: 0px;
    /*border-right: 2px solid #BBD;*/
    /*border-bottom: 2px solid #BBD;*/
@@ -170,14 +170,14 @@ div.hosting
 {
     text-align: center;
     background: #FF7; /*White; /*#0D4; /*#98F;*/
-    /*border-top: 2px solid #F4F4F8; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*orange; /*#98F;*/
+    /*border-top: 2px solid #E0F8FF; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*orange; /*#98F;*/
     background-image: url('/pix/common/hosting-bg.png');
     background-size: 100% 100%;
     /*display: none;*/
     width: 808px;
     height: 26px;
     border-bottom: 0px; /*2px solid #BBD;*/
-    border-left: 2px solid #F4F4F8;
+    border-left: 2px solid #E0F8FF;
 }
 
 div.main
@@ -186,8 +186,8 @@ div.main
    display: none;
    width: 686px; /*688px; /*686px; /*708px;*/
    /*border-top: 2px solid #BBD;*/
-   /*border-bottom: 2px solid #F4F4F8;*/
-   border-right: 2px solid #F4F4F8;
+   /*border-bottom: 2px solid #E0F8FF;*/
+   border-right: 2px solid #E0F8FF;
 }
 
 div.myJPlayer
@@ -236,7 +236,7 @@ h1 {
    background-color: #F0F8FF; /*#98F;/*#EEF;*/
    /*display: none;*/
    /*border-bottom: 2px solid #BBD;*/
-    /*border-right: 2px solid #F4F4F8;*/
+    /*border-right: 2px solid #E0F8FF;*/
 }
 
 h2
@@ -265,7 +265,7 @@ h2.new {
     margin: 0px;
     border: 0px;
     border-top: 2px solid #BBD; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*Orange;*/
-    border-right: 2px solid #F4F4F8; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*Orange;*/
+    border-right: 2px solid #E0F8FF; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*Orange;*/
     /*border-bottom: 2px solid #BBD;*/
     line-height: 150%;
 }
@@ -541,7 +541,7 @@ td.h1_extra
    font-size: 16px;
    line-height: 100%;
    vertical-align: middle;
-   /*border-right: 2px solid #F4F4F8; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#EEE; /*#EF7; /*#0D4;*/
+   /*border-right: 2px solid #E0F8FF; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#EEE; /*#EF7; /*#0D4;*/
    margin: 0px;
    /*border-right: 2px solid green;*/
 }
@@ -658,8 +658,8 @@ td.main
     background-color: White;
     text-align: left;
     /*border-top: 2px solid #BBD;*/
-    border-bottom: 2px solid #F4F4F8;
-    /*border-right: 2px solid #F4F4F8;*/
+    border-bottom: 2px solid #E0F8FF;
+    /*border-right: 2px solid #E0F8FF;*/
 }
 
 td.nav
@@ -668,7 +668,7 @@ td.nav
     /*padding: 2px;
     padding-top: 0px;*/
     padding: 0px;
-    background: #F0F8FF; /*#EEE; /*#F4F4F8; /*#DDD; /*#FDE; /*#DFD; /*#EEE; /*#EF7;/*#0D4;/*#98F;*/
+    background: #F0F8FF; /*#EEE; /*#E0F8FF; /*#DDD; /*#FDE; /*#DFD; /*#EEE; /*#EF7;/*#0D4;/*#98F;*/
     /*display: none;*/
     border-right: 2px solid #BBD; /*#888; /*black; /*#0D4;*/
 }
