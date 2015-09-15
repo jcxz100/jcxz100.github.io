@@ -194,7 +194,7 @@ function InsertLoading() {
                 + '<tr><td class="below-below-loading">'
                 + 'En af de ting, der garanteret vil mangle '
                 + 'er copyright info;<br/>'
-                + 'men <b>min copyright gælder selvfølgelig alligevel.</b>'
+                + 'men <b>min og/eller andres copyright gælder selvfølgelig alligevel.</b>'
                 + '</td></tr>'
                 + '</table>'
                 //alert(oInserted.innerHTML)

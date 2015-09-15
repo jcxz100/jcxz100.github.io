@@ -439,13 +439,14 @@ function MyOnResize() {
                 var sHref = dThis.attr('href')
                 //alert(sHref)
                 if ((sHref) && (sHref != '')) {
-                    if (sHref.search('javascript') < 0) {
+                    if (true) {//(sHref.search('javascript') < 0) {
                         //dThis.delay(100).focus()
                         window.setTimeout(
                             function(){
                                 dThis.focus();
                                 //dThis.blur()
-                                dMain.focus();
+                                // Virker ikke på chrome, så nej:
+                                //dMain.focus();
                             },
                             1000
                         )
@@ -475,7 +476,7 @@ var dollarDivCC = null
 function onCCLoaded(responseText, textStatus) {
     if (textStatus == "success") {
         //alert(dollarDivCC)
-        if (sLicensedWork != '') dollarDivCC.find('#idLicensedWork').text(sLicensedWork)
+        if (sLicensedWork != '') dollarDivCC.find('#idLicensedWork').html(sLicensedWork)
         dollarDivCC.find('#idLicensedHref').attr('href',document.location)
         dollarDivCC.show()
         MyOnResize()
@@ -503,28 +504,29 @@ function LoadCC() {
     jq30 = $('div.creative_commons_30')
     jq40 = $('div.creative_commons_40')
     jqX2 = $('div.creative_commons_both')
-    s00 = jq00.text()
-    s30 = jq30.text()
-    s40 = jq40.text()
-    sX2 = jqX2.text()
+    s00 = jq00.html()
+    s30 = jq30.html()
+    s40 = jq40.html()
+    sX2 = jqX2.html()
 
-    if (sX2 != '') {
+    //window.setTimeout(function() { document.title = s30; }, 2000)
+    if (sX2) {
         sCCFile = 'CC_3.0_4.0.html'
         sLicensedWork = sX2
         dollarDivCC = jqX2
     }
-    else if (s40 != '') {
+    else if (s40) {
         sCCFile = 'CC_4.0.html'
         sLicensedWork = s40
         dollarDivCC = jq40
     }
-    else if (s30 != '') {
+    else if (s30) {
         sCCFile = 'CC_3.0.html'
         sLicensedWork = s30
         dollarDivCC = jq30
         //document.title = sLicensedWork
     }
-    else if (s00 != '') {
+    else if (s00) {
         // Unknown version. Detect from "modified" date:
         var b40 = false
         var sModified = $('[itemprop="dateModified"]').text()
@@ -625,7 +627,7 @@ function ModifyH1AndH2AndTitle() {
     //if (!bSame) strTitle += ' / ' + strH2
     strTitle += ' / Lasse Steen Bohnstedt'
     dollarH1.html(
-        '<table width="810px" cellpadding="0" cellspacing="0">'
+        '<table width="808px" cellpadding="0" cellspacing="0">'
         +'<tr><td class="h1_extra">'
         +'<span>&nbsp;LasseSB&nbsp;</span>'
         +'<p>jcxz100</p></td>'
