@@ -649,7 +649,8 @@ function SetHosting() {
         + 'style="height: 25px; display:inline; vertical-align:bottom; '
         + '<span style="font-family:Sans-Serif; font-size-adjust:150%; font-weight: bolder;">'
         + ' - QUALITY WEB HOSTING</span></a>'
-    ).css('background', g_sLocRoot+'pix/common/hosting-bg.gif').css('background-color', 'transparent')
+    )//.css('background', g_sLocRoot+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
+    //$('div.hosting').html('')
     //alert(g_sLocRoot+'pix/common/hosting-bg.png')
 } // SetHosting
 

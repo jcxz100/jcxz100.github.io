@@ -175,13 +175,14 @@ div.hosting
     text-align: center;
     background: #FF7; /*White; /*#0D4; /*#98F;*/
     /*border-top: 2px solid #FFF0FF; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*orange; /*#98F;*/
-    background-image: url('/pix/common/hosting-bg.png');
+    background-image: url('/pix/common/20_hosting-bg.png');
     background-size: 100% 100%;
     /*display: none;*/
     width: 808px;
     height: 26px;
     padding: 0px;
     margin: 0px;
+    border: 0px;
     /*border-bottom: 0px; /*2px solid #BBD;*/
     /*border-left: 2px solid #FFF0FF;*/
     /*border-right: 2px solid #988;*/
@@ -676,7 +677,7 @@ td.nav
     /*display: none;*/
     /*border-right: 2px solid #BBD; /*#888; /*black; /*#0D4;*/
     border-right: 1px solid #988;
-    border-bottom: 1px solid #988;
+    border-bottom: 0px; /*1px solid #988;*/
 }
 
 td.tdHiLite {
