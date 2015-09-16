@@ -1,4 +1,4 @@
-// /js+css/go.js
+// /js+css/20_go.js
 
 function show_hang(s)
 {
@@ -185,7 +185,7 @@ function go(bDummy_ignored)
       //document.writeln('nå!<br/>')
       //load_dyn(g_sLocRoot + 'js+css/20_dummy.js', true);
         //document.title = 'dummy-hvad?';
-      var sScript = g_sLocRoot + 'js+css/20_lassesb-test.js'
+      var sScript = g_sLocRoot + 'js+css/20_lassesb.js'
       //var sScript = g_sLocRoot + 'js+css/lassesb_18.js'
       load_dyn(sScript, false);
        //document.title = 'pølse?'

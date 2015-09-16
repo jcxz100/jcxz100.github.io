@@ -19,10 +19,11 @@ var oCC40s      = document.getElementsByClassName('creative_commons_40')
 var oCC30and40s = document.getElementsByClassName('creative_commons_30_and_40')
 var oHostings   = document.getElementsByClassName('hosting')
 var oHeaders    = document.getElementsByClassName('header-overview')
+var oXlats      = document.getElementsByClassName('xlats')
 //alert (oHeaders.length)
 var ary_oClasses    = [ oH1s, oNavs, //oMains,
                         oCCs, oCC30s, oCC40s, oCC30and40s,
-                        oHostings, oHeaders, oMains
+                        oHostings, oHeaders, oXlats, oMains
                     ]
 
     function getDefaultDisplayByTag(sTag) {

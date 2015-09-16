@@ -1,8 +1,4 @@
-var bEnglish = false//(document.getElementsByTagName('body')[0].lang.toString() == "en")
-//alert(window.lang)
-
-
-var bIsReady = false
+//document.title = 'hingste?'
 
 
 var bIsTinyScreen = (screen.height + screen.width) < 1200
@@ -27,26 +23,54 @@ function GetLocRoot() {
     return g_sLocRoot
 } // GetLocRoot
 
-
 var sLocOffset = null
-function GetLocOffset() {
+function GetLocOffset(bKeepDocName, bMaybeKeepHash) {
+    if (bKeepDocName == null) bKeepDocName = true
+    if (bMaybeKeepHash == null) bMaybeKeepHash = true
+
     if (sLocOffset==null) {
         var sRoot = GetLocRoot()
         var iRootLen = sRoot.length
         sLocOffset = document.location.toString()
         var sRest = sLocOffset.substr(iRootLen, sLocOffset.length-1)
+
+        // Find some characters:
         var iLastSlashIx = sRest.lastIndexOf('/')
-        if (iLastSlashIx >= 0) {
-            sRest = sRest.substr(0, iLastSlashIx+1)
+        var iLastHashIx = sRest.lastIndexOf('#')
+        if (iLastHashIx < iLastSlashIx) iLastHashIx = -1; // '#' isn't rel.
+
+        // Maybe remove '#' part:
+        if (iLastHashIx >= 0) {
+            if (!bMaybeKeepHash || !bKeepDocName) {
+                if (iLastHashIx >= 0) sRest = sRest.substr(0, iLastHashIx)
+                // Note: If docname is removed,
+                // and there's a '#' part, that dies implicitly too.
+            }
         }
-        //sLocOffset = sRoot + sRest
+
+        // Maybe remove document name part:
+        if (!bKeepDocName) {
+            // Remove name of document (if there):
+
+            // Check end of string (neg. index only works in ie9 and newer):
+            var bHtml = (sRest.substr(-5).toLowerCase() == '.html')
+            var bPhp  = (sRest.substr(-4).toLowerCase() == '.php')
+
+            if (bHtml || bPhp) {
+                // Remove document name for recognised document types only:
+                if (iLastSlashIx < 0) {
+                    sRest = '' // No path.. (Why?? should at least be '/'?)
+                }
+                else {
+                    sRest = sRest.substr(0, iLastSlashIx+1)
+                }
+            }
+        }
+
         sLocOffset = sRest
-        var iHashIx = sLocOffset.search('#')
-        if (iHashIx >= 0) sLocOffset = sLocOffset.substr(0, iHashIx)
     }
     return sLocOffset
 } // GetLocOffset
-
 
 var sLocPathOnly = null
 function GetLocPathOnly() {
@@ -96,7 +120,7 @@ function SetTitleForLinksWithTargetBlank() {
     for ( ; i>=0; i--) {
         var o = document.links[i]
         if (o.target == "_blank") {
-            if ((o.title == null) || (o.title == "")) {
+            if ((o.title == null) || (o.title == undefined) || (o.title == "")) {
                 o.title = "Åbner i ny fane eller vindue"
             }
         }
@@ -105,14 +129,44 @@ function SetTitleForLinksWithTargetBlank() {
 
 
 function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
-    var sName = dollarHeader.find('a').attr('name')
-    if ((sName == null) || (sName == "")) {
-        sName = dollarHeader.text()
-        sName = sName.replace(/\ -\ /g,'---').replace(/\?/g,'$').replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/ /g,'-').replace(/é/g,'e')
-        dollarHeader.html('<a name="' + sName + '"></a>' + dollarHeader.html())
+    var dollarA    = dollarHeader.find('a')
+    if (dollarA.length == 0) {
+        dollarHeader.html(
+            '<a href="" name="">'
+            + dollarHeader.html()
+            + '</a>'
+        )
+        dollarA = dollarHeader.find('a')
     }
+    var sName      = dollarA.attr('name')
+    var sHref      = dollarA.attr('href')
+
+    if ((sName == null) || (sName == '')) {
+        var sNameNew = dollarHeader.text()
+        sNameNew = sNameNew.trim()
+        sNameNew = sNameNew.replace(/["':;!=\(\)\.\-\? ]/g,'_')
+        sNameNew = sNameNew.replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
+        sNameNew = sNameNew.replace(/é/g,'e').replace(/É/g,'E')
+        //dollarHeader.html(
+        //    '<a name="' + sNameNew + '"></a>'
+        //    + dollarHeader.html()
+        //)
+        dollarA.attr('name', sNameNew)
+        sName = sNameNew
+    }
+    if ((sHref == null) || (sHref == '')) {
+        dollarA.attr('href', '#' + sName)
+    }
+
+    var sId   = 'id' + sName
+    dollarA.attr('id', sId)
+
     return sName;
 } // CreateHeaderOverview_FindOrMakeName
+
+var bHeaderOverviewVisible = false
 
 function CreateHeaderOverview_Display() {
     var dollarBody = $(document)
@@ -124,59 +178,91 @@ function CreateHeaderOverview_Display() {
     //MyOnResize()
 } // CreateHeaderOverview_Display
 
-var bHeaderOverviewVisible = false
-
 function CreateHeaderOverview() {
+    //alert('hvad sker der??')
     // Find out if there is already an overview column
-    var dollarHeaderOverview = $('div.header-overview')
-    if (dollarHeaderOverview.length == 0) {
-        var dollarTD_HO = $('td.header-overview')
-        if (dollarTD_HO.length == 0) {
-            var dollarBody = $('body')
-            var sBodyWidth = dollarBody.css('width')
-        //  dollarBody.css('width', 'inherit')
-            var sBodyOrg = dollarBody.html()
-            //alert(sBodyOrg)
-            dollarBody.html(
-                '<table cellpadding="0" cellspacing="0" style="width:100%;"><tr>'
-                + ' <td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
-                + ' <td class="header-overview"><div class="header-overview">'
-                + '     <center>(header overview)</center>'
-                + ' </div></td>'
-                + '</tr></table>'
-            )
-        }
-        else {
-            dollarTD_HO.html('<div class="header-overview"></div>')
-        }
+    //
+    //var dollarDivOverview = $('div.header-overview')
+    ////alert(dollarDivOverview.length)
+    //if (dollarDivOverview.length == 0) {
+    //    var dollarTD_HO = $('td.header-overview')
+    //    if (dollarTD_HO.length == 0) {
+    //        var dollarBody = $('body')
+    //        var sBodyWidth = dollarBody.css('width')
+    //    //  dollarBody.css('width', 'inherit')
+    //        var sBodyOrg = dollarBody.html()
+    //        //alert(sBodyOrg)
+    //        dollarBody.html(
+    //            '<table cellpadding="0" cellspacing="0" style="width:100%;"><tr>'
+    //            //+ ' <td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
+    //            + ' <td class="body">' + sBodyOrg + '</td>'
+    //            + ' <td class="header-overview"><div class="header-overview">'
+    //            + '     <center>(loading...)</center>'
+    //            + ' </div></td>'
+    //            + '</tr></table>'
+    //        )
+    //    }
+    //    else {
+    //        dollarTD_HO.html('<div class="header-overview"></div>')
+    //        //alert('header overview already created.')
+    //    }
+    //}
+    // Find out if there is already an overview column
+    var dollarTD_HO = $('td.header-overview')
+    var dollarDivOverview = $('div.header-overview')
+    if (dollarTD_HO.length == 0) {
+        var dollarBody = $('body')
+        var sBodyWidth = dollarBody.css('width')
+    //  dollarBody.css('width', 'inherit')
+        var sBodyOrg = dollarBody.html()
+        //alert(sBodyOrg)
+        dollarBody.html(
+            '<table cellpadding="0" cellspacing="0" style="width:100%;"><tr>'
+            //+ ' <td style="width:' + sBodyWidth + ';">' + sBodyOrg + '</td>'
+            + ' <td class="body">' + sBodyOrg + '</td>'
+            + ' <td class="header-overview"><div class="header-overview">'
+            + ' </div></td>'
+            + '</tr></table>'
+        )
     }
-    dollarHeaderOverview = $('div.header-overview')
+    else {
+        dollarTD_HO.html('<div class="header-overview"></div>')
+        //alert('header overview already created.')
+    }
+    dollarTD_HO = $('td.header-overview')
+    dollarDivOverview = $('div.header-overview')
+    //dollarTD_HO.style.display = 'none'
+    dollarTD_HO.hide()
 
-    var sOverview = '<h4>Overskrifter p&aring;&nbsp;siden</h4><hr class="colored" />'
+    var sOverview = '<div class="header-overview-head">'
+                    + 'Overskrifter p&aring;&nbsp;siden'
+                    + '</div>'//<hr class="colored" />'
+                    + '<div class="header-over-view-body">'
     $(document).find('*').each(function(){
         var dollarThis = $(this)
         if (dollarThis.is('h3')) {
             sScrollTo = CreateHeaderOverview_FindOrMakeName(dollarThis)
             sOverview += ''
-                + '<table cellpadding="0" cellspacing="0"><tr><td class="ho-h3">'
+                + '<table xcellpadding="0" xcellspacing="0"><tr><td class="ho-h3">'
                 + '<a href="#' + sScrollTo + '">'
                 + dollarThis.text() + '</a>'
                 + '</td></tr></table>';
         }
         else if (dollarThis.is('h4')) {
             sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
-            sOverview += '<table cellpadding="0" cellspacing="0" width="100%"><tr><td class="ve-h4">-</td>'
+            sOverview += '<table xcellpadding="0" xcellspacing="0" xwidth="100%"><tr><td class="ve-h4">-</td>'
                 + '<td class="ho-h4"><a href="#' + sName + '">'
                 + dollarThis.text() + '</a></td></tr></table>';
         }
         else if (dollarThis.is('h5')) {
             sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
-            sOverview += '<table cellpadding="0" cellspacing="0" width="100%"><tr><td class="ve-h5">-</td>'
+            sOverview += '<table cellpadding="0" cellspacing="0" xwidth="100%"><tr><td class="ve-h5">--</td>'
                 + '<td class="ho-h5"><a href="#' + sName + '">'
                 + dollarThis.text() + '</a></td></tr></table>';
         }
     })
-    dollarHeaderOverview.html(sOverview)
+    sOverview += '</div>'
+    dollarDivOverview.html(sOverview)
 
     // LSB - Added 2012-08-06
     //CreateHeaderOverview_Display()
@@ -221,6 +307,7 @@ function upCaseFirstLetter(s)
     if ((s) && (typeof(s).toLowerCase() == 'string')) {
         if (s.length > 0) s1 = s.substr(0,1).toLocaleUpperCase()
         if (s.length > 1) s1 += s.substr(1)
+
     }
     else {
         // something has broken! show debug info:
@@ -264,6 +351,10 @@ function MyOnResize() {
     if (dMain.size() == 0) return
     //alert(dollarScrollDiv)
 
+    var dANav = $('a.nav')
+    var iANavHeight = 0
+    var dH2 = $('h2.new')
+
     var dHosting = $('div.hosting')
     //alert(dMain.offset().top)
     var dWindow = $(window)
@@ -275,7 +366,9 @@ function MyOnResize() {
         //dHO.css('display','none')
     }
     var iHeight = dWindow.height() - dMain.offset().top - dHosting.height() - 21
-    dHO.height((dWindow.height()-20) + 'px')
+    //dHO.height((dWindow.height()-20) + 'px')
+    //dHO.height((dWindow.height()-10) + 'px')
+    dHO.height((dWindow.height()-8) + 'px')
     if (bHeaderOverviewVisible) {
         //dHO.css('display','block')//.css('overflow','auto')
         //dHO.css('display','block').css('position','relative').css('overflow','auto')
@@ -284,16 +377,21 @@ function MyOnResize() {
     // LSB - Added 2012-07-30
     iHeight -= 2 // Border-top på div.hosting
     // LSB - Added 2014-10-27:
-    iHeight -= 5 // Better to small than too big
+    //iHeight -= 5 // Better to small than too big
+    iHeight -= 1 // Better to small than too big
     //dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto').css('display', 'block')
+    if (iHeight < 200) iHeight = 200 // always show a little
     dMain.height(iHeight).css('overflow-y', 'scroll').css('overflow-x', 'auto')
     dMain.show()
     //alert($(document).height())
     if (bHeaderOverviewVisible) {
+        //$('div.header-overview-head').height(''+$('h1').scrollHeight+'px')
+        $('.header-overview-head').height(100)//''+$('h1').scrollHeight+'px')
         dHO.css('overflow','auto').css('font-size','inherit')
         dHO.show()
         dHO.width('inherit')
-        var idHO_width = -920+$(window).width()
+        //var idHO_width = -920+$(window).width()
+        var idHO_width = -808+$(window).width()
         dHO.width(idHO_width)
         $('td.header-overview').width(idHO_width)
         //alert(idHO_width)
@@ -313,20 +411,72 @@ function MyOnResize() {
     //$('td.body').css('display','')
 
     if (!bMyOnResize_Installed) {
+        // First run - make sure it's automatic next time:
         bMyOnResize_Installed = true
         window.onresize = MyOnResize
         document.onresize = MyOnResize
+
+        // Also set focus to part of page that can scroll:
+        //alert('bæster')
+
+        var dAryAs = dMain.find('a#id'+g_sH1Hash)
+        if (dAryAs.length == 0) dAryAs = dMain.find('a')
+        //alert(aryAs)
+        //alert(aryAs.length)
+        //alert(aryAs[0])
+        //var aryA0 = aryAs[0]
+        //alert('demdem')
+        //aryS[0].focus()
+        //dAryAs.focus // <-- fallback (focus last A in div.main)
+        var bFocusDone = false
+        dAryAs.each(function(){
+            if (!bFocusDone) {
+                //alert('hm?')
+                //bFocusDone = true
+                var dThis = $(this)
+                //alert('what?')
+                //alert(dThis)
+                var sHref = dThis.attr('href')
+                //alert(sHref)
+                if ((sHref) && (sHref != '')) {
+                    if (true) {//(sHref.search('javascript') < 0) {
+                        //dThis.delay(100).focus()
+                        window.setTimeout(
+                            function(){
+                                dThis.focus();
+                                //dThis.blur()
+                                // Virker ikke på chrome:
+                                dMain.focus();
+                            },
+                            1000
+                        )
+                        //alert('set')
+                        bFocusDone = true
+                    }
+                }
+            }
+        })
+        //dNav.html(aryAs[0].attr('href'))
+        if (!bFocusDone) {
+            // Doesn't work on chrome...
+            dMain.focus()
+            //dMain.blur()
+        }
+        //else {
+        //    alert('dotdorthe')
+        //}
     }
 } // MyOnResize
 
 
+var sCCFile = ''
 var sLicensedWork = ''
+var dollarDivCC = null
 
 function onCCLoaded(responseText, textStatus) {
-    var dollarDivCC = $('div.creative_commons')
     if (textStatus == "success") {
         //alert(dollarDivCC)
-        if (sLicensedWork != '') dollarDivCC.find('#idLicensedWork').text(sLicensedWork)
+        if (sLicensedWork != '') dollarDivCC.find('#idLicensedWork').html(sLicensedWork)
         dollarDivCC.find('#idLicensedHref').attr('href',document.location)
         dollarDivCC.show()
         MyOnResize()
@@ -338,27 +488,90 @@ function onCCLoaded(responseText, textStatus) {
 } // onCCLoaded
 
 function LoadCC() {
-    var dollarDivCC = $('div.creative_commons')
-    sLicensedWork = dollarDivCC.text()
+    //document.title = 'nananananana'
+    //xczcxv()
+
+    var jq00
+    var jq30
+    var jq40
+    var jqX2
+    var s00
+    var s30
+    var s40
+    var sX2
+
+    jq00 = $('div.creative_commons')
+    jq30 = $('div.creative_commons_30')
+    jq40 = $('div.creative_commons_40')
+    jqX2 = $('div.creative_commons_both')
+    s00 = jq00.html()
+    s30 = jq30.html()
+    s40 = jq40.html()
+    sX2 = jqX2.html()
+
+    //window.setTimeout(function() { document.title = s30; }, 2000)
+    if (sX2) {
+        sCCFile = 'CC_3.0_4.0.html'
+        sLicensedWork = sX2
+        dollarDivCC = jqX2
+    }
+    else if (s40) {
+        sCCFile = 'CC_4.0.html'
+        sLicensedWork = s40
+        dollarDivCC = jq40
+    }
+    else if (s30) {
+        sCCFile = 'CC_3.0.html'
+        sLicensedWork = s30
+        dollarDivCC = jq30
+        //document.title = sLicensedWork
+    }
+    else if (s00) {
+        // Unknown version. Detect from "modified" date:
+        var b40 = false
+        var sModified = $('[itemprop="dateModified"]').text()
+        if ((sModified != null) && (sModified != '')) {
+            if (sModified > "2015-06-01") {
+                b40 = true
+            }
+        }
+        if (!b40) sCCFile = 'CC_3.0.html'
+        else sCCFile = 'CC_4.0.html'
+        sLicensedWork = s00
+        dollarDivCC = jq00
+    }
+
     if (sLicensedWork != '') {
-        var sPath = GetLocRoot() + 'CC.html #idCC-licens'
+        var sPath = GetLocRoot() + 'js+css/'+sCCFile+' #idCC-licens'
         //alert(sPath)
         dollarDivCC.load(sPath, function(responseText, textStatus){onCCLoaded(responseText, textStatus)})
     }
 } // LoadCC
 
+var g_sH1Hash = ''
 
-function ModifyH1AndTitle() {
+function ModifyH1AndH2AndTitle() {
+    g_sH1Hash = ''
     var dollarH1 = $('h1')
     var dollarH2 = $('h2')
     var strH1 = dollarH1.text()
     var strH2 = dollarH2.text()
+    dollarH2.remove()
+    dollarH2 = null
     var strTitle = strH1
     var strLocOfs = GetLocOffset()
     var aryPaths = strLocOfs.split('/')
     var iAryLen = aryPaths.length
     if (iAryLen > 0) {
         var strLast = aryPaths[iAryLen-1]
+        var iHashIx = strLast.indexOf('#')
+        if (iHashIx >= 0) {
+            g_sH1Hash = strLast.substr(iHashIx+1)
+            aryPaths[iAryLen-1] = strLast = strLast.substr(0, iHashIx)
+        }
+        //alert(strLocOfs)
+        //alert(iAryLen)
+        //alert(strLast)
         if ((strLast == '') || (strLast == 'index.html')) {
             iAryLen--
         }
@@ -368,7 +581,6 @@ function ModifyH1AndTitle() {
                 aryPaths[iAryLen-1] = strLast = strLast.substr(0, iExtIx)
             }
         }
-        //alert(iAryLen)
         if (iAryLen > 0) {
             var i
             var strHref = GetLocRoot()
@@ -383,10 +595,11 @@ function ModifyH1AndTitle() {
                 if (i > 0) {
                     //strTitle += ' / '
                     strTitle = ' / ' + strTitle
-                    strH2 += ' / '
+                    //strH2 += strPath + '/ '
                 }
                 if (i == 0) {
-                    var bVelkommen = (i == iLast) && ((strPath != 'Musik') && (strPath != 'Mad'))
+                    //var bVelkommen = (i == iLast) && ((strPath != 'Musik') && (strPath != 'Mad'))
+                    var bVelkommen = ((i == iLast) && (strPath == ''))
                     if (bVelkommen) {
                         strH1 = 'Velkommen!'
                         //strTitle = strH1 + ' / '
@@ -396,27 +609,36 @@ function ModifyH1AndTitle() {
                         strH1 = strPathDanified
                     }
                 }
-                if (i == iLast) strH2 += strPathDanified
-                else strH2 += '<a itemprop="breadcrumb" href="' + strHref + '">' + strPathDanified + '</a>'
+                if (i == iLast) strH2 += '<a itemprop="breadcrumb" title="Scroll til toppen af siden." href="#" onclick="javascript:$(\'div.main\').prop(\'scrollTop\',0);">' + strPathDanified + '</a>'
+                else strH2 += '<a itemprop="breadcrumb" href="' + strHref + '" title="Tilbage til ' + strPathDanified + '.">' + strPathDanified + '/ </a>'
 
                 strTitle = strPathDanified + strTitle
                 //dollarH2.text('abe: '+strLast)//aryPaths[iAryLen-1])
             }
-            dollarH1.html(strH1)
-            dollarH2.html(strH2)
+            //dollarH1.html(strH1)
+            //dollarH2.html(strH2)
         }
     }
+    strH2 = '<a itemprop="breadcrumb" href="/" title="Tilbage til velkomstsiden.">/ </a>' + strH2
     if (iAryLen == 0) {
-        if (strH1 != strH2) strTitle = strH2 + ' / ' + strTitle
+        if (strH1 != strH2) strTitle = strH2 + '/ ' + strTitle
     }
     //alert(strLocOfs)
     //var bSame = (strH2 == strH1)
     //if (!bSame) strTitle += ' / ' + strH2
-    strTitle += ' - Lasse Steen Bohnstedt'
-    dollarH1.html('<table width="100%" cellpadding="0" cellspacing="0"><tr><td class="h1_extra"><span>&nbsp;LasseSB&nbsp;</span><p>jcxz100</p></td><td id="idH1Orig">' + strH1 + '</td></tr></table>')
+    strTitle += ' / Lasse Steen Bohnstedt'
+    dollarH1.html(
+        '<table width="808px" cellpadding="0" cellspacing="0">'
+        +'<tr><td class="h1_extra">'
+        +'<span>&nbsp;LasseSB&nbsp;</span>'
+        +'<p>jcxz100</p></td>'
+        +'<td class="h1_orig" id="idH1Orig">'
+        +strH1
+        +'</td></tr></table>')
     document.title = strTitle
 
-} // ModifyH1AndTitle
+    $('<h2 class="new">' + strH2 + '</h2>').insertBefore('div.main')
+} // ModifyH1AndH2AndTitle
 
 
 function SetHosting() {
@@ -428,12 +650,12 @@ function SetHosting() {
         + 'style="height: 25px; display:inline; vertical-align:bottom; '
         + '<span style="font-family:Sans-Serif; font-size-adjust:150%; font-weight: bolder;">'
         + ' - QUALITY WEB HOSTING</span></a>'
-    ).css('background', g_sLocRoot+'pix/common/hosting-bg.gif').css('background-color', 'transparent')
+    )//.css('background', g_sLocRoot+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
+    //$('div.hosting').html('')
     //alert(g_sLocRoot+'pix/common/hosting-bg.png')
 } // SetHosting
 
 //function SetHosting_fixImgBaseline
-
 
 function SetOpdateret() {
     var dollar = $('div.opdateret')
@@ -441,224 +663,242 @@ function SetOpdateret() {
     if ((s != null) && (s != '')) {
         s = 'Denne side opdateret ' + s + ' af '
         +'<a href="/Hvem-mig$/" rel="me">Lasse Steen Bohnstedt</a>.'
+        //alert(s)
         dollar.html(s)
     }
 } // SetOpdateret
 
 
 var iJPlayers = 0
-var aryJPlayers_idDiv0 = new Array()
-var aryJPlayers_idDiv1 = new Array()
-var aryJPlayers_idDiv2 = new Array()
-var aryJPlayers_mp3File = new Array()
-var aryJPlayers_oggFile = new Array()
-var aryJPlayers_bKeep = new Array()
-var iJPlayerActive = -1
-var iJPlayerReady = -1
+var iJPlayersLoaded = 0
+var iJPlayersFailed = 0
+var iJPlayersTotalDone = 0
+var bBlockJPlayers = true
 
-function DestroyJPlayer(iJPlayer) {
-    //alert(iJPlayer)
-    if (iJPlayer == null) iJPlayer = iJPlayerActive
-    if ((iJPlayer == null) || (iJPlayer == -1)) return
-
-    if (iJPlayer == iJPlayerReady) iJPlayerReady = -1
-    if (!aryJPlayers_bKeep[iJPlayer]) {
-        $(aryJPlayers_idDiv2[iJPlayer]).hide()
-        $(aryJPlayers_idDiv0[iJPlayer]).show()
-        $(aryJPlayers_idDiv1[iJPlayer]).jPlayer("destroy")
-    }
-    if (iJPlayer == iJPlayerActive) iJPlayerActive = -1
-} // DestroyJPlayer
-
-function ConnectJPlayer(iJPlayer) {
-
-    if ((iJPlayer == null) || (iJPlayer == -1)) return
-    if (iJPlayerActive != -1) {
-        alert('Error, ConnectJPlayer: iJPlayerActive=='+iJPlayerActive)
-        return
-    }
-
-    iJPlayerActive = iJPlayer
-
-    if (iJPlayer > 0) {
-        // Not the first JPlayer on page
-        // Copy content of first JPlayer to this
-        $(aryJPlayers_idDiv2[iJPlayer]).html($(aryJPlayers_idDiv2[0]).html())
-    }
-
-    $(aryJPlayers_idDiv0[iJPlayer]).hide()
-    $(aryJPlayers_idDiv2[iJPlayer]).show()
-    if (aryJPlayers_oggFile[iJPlayer] == null) {
-        // Kun mp3
-        $(aryJPlayers_idDiv1[iJPlayer]).jPlayer({
-            ready: function () {
-                $(this).jPlayer("setMedia", {
-                    mp3: (GetLocPathOnly() + aryJPlayers_mp3File[iJPlayer])
-                });
-                $(this).bind($.jPlayer.event.play, function() { // Bind an event handler to the instance's play event.
-                    $(this).jPlayer("pauseOthers"); // pause all players except this one.
-                });
-                iJPlayerReady = iJPlayer
-                if (!aryJPlayers_bKeep[iJPlayer]) $(this).jPlayer("play")
+function LoadJPlayer_worker(oContainer, sToLoad) {
+    if (
+        (bBlockJPlayers)
+//        ||
+//        (g_iLoadAttempts-1 > (g_iLoadSuccesses + g_iLoadFailures))
+    ) {
+         //document.title = 'loading:' + g_iLoadAttempts
+         //              + ':' + g_iLoadSuccesses + ':' + g_iLoadFailures
+         // We must wait a little longer:
+         //alert('bøffel')
+         window.setTimeout(
+            function() {
+               LoadJPlayer_worker(oContainer, sToLoad);
             },
-            swfPath: GetLocRoot() + 'jQuery.jPlayer.2.1.0',
-            supplied: "mp3",
-            cssSelectorAncestor: aryJPlayers_idDiv2[iJPlayer]
-        });
+            250
+         );
+         // Do no more for now:
+         return;
+     }
+
+    // The wait is over:
+    //alert(sToLoad)
+    var dollarDragons = $(oContainer).find('.lasse-here-be-dragons')
+    if (dollarDragons.length == 0) {
+        document.title = 'dollarDragons.length == 0'
     }
     else {
-        // Både ogg og mp3
-        $(aryJPlayers_idDiv1[iJPlayer]).jPlayer({
-            ready: function () {
-                $(this).jPlayer("setMedia", {
-                    oga: (GetLocPathOnly() + aryJPlayers_oggFile[iJPlayer]),
-                    mp3: (GetLocPathOnly() + aryJPlayers_mp3File[iJPlayer])
-                });
-                $(this).bind($.jPlayer.event.play, function() { // Bind an event handler to the instance's play event.
-                    $(this).jPlayer("pauseOthers"); // pause all players except this one.
-                });
-                iJPlayerReady = iJPlayer
-                if (!aryJPlayers_bKeep[iJPlayer]) $(this).jPlayer("play")
-            },
-            swfPath: GetLocRoot() + 'jQuery.jPlayer.2.1.0',
-            supplied: "oga, mp3",
-            cssSelectorAncestor: aryJPlayers_idDiv2[iJPlayer]
-        });
-    }
-} // ConnectJPlayer
-
-function ClickMyPlay(iJPlayer) {
-    if ((iJPlayer == null) || (iJPlayer == -1)) return
-
-    //alert(iJPlayerActive)
-    if (iJPlayerActive != iJPlayer) {
-        // Hide and destroy previously active player
-        DestroyJPlayer(iJPlayerActive)
-        // Ready new player
-        ConnectJPlayer(iJPlayer)
-    }
-} // ClickMyPlay
-
-
-// It's only OK to load JPlayer upon first parse of document - not when relocating contents
-var bOKToLoadJPlayer = true
-var iPlayerToConnectAfterRelocateIx = -1
-
-function LoadJPlayer(sMp3File, sOggFile, bKeepVisible) {
-    if (!bOKToLoadJPlayer) return
-
-    var iIx = iJPlayers++
-    aryJPlayers_mp3File[iIx] = sMp3File
-    aryJPlayers_oggFile[iIx] = sOggFile
-    var sIdDiv0 = '#idDiv0_jp_' + iIx
-    var sIdDiv1 = '#idDiv1_jp_' + iIx
-    var sIdDiv2 = '#idDiv2_jp_' + iIx
-    aryJPlayers_idDiv0[iIx] = sIdDiv0
-    aryJPlayers_idDiv1[iIx] = sIdDiv1
-    aryJPlayers_idDiv2[iIx] = sIdDiv2
-    if (bKeepVisible == null) bKeepVisible = false
-    if (iIx > 0) bKeepVisible = false
-    aryJPlayers_bKeep[iIx] = bKeepVisible
-
-    var str = '<div id="' + sIdDiv0.substr(1) + '"'
-    if (bKeepVisible) str += ' style="display:none;"'
-    str += '>'
-    str += '<img src="/pix/player/play16.png" /> '
-    if (bEnglish) str += 'Listen to the file <a href="javascript:ClickMyPlay(' + iIx + ')">here on the page</a>.'
-    else str += 'Hør filen <a href="javascript:ClickMyPlay(' + iIx + ')">her p&aring; hjemmesiden</a>.'
-    str += '</div>'
-    document.writeln(str)
-
-    str = '<div id="' + sIdDiv1.substr(1) + '"></div>'
-    $(sIdDiv0).after(str)
-
-    str = '<div id="' + sIdDiv2.substr(1) + '" class="jp-audio"'
-    if (!bKeepVisible) str += ' style="display:none;"'
-    str += '></div>'
-    if (sOggFile != null) {
-        // Ogg fil først
-        var iLastSlashIx = sOggFile.lastIndexOf('/')
-        var sOggFileNoPath = (iLastSlashIx > -1) ? sOggFile.substr(iLastSlashIx+1) : sOggFile
-        str += '<div>'
-        str += '<img alt="audio" src="/pix/media-types/audio.gif" /> '
-        str += '<a href="' + sOggFile + '" target="_blank">'
-        str += sOggFileNoPath + '</a> '
-        str += (bEnglish ? 'high quality (right click and chose "Save destination as")' : 'høj kvalitet (højreklik og vælg "Gem destination som")' )
-        str += '</div>'
-    }
-    str += '<div>'
-    str += '<img alt="audio" src="/pix/media-types/audio.gif" /> '
-    str += '<a href="' + sMp3File + '" target="_blank">'
-    var iLastSlashIx = sMp3File.lastIndexOf('/')
-    var sMp3FileNoPath = (iLastSlashIx > -1) ? sMp3File.substr(iLastSlashIx+1) : sMp3File
-    str += sMp3FileNoPath + '</a> '
-    if (sOggFile != null) {
-        str += (bEnglish ? 'low quality (right click and chose "Save destination as")' : 'lav kvalitet (højreklik og vælg "Gem destination som")' )
-    }
-    else {
-        str += (bEnglish ? '(right click and chose "Save destination as")' : '(højreklik og vælg "Gem destination som")' )
-    }
-    str += '</div>'
-
-    $(sIdDiv1).after(str)
-
-    if (iIx == 0) {
-        // First JPlayer on page
-        $(sIdDiv2).html(
-            '<div class="jp-type-single">'
-            +'  <div class="jp-gui jp-interface">'
-            +'      <ul class="jp-controls">'
-            +'          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>'
-            +'          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>'
-            +'          <li><a href="javascript:;" onclick="DestroyJPlayer()" class="jp-stop" tabindex="1">stop</a></li>'
-            +'          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>'
-            +'          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>'
-            +'          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>'
-            +'      </ul>'
-            +'      <div class="jp-progress">'
-            +'          <div class="jp-seek-bar">'
-            +'              <div class="jp-play-bar"></div>'
-            +'          </div>'
-            +'      </div>'
-            +'      <div class="jp-volume-bar">'
-            +'          <div class="jp-volume-bar-value"></div>'
-            +'      </div>'
-            +'      <div class="jp-time-holder">'
-            +'          <div class="jp-current-time"></div>'
-            +'          <div class="jp-duration"></div>'
-            +'          <ul class="jp-toggles">'
-            +'              <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>'
-            +'              <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>'
-            +'          </ul>'
-            +'      </div>'
-            +'  </div>'
-            +'  <div class="jp-title" style="display:none;">'
-            +'      <ul>'
-            +'          <li>mp3</li>'
-            +'      </ul>'
-            +'  </div>'
-            +'  <div class="jp-no-solution">'
-            +'      <span>Update Required</span>'
-            +'      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.'
-            +'  </div>'
-            +'</div>'
+        //document.title = 'dollarDragons.length == ' + dollarDragons.length
+        dollarDragons.load(
+            sToLoad,
+            function(response, status, xhr){
+                //document.title = 'badedyr'
+                //alert(status)
+                if ( status == "error" ) {
+                    var msg = "Sorry but there was an error:<br/>";
+                    $(oContainer).html( msg + xhr.status + " " + xhr.statusText );
+                    g_iLoadFailures++
+                    iJPlayersFailed++
+                    iJPlayersTotalDone++
+                }
+                else {
+                    g_iLoadSuccesses++
+                    iJPlayersLoaded++
+                    iJPlayersTotalDone++
+                    //alert('bededyr')
+                    MaybeFixUrls(oContainer)
+                }
+            }
         )
-        if (bKeepVisible) {
-            if (IsTinyScreen()) {
-                // On mobile connect JPlayer immediately
-                ConnectJPlayer(iIx)
-            }
-            else {
-                // Must wait until body contents have been relocated
-                iPlayerToConnectAfterRelocateIx = iIx
-            }
+    }
+} // LoadJPlayer_worker(...)
+
+function LoadJPlayer_new(
+  oContainer, bKeepVisible, sWhat, sDate,
+  sFlacFile, sM4aFile, sOgaFile, sMp3File, sYoutubeId, sLength,
+  sAboutFile, sStructureFile, sSheetFile, sChordsFile, sLyricsFile, sMixDetails,
+  sFront, sFrDate, sFrNew, sThoughts, sThDate
+) {
+    g_iLoadAttempts++
+  var iIx = ++iJPlayers
+//    document.title = 'øføføf'
+
+  // Make sure we get the functionality as well:
+  if (iJPlayers == 1) { // Only once
+     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', false);
+     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
+  }
+
+  // Put in the index of this player (for debug):
+  $(oContainer).html(
+    '<div class="index" style="display:none;">' + iIx + '</div>'
+    + $(oContainer).html()
+  )
+
+  // Append div for player to be loaded into:
+  $(oContainer).html(
+    $(oContainer).html()
+    +'<div class="lasse-here-be-dragons"><!--lasse: here be dragons-->'
+    +'<table>'
+    +'<tr><td class="loadingJPlayer">Loading media...</td></tr></table>'
+    +'</div>'
+  )
+  //alert($(oContainer).html())
+  //alert(sFrNew)
+
+  // Info needed to create player:
+  var sToLoad =
+    GetLocRoot()+'/js+css/20_my-jPlayer.php'
+    +'?scripts-dir='+GetLocRoot()+'/js%2bcss/jplayer.2.9.2'
+    +'&html-root='+g_sLocRoot
+    +'&index='+iIx
+    +'&delay-connect=' + (bKeepVisible ? '0' : '1')
+    +'&what='+sWhat
+    +'&date='+sDate
+    +'&flac='+sFlacFile
+    +'&m4a='+sM4aFile
+    +'&oga='+sOgaFile
+    +'&mp3='+sMp3File
+    +'&length='+sLength
+    +'&about='+sAboutFile
+    +'&structure='+sStructureFile
+    +'&lyrics='+sLyricsFile
+    +'&sheet='+sSheetFile
+    +'&chords='+sChordsFile
+    +'&youtube-id='+sYoutubeId
+    +'&mix-details='+sMixDetails
+    +'&front='+sFront
+    +'&front-date='+sFrDate
+    +'&front-new='+sFrNew
+    +'&thoughts='+sThoughts
+    +'&thoughts-date='+sThDate
+/*  $(oContainer).children('.lasse-here-be-dragons').load(sToLoad,function(response, status, xhr){
+   //alert(status)
+    if ( status == "error" ) {
+      var msg = "Sorry but there was an error:<br/>";
+      $(oContainer).html( msg + xhr.status + " " + xhr.statusText );
+    }
+    else {
+        MaybeFixUrls(oContainer)
+    }
+
+   //alert('hm?')
+  })*/
+    LoadJPlayer_worker(oContainer, sToLoad)
+} // LoadJPlayer_new
+
+function getStringFromChild(oThis, sChild, sDefault, bHideAfter, bFixSpaces) {
+    if (sDefault == null) sDefault = ''
+    if (bHideAfter == null) bHideAfter = false
+    if (bFixSpaces == null) bFixSpaces = true
+
+  var sReturn = sDefault
+
+  var dollarChild = $(oThis).find(sChild)
+  if (dollarChild != null) {
+    var s = dollarChild.html()
+    if (bHideAfter) dollarChild.hide()
+    if ((bFixSpaces) && (s != null)) s = s.trim().replace(/ /g,'+')
+    if (s != '') sReturn = s
+  }
+
+  return sReturn
+} // getStringFromChild
+
+function LoadAllJPlayers() {
+  //$(document).find('#myJPlayer').each(alert(this.html()))
+  //alert($(document).find('myJPlayer'))
+
+    // Debug:
+    //bBlockJPlayers = false
+
+  $('.myJPlayer').each(
+    function(i) {
+      // General settings/info:
+      var sKeep     = getStringFromChild(this, '.keep', 'false', true)
+      var bKeep     = (sKeep == "true")
+      var sWhat     = getStringFromChild(this, '.what', 'musikken', true)
+      var sDate     = getStringFromChild(this, '.date', '', true)
+      //
+      // Media:
+      var sFlac     = getStringFromChild(this, '.flac',  '', true)
+      var sM4a      = getStringFromChild(this, '.m4a',  '', true)
+      var sOgg      = getStringFromChild(this, '.ogg',  '', true)
+      var sMp3      = getStringFromChild(this, '.mp3',  '', true)
+      var sYId      = getStringFromChild(this, '.youtube', '', true)
+      var sLength   = getStringFromChild(this, '.length', '', true)
+      //
+      // Various texts:
+      var sAbout    = getStringFromChild(this, '.about', '', true)
+      var sStruct   = getStringFromChild(this, '.structure',  '', true)
+      var sSheet    = getStringFromChild(this, '.sheet',  '', true)
+      var sChords   = getStringFromChild(this, '.chords',  '', true)
+      var sLyrics   = getStringFromChild(this, '.lyrics', '', true)
+      var sMix      = getStringFromChild(this, '.mix', '', true)
+      //
+      // Thoughts and old front page for this version:
+      var sFront    = getStringFromChild(this, '.front', '', true)
+      var sFrDate   = getStringFromChild(this, '.front-date', '', true)
+      var sFrNew    = getStringFromChild(this, '.front-new', 'true', true)
+      var sThoughts = getStringFromChild(this, '.thoughts', '', true)
+      var sThDate   = getStringFromChild(this, '.thoughts-date', '', true)
+
+      LoadJPlayer_new(
+        this, bKeep, sWhat, sDate,
+        sFlac, sM4a, sOgg, sMp3, sYId, sLength,
+        sAbout, sStruct, sSheet, sChords, sLyrics, sMix,
+        sFront, sFrDate, sFrNew, sThoughts, sThDate
+      )
+    }
+  )
+
+    // Enable all jplayers to load:
+    bBlockJPlayers = false
+} // LoadAllJPlayers()
+
+
+function ScrollToWhatever(sWhatEver) {
+    if (sWhatEver == null) return
+
+    //document.title = 'birwer'
+    var iTimeMs = 500
+    var dollarToAnimate = null
+    dollarToAnimate = $('div.main')
+    if (dollarToAnimate.length > 0) {
+        //iTopNew = 250//(dollarToAnimate.prop("scrollHeight") - dollarToAnimate.height())
+        dollarWhatEver = $(sWhatEver)//$('#idTekst')
+        var iTopNew = dollarWhatEver.position()['top']// - dollarWhatEver.prop('scrollTop')
+        //var iTopNew = dollarWhatEver.prop('scrollTop')
+        iTopNew -= dollarToAnimate.offset()['top']
+        //document.title = iTopNew
+        var iTopNow = dollarToAnimate.prop('scrollTop')
+        if (iTopNow != 0) {
+            dollarToAnimate.prop('top', 0)
+        }
+        if ((iTopNow == 0) && (iTopNew != iTopNow)) {
+            //if ((iTopNew > -250) && (iTopNew < 250)) iTimeMs = abs(iTopNew * 2)
+            dollarToAnimate.animate(
+                { scrollTop: iTopNew },
+                iTimeMs,
+                null //function() { ScrollToLicense_After(); }
+            );
         }
     }
-    else {
-        // Not the first JPlayer on page
-    }
-} // LoadJPlayer
-
+} // ScrollToWhatever()
 
 function ScrollToLicense_After() {
     var dollarTbl = $('table.CC-license')
@@ -711,6 +951,29 @@ function ScrollToBottom() {
         );
     }
 } // ScrollToBottom
+
+
+function ScrollToTop() {
+/*    var iTimeMs = 500
+    var dollarToAnimate = null
+    var iTopNew = 0
+    if (IsTinyScreen()) {
+        //dollarToAnimate = $('html, body')
+        dollarToAnimate = $('body')
+        iTopNew = $(document).height()-$(window).height()
+    }
+    else {
+        dollarToAnimate = $('div.main')
+        iTopNew = (dollarToAnimate.prop("scrollHeight") - dollarToAnimate.height())
+    }
+    if (iTopNew > 0) {
+        if (iTopNew < 500) iTimeMs = iTopNew * 2
+        dollarToAnimate.animate(
+            { scrollTop: iTopNew },
+            iTimeMs
+        );
+    }*/
+} // ScrollToTop()
 
 
 function goNavMobile(o) {
@@ -768,11 +1031,14 @@ function FixUrl_file(sUrl) {
 
 var g_sLocRoot_without_lassesb = g_sLocRoot
 
-function MaybeFixUrls() {
+function MaybeFixUrls(oDomain) {
     if (g_sLocRoot == '/') {
         // We do not need to fix addresses of anything:
         return
     }
+
+    if (oDomain == null) oDomain = document
+    //else alert(oDomain)
 
     // Find loc-root without lassesb:
     var sLSB = '/lassesb/';
@@ -786,7 +1052,7 @@ function MaybeFixUrls() {
         bFile = true
     }
 
-    $(document).find('*').each(function(){
+    $(oDomain).find('*').each(function(){
         var dollarThis = $(this)
         if (dollarThis.is('img')) {
             var s=dollarThis.attr('src')
@@ -828,31 +1094,63 @@ function MaybeFixUrls() {
 } // MaybeFixUrls()
 
 
+function scrollToHash_Maybe() {
+    var sHashPart = document.location.toString()
+    sHashPart = sHashPart.split('#')
+    if (sHashPart.length > 1) {
+        if (iJPlayersTotalDone < iJPlayers) {
+            // Wait for all JPlayers to load:
+            window.setTimeout(function() { scrollToHash_Maybe(); }, 200)
+            return
+        }
+        else {
+            // Perform scroll now:
+
+            //document.title = sHashPart.length
+            sHashPart = sHashPart[sHashPart.length-1]
+            if (sHashPart.length > 0) {
+                //document.title = 'ællebælle: ' + sHashPart
+                window.setTimeout(function() {
+                    ScrollToWhatever('#id' + sHashPart)
+                }, 100)
+            }
+        }
+    }
+} // scrollToHash_Maybe()
+
+
+var iReady = 0
+var bIsReady = false
+var bXlatsTextAlreadyLoading = false
+
 function MyReady_Part2() {
     // LSB - added 2012-08-06
+
     if (!IsTinyScreen()) {
-        bOKToLoadJPlayer = false // Don't load JPlayers again! Would crash browser.
+//        bOKToLoadJPlayer = false // Don't load JPlayers again! Would crash browser.
         CreateHeaderOverview()
         // Now that body contents have been relocated, it's ok to actually connect the JPlayer
-        if (iPlayerToConnectAfterRelocateIx >= 0) {
+//        if (iPlayerToConnectAfterRelocateIx >= 0) {
             // Connect JPlayer after a tiny delay (so we don't disturb document.ready execution):
             //window.setTimeout('ConnectJPlayer(' + iPlayerToConnectAfterRelocateIx + ')', 100)
-            ConnectJPlayer(iPlayerToConnectAfterRelocateIx)
-        }
-        iPlayerToConnectAfterRelocateIx = -1
+//            ConnectJPlayer(iPlayerToConnectAfterRelocateIx)
+        //}
+//        iPlayerToConnectAfterRelocateIx = -1
     }
     // .. LSB
 
     MaybeFixUrls()
     LoadCC()
-    ModifyH1AndTitle()
+    ModifyH1AndH2AndTitle()
+
     SetHosting()
     SetOpdateret()
+    LoadAllJPlayers() // <- New functionality: Load when everything ready
     if (!IsTinyScreen()) {
-        var s = GetLocRoot() + 'Navigation.html #idNav'
+        var s = GetLocRoot() + 'js+css/20_navigation.html #idNav'
         $('td.nav').load(s, function(responseText, textStatus){
             if (textStatus != "success") {
-                $('td.nav').html('error loading Navigation.html<br>try reloading page')
+                $('td.nav').html('Error loading 20_navigation.html<br>try reloading page')
             }
             MaybeFixUrls()
             SetTitleForLinksWithTargetBlank()
@@ -860,6 +1158,20 @@ function MyReady_Part2() {
             DoneLoading()
             MyOnResize()
         })
+        if (!bXlatsTextAlreadyLoading) {
+            bXlatsTextAlreadyLoading = true
+            s = GetLocRoot() + 'js+css/20_xlats.html div.xlats'
+            $('div.xlats').load(
+                s,
+                function(responseText, textStatus){
+                    if (textStatus != "success") {
+                        $('div.xlats').html('Error loading xlats.html<br>try reloading page')
+                    }
+                    MyOnResize()
+                }
+            )
+            //$('div.xlats').html('hallo?')
+        }
     }
     else {
         $('td').css('fontSize', '22pt')
@@ -869,6 +1181,8 @@ function MyReady_Part2() {
         $('h4').css('fontSize', '22pt')
         $('#idH1Orig').width('500px').css('fontSize', '40pt')
         $('div.creative_commons').css('fontSize', '22pt')
+        $('div.creative_commons_bith').css('fontSize', '22pt')
+        $('div.creative_commons_40').css('fontSize', '22pt')
         $('.broedtekst').css('fontSize', '22pt').css('paddingLeft','10px')
         $('.copyright').css('fontSize', '22pt')
         $('#idNavMobile').load(GetLocRoot() + 'NavMobile.html #idNavToLoad', function(responseText, textStatus) {
@@ -882,29 +1196,52 @@ function MyReady_Part2() {
         })
     }
     //$('td.main').focus()
+
+    if (!IsTinyScreen()) MyOnResize()
+
+    scrollToHash_Maybe()
+
+    bIsReady = true
 } // MyReady_Part2
 
+//$( document ).ready(function(){
 function MyReady_Part1() {
-    if (!bIsReady) {
-        if ($.browser.msie) {
-            // To make internet explorer show "loading" we must be idle some time
-            window.setTimeout('MyReady_Part2()', 10)
-        }
-        else {
-            // Other browsers (and google crawler) will handle it without pause
-            MyReady_Part2()
-        }
-        if (!IsTinyScreen()) MyOnResize()
-        bIsReady = true
+
+    //alert('hrst')
+    //document.title = 'brødre'
+
+    if (++iReady == 1) {
+      // This method doesn't work anymore.
+      // Gotta assume ie works too...
+//        if ($.browser.msie) {
+//            // To make internet explorer show "loading" we must be idle some time
+//            window.setTimeout('MyReady_Part2()', 100)
+//        }
+//        else
+//        {
+//            // Other browsers (and google crawler) will handle it without pause
+            //alert('ja?')
+            window.setTimeout(function() { MyReady_Part2(); }, 50 )
+            //MyReady_Part2()
+//            //alert('basti6')
+//
+//        }
     }
-} // MyReady_Part1()
+    //alert('hm...')
+    //MyReady_Part2()
+//    if (!IsTinyScreen()) MyOnResize()
+    //document.title = 'bønder'
+    //bIsReady = true
+//})
+}
 
 
 function MyPrint_1() {
     $('td.nav').hide()
     var iMainWidth = $('td.main').width()
-    $('h1').width(iMainWidth)
-    $('.h1_extra').hide()
+    //$('h1').width(iMainWidth)
+    //$('.h1_extra').hide()
+    $('h1').hide()
     $('.hosting').width(iMainWidth)
     $('div.main').height('auto').css('overflow', 'auto')
     $('div.header-overview').hide()
@@ -925,11 +1262,14 @@ function MyPrint_2() {
 function MyPrint_3() {
     $('td.nav').show()
     $('div.header-overview').show()
-    $('h1').width('auto')
-    $('.h1_extra').show()
+    //$('h1').width('auto')
+    //$('.h1_extra').show()
+    $('h1').show()
     $('.hosting').width('auto')
     MyOnResize()
 } // MyPrint_3
 
 MyReady_Part1()
-alert('her')
+
+
+//document.title = 'bras!'

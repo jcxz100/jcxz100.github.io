@@ -17,6 +17,20 @@
    display: none;
 }
 
+div.xlats {
+    /*display: none;*/
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+table.xlats {
+    /*display: none;*/
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
 a
 {
    text-decoration: none;
@@ -249,7 +263,7 @@ h1 {
     background-color: #CCF; /*#E8FFE0; /*#98F;/*#EEF;*/
     /*display: none;*/
     /*border-bottom: 2px solid #BBD;*/
-    border-right: 1px solid #988;
+    border-right: 2px solid #988;
 }
 
 h2.new {
@@ -328,8 +342,10 @@ h4 a
 h4.inline
 {
     display: inline;
-    margin-top: 0px;
-   padding-top: 0px;
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 12pt;
+    margin: 0px;
+    padding: 0px;
 }
 
 h5
@@ -570,7 +586,7 @@ td.h1_orig
     padding-top: 5px; padding-bottom: 5px;
     margin-left: 1px;
     /*border-right: 2px solid #988;*/
-    border-bottom: 1px solid #988;
+    border-bottom: 2px solid #988;
     text-align: center;
 }
 
@@ -676,14 +692,14 @@ td.nav
     background: #CCF;
     /*display: none;*/
     /*border-right: 2px solid #BBD; /*#888; /*black; /*#0D4;*/
-    border-right: 1px solid #988;
-    border-bottom: 0px; /*1px solid #988;*/
+    border-right: 2px solid #988;
+    border-bottom: 1px solid #988;
 }
 
 td.tdHiLite {
    border: 1px solid #B0E0E6;
    background: #E8FFE0;/*#B0E0E6; /*Powderblue;*/
-   width: 100%;
+   width: 331px; /*100%;*/
    font-size:smaller;
 }
 
