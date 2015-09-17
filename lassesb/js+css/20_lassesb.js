@@ -621,7 +621,7 @@ function ModifyH1AndH2AndTitle() {
     }
     strH2 = '<a itemprop="breadcrumb" href="/" title="Tilbage til velkomstsiden.">/ </a>' + strH2
     if (iAryLen == 0) {
-        if (strH1 != strH2) strTitle = strH2 + '/ ' + strTitle
+        if (strH1 != strH2) strTitle = 'Velkommen!'//strH2 + '/ ' + strTitle
     }
     //alert(strLocOfs)
     //var bSame = (strH2 == strH1)
