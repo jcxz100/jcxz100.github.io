@@ -144,7 +144,7 @@ function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
     if ((sName == null) || (sName == '')) {
         var sNameNew = dollarHeader.text()
         sNameNew = sNameNew.trim()
-        sNameNew = sNameNew.replace(/["':;!=\(\)\.\-\? ]/g,'_')
+        sNameNew = sNameNew.replace(/["':;,!=\(\)\.\-\? ]/g,'_')
         sNameNew = sNameNew.replace(/Æ/g,'AE').replace(/æ/g,'ae').replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
         sNameNew = sNameNew.replace(/Ø/g,'OE').replace(/ø/g,'oe').replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
         sNameNew = sNameNew.replace(/Å/g,'AA').replace(/å/g,'aa').replace(/é/g,'e')
@@ -157,7 +157,8 @@ function CreateHeaderOverview_FindOrMakeName(dollarHeader, bFirst) {
         sName = sNameNew
     }
     if ((sHref == null) || (sHref == '')) {
-        dollarA.attr('href', '#' + sName)
+        //dollarA.attr('href', '#' + sName)
+        dollarA.attr('href', 'javascript:ScrollToName("' + sName + '");')
     }
 
     var sId   = 'id' + sName
@@ -241,23 +242,30 @@ function CreateHeaderOverview() {
     $(document).find('*').each(function(){
         var dollarThis = $(this)
         if (dollarThis.is('h3')) {
-            sScrollTo = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sHref = 'javascript:ScrollToName(\'' + sName + '\')'
             sOverview += ''
-                + '<table xcellpadding="0" xcellspacing="0"><tr><td class="ho-h3">'
-                + '<a href="#' + sScrollTo + '">'
-                + dollarThis.text() + '</a>'
-                + '</td></tr></table>';
+                + '<table xcellpadding="0" xcellspacing="0"><tr>'
+                + '<td class="ho-h3">'
+                + '<a href="' + sHref + '">'
+                + dollarThis.text() + '</a></td></tr></table>';
+            //window.setTimeout('function(){document.title = "<a href="javascript:ScrollToWhatever(#' + sScrollTo + )'">'),
+            //window.setTimeout(function(){document.title = '\'' + sScrollTo2 + '\'';},3000)
         }
         else if (dollarThis.is('h4')) {
-            sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sHref = 'javascript:ScrollToName(\'' + sName + '\')'
             sOverview += '<table xcellpadding="0" xcellspacing="0" xwidth="100%"><tr><td class="ve-h4">-</td>'
-                + '<td class="ho-h4"><a href="#' + sName + '">'
+                + '<td class="ho-h4">'
+                + '<a href="' + sHref + '">'
                 + dollarThis.text() + '</a></td></tr></table>';
         }
         else if (dollarThis.is('h5')) {
-            sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sName = CreateHeaderOverview_FindOrMakeName(dollarThis)
+            var sHref = 'javascript:ScrollToName(\'' + sName + '\')'
             sOverview += '<table cellpadding="0" cellspacing="0" xwidth="100%"><tr><td class="ve-h5">--</td>'
-                + '<td class="ho-h5"><a href="#' + sName + '">'
+                + '<td class="ho-h5">'
+                + '<a href="' + sHref + '">'
                 + dollarThis.text() + '</a></td></tr></table>';
         }
     })
@@ -446,7 +454,7 @@ function MyOnResize() {
                                 dThis.focus();
                                 //dThis.blur()
                                 // Virker ikke på chrome:
-                                dMain.focus();
+                                //dMain.focus();
                             },
                             1000
                         )
@@ -581,7 +589,10 @@ function ModifyH1AndH2AndTitle() {
                 aryPaths[iAryLen-1] = strLast = strLast.substr(0, iExtIx)
             }
         }
-        if (iAryLen > 0) {
+        if (iAryLen == 0) {
+            strH2 = ''
+        }
+        else {
             var i
             var strHref = GetLocRoot()
             strH2 = ''
@@ -609,7 +620,8 @@ function ModifyH1AndH2AndTitle() {
                         strH1 = strPathDanified
                     }
                 }
-                if (i == iLast) strH2 += '<a itemprop="breadcrumb" title="Scroll til toppen af siden." href="#" onclick="javascript:$(\'div.main\').prop(\'scrollTop\',0);">' + strPathDanified + '</a>'
+                //if (i == iLast) strH2 += '<a itemprop="breadcrumb" title="Scroll til toppen af siden." href="#" onclick="javascript:$(\'div.main\').prop(\'scrollTop\',0);">' + strPathDanified + '</a>'
+                if (i == iLast) strH2 += '<a itemprop="breadcrumb" title="Scroll til toppen af siden." href="javascript:ScrollToName(\'\');">' + strPathDanified + '</a>'
                 else strH2 += '<a itemprop="breadcrumb" href="' + strHref + '" title="Tilbage til ' + strPathDanified + '.">' + strPathDanified + '/ </a>'
 
                 strTitle = strPathDanified + strTitle
@@ -619,7 +631,7 @@ function ModifyH1AndH2AndTitle() {
             //dollarH2.html(strH2)
         }
     }
-    strH2 = '<a itemprop="breadcrumb" href="/" title="Tilbage til velkomstsiden.">/ </a>' + strH2
+    strH2 = '<a itemprop="breadcrumb" href="' + GetLocRoot() + '" title="Tilbage til velkomstsiden.">/ </a>' + strH2
     if (iAryLen == 0) {
         if (strH1 != strH2) strTitle = 'Velkommen!'//strH2 + '/ ' + strTitle
     }
@@ -871,34 +883,82 @@ function LoadAllJPlayers() {
 } // LoadAllJPlayers()
 
 
-function ScrollToWhatever(sWhatEver) {
-    if (sWhatEver == null) return
+var g_bSetHashAfterScroll = false
+var g_sHashAfterScroll = ''
+
+function ScrollToPos(iTopNew) {
+    if (!iTopNew) iTopNew = 0
 
     //document.title = 'birwer'
     var iTimeMs = 500
-    var dollarToAnimate = null
-    dollarToAnimate = $('div.main')
+    var dollarToAnimate = $('div.main')
+    //document.title = $('[name="Mester_Mikkel"]').text()
     if (dollarToAnimate.length > 0) {
-        //iTopNew = 250//(dollarToAnimate.prop("scrollHeight") - dollarToAnimate.height())
-        dollarWhatEver = $(sWhatEver)//$('#idTekst')
-        var iTopNew = dollarWhatEver.position()['top']// - dollarWhatEver.prop('scrollTop')
-        //var iTopNew = dollarWhatEver.prop('scrollTop')
-        iTopNew -= dollarToAnimate.offset()['top']
-        //document.title = iTopNew
         var iTopNow = dollarToAnimate.prop('scrollTop')
-        if (iTopNow != 0) {
-            dollarToAnimate.prop('top', 0)
+        //if (iTopNow != 0) {
+        //    dollarToAnimate.prop('top', 0)
+        //}
+        //iTopNew += iTopNow
+        //document.title = 'new:' + iTopNew + ' now:' + iTopNow
+        //if ((iTopNow == 0) && (iTopNew != iTopNow)) {
+        if (iTopNew == iTopNow) {
+            if (g_bSetHashAfterScroll) {
+                g_bSetHashAfterScroll = false
+                document.location.hash = g_sHashAfterScroll
+            }
         }
-        if ((iTopNow == 0) && (iTopNew != iTopNow)) {
-            //if ((iTopNew > -250) && (iTopNew < 250)) iTimeMs = abs(iTopNew * 2)
+        else {
+            var iTopDiff = iTopNew - iTopNow
+            if (iTopDiff < 0) iTopDiff = -iTopDiff
+            if (iTopDiff < 250) iTimeMs = iTopDiff * 2
             dollarToAnimate.animate(
                 { scrollTop: iTopNew },
                 iTimeMs,
-                null //function() { ScrollToLicense_After(); }
+                function() {
+                    if (g_bSetHashAfterScroll) {
+                        g_bSetHashAfterScroll = false
+                        document.location.hash = g_sHashAfterScroll
+                    }
+                }
             );
         }
     }
-} // ScrollToWhatever()
+} // ScrollToPos(iTopNew)
+
+function ScrollToWhatever(sWhatEver) {
+    if (!sWhatEver) sWhatEver = ''
+
+    var iTopNew = 0
+    if (sWhatEver != '') {
+        var dollarWhatEver = $(sWhatEver)
+        if (dollarWhatEver.length > 0) {
+            //document.title = dollarWhatEver.text()
+            iTopNew = dollarWhatEver.position()['top']
+            var dollarMain = $('div.main')
+            var iOfs = dollarMain.position()['top']
+            iTopNew -= iOfs
+            var iTopNow = dollarMain.prop('scrollTop')
+            iTopNew += iTopNow
+            //document.title = iTopNew
+        }
+    }
+    ScrollToPos(iTopNew)
+
+    //document.title = $('[name="Mester_Mikkel"]').text()
+    //document.location.hash = sHash
+} // ScrollToWhatever(sWhatEver)
+
+function ScrollToName(sName) {
+    g_bSetHashAfterScroll = true
+    g_sHashAfterScroll = sName
+    if (sName == '') {
+        ScrollToPos(0)
+    }
+    else {
+        var sWhatEver = '[name="' + sName + '"]'
+        ScrollToWhatever(sWhatEver)
+    }
+} // ScrollToName(sName)
 
 function ScrollToLicense_After() {
     var dollarTbl = $('table.CC-license')
@@ -954,6 +1014,7 @@ function ScrollToBottom() {
 
 
 function ScrollToTop() {
+    ScrollToPos(0)
 /*    var iTimeMs = 500
     var dollarToAnimate = null
     var iTopNew = 0
@@ -1094,13 +1155,13 @@ function MaybeFixUrls(oDomain) {
 } // MaybeFixUrls()
 
 
-function scrollToHash_Maybe() {
+function ScrollToHash_Maybe() {
     var sHashPart = document.location.toString()
     sHashPart = sHashPart.split('#')
     if (sHashPart.length > 1) {
         if (iJPlayersTotalDone < iJPlayers) {
             // Wait for all JPlayers to load:
-            window.setTimeout(function() { scrollToHash_Maybe(); }, 200)
+            window.setTimeout(function() { ScrollToHash_Maybe(); }, 200)
             return
         }
         else {
@@ -1111,12 +1172,12 @@ function scrollToHash_Maybe() {
             if (sHashPart.length > 0) {
                 //document.title = 'ællebælle: ' + sHashPart
                 window.setTimeout(function() {
-                    ScrollToWhatever('#id' + sHashPart)
+                    ScrollToWhatever('#id' + sHashPart, '#' +sHashPart)
                 }, 100)
             }
         }
     }
-} // scrollToHash_Maybe()
+} // ScrollToHash_Maybe()
 
 
 var iReady = 0
@@ -1199,7 +1260,7 @@ function MyReady_Part2() {
 
     if (!IsTinyScreen()) MyOnResize()
 
-    scrollToHash_Maybe()
+    ScrollToHash_Maybe()
 
     bIsReady = true
 } // MyReady_Part2
