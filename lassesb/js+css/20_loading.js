@@ -29,7 +29,7 @@ var ary_oClasses    = [ oH1s, oNavs, //oMains,
     function getDefaultDisplayByTag(sTag) {
         // This is not fully implemented, as that would be very long...
         // See http://www.w3.org/TR/CSS21/sample.html for full list.
-        return 'block'
+        //return 'block'
         switch (sTag) {
             case 'div':
             case 'ul':
