@@ -722,7 +722,8 @@ function LoadJPlayer_worker(oContainer, sToLoad) {
                 //alert(status)
                 if ( status == "error" ) {
                     var msg = "Sorry but there was an error:<br/>";
-                    $(oContainer).html( msg + xhr.status + " " + xhr.statusText );
+                    msg = msg + " - loading: '" + sToLoad + "'<br/> - "
+                    $(oContainer).after( msg + xhr.status + " " + xhr.statusText );
                     g_iLoadFailures++
                     iJPlayersFailed++
                     iJPlayersTotalDone++
