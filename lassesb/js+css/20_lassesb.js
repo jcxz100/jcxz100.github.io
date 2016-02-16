@@ -27,7 +27,10 @@ function GetLocRoot() {
         var sLSB = '/lassesb/';
         var i = g_sLocRoot.lastIndexOf(sLSB);
         if (i < 0) {
-            i = g_sLocRoot.indexOf('/')
+            var j = g_sLocRoot.indexOf('://')
+            if (j >= 0) {
+                i = g_sLocRoot.indexOf('/', j+3)
+            }
             if (i < 0) {
                 // Fallback. This is *not* going to be be a good day.
                 g_sLocRoot = '/' 
