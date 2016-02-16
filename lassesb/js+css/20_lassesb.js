@@ -493,6 +493,8 @@ function onCCLoaded(responseText, textStatus) {
     else {
         dollarDivCC.html('error loading CC.html<br>try reloading page')
     }
+    //alert(textStatus)
+    //alert(dollarDivCC.html())
 } // onCCLoaded
 
 function LoadCC() {
@@ -507,18 +509,34 @@ function LoadCC() {
     var s30
     var s40
     var sX2
+    var scopypluscc30
+    var scopypluscc40
 
     jq00 = $('div.creative_commons')
     jq30 = $('div.creative_commons_30')
     jq40 = $('div.creative_commons_40')
     jqX2 = $('div.creative_commons_both')
+    jqcopy1cc30 = $('div.copy1pluscc30')
+    jqcopy1cc40 = $('div.copy1pluscc40')
     s00 = jq00.html()
     s30 = jq30.html()
     s40 = jq40.html()
     sX2 = jqX2.html()
+    scopypluscc30 = jqcopy1cc30.html()
+    scopypluscc40 = jqcopy1cc40.html()
 
     //window.setTimeout(function() { document.title = s30; }, 2000)
-    if (sX2) {
+    if (scopypluscc30) {
+        sCCFile = 'CC_3.0-plus-copyright_1-oversaettelse.html'
+        sLicensedWork = scopypluscc30
+        dollarDivCC = jqcopy1cc30
+    }
+    else if (scopypluscc40) {
+        sCCFile = 'CC_4.0-plus-copyright_1-oversaettelse.html'
+        sLicensedWork = scopypluscc40
+        dollarDivCC = jqcopy1cc40
+    }
+    else if (sX2) {
         sCCFile = 'CC_3.0_4.0.html'
         sLicensedWork = sX2
         dollarDivCC = jqX2
