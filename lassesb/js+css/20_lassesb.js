@@ -18,7 +18,29 @@ function IsFileProtocol() {
 
 function GetLocRoot() {
     if (g_sLocRoot==null) {
-        return '/' // Fallback. This is *not* going to be be a good day.
+        // Hvad er det for noget høns, jeg har skrevet???
+        //return '/' // Fallback. This is *not* going to be be a good day.
+        // .. høns.
+        
+        g_sLocRoot = document.location.toString()
+        
+        var sLSB = '/lassesb/';
+        var i = g_sLocRoot.lastIndexOf(sLSB);
+        if (i < 0) {
+            i = g_sLocRoot.indexOf('/')
+            if (i < 0) {
+                // Fallback. This is *not* going to be be a good day.
+                g_sLocRoot = '/' 
+            }
+            else {
+                g_sLocRoot = g_sLocRoot.substr(0, i+1)
+            }
+        }
+        else {
+            // Temporary (breaks file:// protocol):
+            g_sLocRoot = g_sLocRoot.substr(0, i+sLSB.length+1)
+        }
+        alert(g_sLocRoot)
     }
     return g_sLocRoot
 } // GetLocRoot
@@ -740,8 +762,12 @@ function LoadJPlayer_worker(oContainer, sToLoad) {
                 //alert(status)
                 if ( status == "error" ) {
                     var msg = "Sorry but there was an error:<br/>";
-                    msg = msg + " - loading: '" + sToLoad + "'<br/> - "
-                    $(oContainer).after( msg + xhr.status + " " + xhr.statusText );
+                    msg = msg + " - loading: '" + sToLoad + "'<br/>"
+                    $(oContainer).after( 
+                        msg
+                        + "xhr.status:" + xhr.status 
+                        + " xhr.statusText:" + xhr.statusText
+                    );
                     g_iLoadFailures++
                     iJPlayersFailed++
                     iJPlayersTotalDone++
