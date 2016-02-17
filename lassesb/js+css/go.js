@@ -174,7 +174,8 @@ function go(bDummy_ignored)
       show_hang('(typeof(g_sLocRoot) == "undefined")');
    }
    else
-   {/*
+   { document.title = 'g_sLocRoot == ' + g_sLocRoot
+   /*
       load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
       load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
       //load_dyn(g_sLocRoot + 'js+css/lassesb_18.css', false);
