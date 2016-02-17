@@ -17,33 +17,10 @@ function IsFileProtocol() {
 
 
 function GetLocRoot() {
-    if (g_sLocRoot==null) {
-        // Hvad er det for noget høns, jeg har skrevet???
-        //return '/' // Fallback. This is *not* going to be be a good day.
-        // .. høns.
-        
-        g_sLocRoot = document.location.toString()
-        
-        var sLSB = '/lassesb/';
-        var i = g_sLocRoot.lastIndexOf(sLSB);
-        if (i < 0) {
-            var j = g_sLocRoot.indexOf('://')
-            if (j >= 0) {
-                i = g_sLocRoot.indexOf('/', j+3)
-            }
-            if (i < 0) {
-                // Fallback. This is *not* going to be be a good day.
-                g_sLocRoot = '/' 
-            }
-            else {
-                g_sLocRoot = g_sLocRoot.substr(0, i+1)
-            }
-        }
-        else {
-            // Temporary (breaks file:// protocol):
-            g_sLocRoot = g_sLocRoot.substr(0, i+sLSB.length+1)
-        }
-        alert(g_sLocRoot)
+//    return '/'
+    if ((typeof(g_sLocRoot) == 'undefined') || (g_sLocRoot == null)) {
+        // Fallback. This is *not* going to be be a good day.
+        return '/'
     }
     return g_sLocRoot
 } // GetLocRoot
@@ -705,9 +682,9 @@ function SetHosting() {
         + 'style="height: 25px; display:inline; vertical-align:bottom; '
         + '<span style="font-family:Sans-Serif; font-size-adjust:150%; font-weight: bolder;">'
         + ' - QUALITY WEB HOSTING</span></a>'
-    )//.css('background', g_sLocRoot+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
+    )//.css('background', GetLocRoot()+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
     //$('div.hosting').html('')
-    //alert(g_sLocRoot+'pix/common/hosting-bg.png')
+    //alert(GetLocRoot()+'pix/common/hosting-bg.png')
 } // SetHosting
 
 //function SetHosting_fixImgBaseline
@@ -799,8 +776,8 @@ function LoadJPlayer_new(
 
   // Make sure we get the functionality as well:
   if (iJPlayers == 1) { // Only once
-     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', false);
-     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
+     load_dyn(GetLocRoot() + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', false);
+     load_dyn(GetLocRoot() + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
   }
 
   // Put in the index of this player (for debug):
@@ -824,7 +801,7 @@ function LoadJPlayer_new(
   var sToLoad =
     GetLocRoot()+'/js+css/20_my-jPlayer.php'
     +'?scripts-dir='+GetLocRoot()+'/js%2bcss/jplayer.2.9.2'
-    +'&html-root='+g_sLocRoot
+    +'&html-root='+GetLocRoot()
     +'&index='+iIx
     +'&delay-connect=' + (bKeepVisible ? '0' : '1')
     +'&what='+sWhat
@@ -1098,14 +1075,15 @@ function goNavMobile(o) {
 
 
 function FixUrl(sUrl) {
+    var sLocRoot = GetLocRoot()
     if (sUrl == undefined) return ''
     if (sUrl.substr(0,1) == '/') {
         // This has a semi-absolute path within my web site
-        if (sUrl.substr(0, g_sLocRoot.length) == g_sLocRoot) {
+        if (sUrl.substr(0, sLocRoot.length) == sLocRoot) {
             // Already has correct root - do nothing
         }
         else {
-            return g_sLocRoot + sUrl.substr(1)
+            return sLocRoot + sUrl.substr(1)
         }
     }
     else {
@@ -1113,13 +1091,13 @@ function FixUrl(sUrl) {
         if (s == g_sLocRoot_without_lassesb) {
             // This has a fully-absolute path within my web site
             // First make sure it hasn't already been converted:
-            s = sUrl.substr(0,g_sLocRoot.length)
-            if (s == g_sLocRoot) {
+            s = sUrl.substr(0,sLocRoot.length)
+            if (s == sLocRoot) {
                 // This has already been converted (how, why?!)
                 //show_hang('Path has already been converted once:\n' + s)
             }
             else {
-                return g_sLocRoot + sUrl.substr(g_sLocRoot_without_lassesb.length)
+                return sLocRoot + sUrl.substr(g_sLocRoot_without_lassesb.length)
             }
         }
     }
@@ -1138,10 +1116,11 @@ function FixUrl_file(sUrl) {
 } // FixUrl_file(sUrl)
 
 
-var g_sLocRoot_without_lassesb = g_sLocRoot
+var g_sLocRoot_without_lassesb = GetLocRoot()
 
 function MaybeFixUrls(oDomain) {
-    if (g_sLocRoot == '/') {
+    var sLocRoot = GetLocRoot()
+    if (sLocRoot == '/') {
         // We do not need to fix addresses of anything:
         return
     }
@@ -1151,12 +1130,12 @@ function MaybeFixUrls(oDomain) {
 
     // Find loc-root without lassesb:
     var sLSB = '/lassesb/';
-    var i = g_sLocRoot.lastIndexOf(sLSB);
-    if (i < 0) g_sLocRoot_without_lassesb = g_sLocRoot;
-    else g_sLocRoot_without_lassesb = g_sLocRoot.substr(0, i + 1);
+    var i = sLocRoot.lastIndexOf(sLSB);
+    if (i < 0) g_sLocRoot_without_lassesb = sLocRoot;
+    else g_sLocRoot_without_lassesb = sLocRoot.substr(0, i + 1);
 
     var bFile = false
-    if (g_sLocRoot.substr(0,5).toLowerCase() == 'file:') {
+    if (sLocRoot.substr(0,5).toLowerCase() == 'file:') {
         // The "FILE:" protocol is a little different
         bFile = true
     }
