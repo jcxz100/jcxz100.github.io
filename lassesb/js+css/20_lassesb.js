@@ -31,7 +31,7 @@ function GetLocOffset(bKeepDocName, bMaybeKeepHash) {
     if (bMaybeKeepHash == null) bMaybeKeepHash = true
 
     if (sLocOffset==null) {
-        var sRoot = GetLocRoot()
+        var sRoot = g_sLocRoot
         var iRootLen = sRoot.length
         sLocOffset = document.location.toString()
         var sRest = sLocOffset.substr(iRootLen, sLocOffset.length-1)
@@ -570,7 +570,7 @@ function LoadCC() {
     }
 
     if (sLicensedWork != '') {
-        var sPath = GetLocRoot() + 'js+css/'+sCCFile+' #idCC-licens'
+        var sPath = g_sLocRoot + 'js+css/'+sCCFile+' #idCC-licens'
         //alert(sPath)
         dollarDivCC.load(sPath, function(responseText, textStatus){onCCLoaded(responseText, textStatus)})
     }
@@ -614,7 +614,7 @@ function ModifyH1AndH2AndTitle() {
         }
         else {
             var i
-            var strHref = GetLocRoot()
+            var strHref = g_sLocRoot
             strH2 = ''
             strTitle = ''
             var iLast = iAryLen - 1
@@ -651,7 +651,7 @@ function ModifyH1AndH2AndTitle() {
             //dollarH2.html(strH2)
         }
     }
-    strH2 = '<a itemprop="breadcrumb" href="' + GetLocRoot() + '" title="Tilbage til velkomstsiden.">/ </a>' + strH2
+    strH2 = '<a itemprop="breadcrumb" href="' + g_sLocRoot + '" title="Tilbage til velkomstsiden.">/ </a>' + strH2
     if (iAryLen == 0) {
         if (strH1 != strH2) strTitle = 'Velkommen!'//strH2 + '/ ' + strTitle
     }
@@ -682,9 +682,9 @@ function SetHosting() {
         + 'style="height: 25px; display:inline; vertical-align:bottom; '
         + '<span style="font-family:Sans-Serif; font-size-adjust:150%; font-weight: bolder;">'
         + ' - QUALITY WEB HOSTING</span></a>'
-    )//.css('background', GetLocRoot()+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
+    )//.css('background', g_sLocRoot+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
     //$('div.hosting').html('')
-    //alert(GetLocRoot()+'pix/common/hosting-bg.png')
+    //alert(g_sLocRoot+'pix/common/hosting-bg.png')
 } // SetHosting
 
 //function SetHosting_fixImgBaseline
@@ -747,7 +747,7 @@ function LoadJPlayer_worker(oContainer, sToLoad) {
                         msg
                         + "xhr.status:" + xhr.status 
                         + " xhr.statusText:" + xhr.statusText
-                        + " GetLocRoot():" + GetLocRoot()
+                        + " g_sLocRoot:" + g_sLocRoot
                     );
                     g_iLoadFailures++
                     iJPlayersFailed++
@@ -777,8 +777,8 @@ function LoadJPlayer_new(
 
   // Make sure we get the functionality as well:
   if (iJPlayers == 1) { // Only once
-     load_dyn(GetLocRoot() + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', false);
-     load_dyn(GetLocRoot() + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
+     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/css/jplayer.blue.monday.min.css', false);
+     load_dyn(g_sLocRoot + 'js+css/jplayer-2-9-2/jquery.jplayer.min.js', true);
   }
 
   // Put in the index of this player (for debug):
@@ -800,9 +800,9 @@ function LoadJPlayer_new(
 
   // Info needed to create player:
   var sToLoad =
-    GetLocRoot()+'/js+css/20_my-jPlayer.php'
-    +'?scripts-dir='+GetLocRoot()+'/js%2bcss/jplayer.2.9.2'
-    +'&html-root='+GetLocRoot()
+    g_sLocRoot+'/js+css/20_my-jPlayer.php'
+    +'?scripts-dir='+g_sLocRoot+'/js%2bcss/jplayer.2.9.2'
+    +'&html-root='+g_sLocRoot
     +'&index='+iIx
     +'&delay-connect=' + (bKeepVisible ? '0' : '1')
     +'&what='+sWhat
@@ -1064,7 +1064,7 @@ function ScrollToTop() {
 
 
 function goNavMobile(o) {
-    var sLoc = IsFileProtocol() ? GetLocRoot() + o.value + 'index.html' : '/' + o.value
+    var sLoc = IsFileProtocol() ? g_sLocRoot + o.value + 'index.html' : '/' + o.value
     if (IsFileProtocol()) {
         top.location = sLoc
     }
@@ -1076,7 +1076,7 @@ function goNavMobile(o) {
 
 
 function FixUrl(sUrl) {
-    var sLocRoot = GetLocRoot()
+    var sLocRoot = g_sLocRoot
     if (sUrl == undefined) return ''
     if (sUrl.substr(0,1) == '/') {
         // This has a semi-absolute path within my web site
@@ -1117,10 +1117,10 @@ function FixUrl_file(sUrl) {
 } // FixUrl_file(sUrl)
 
 
-var g_sLocRoot_without_lassesb = GetLocRoot()
+var g_sLocRoot_without_lassesb = g_sLocRoot
 
 function MaybeFixUrls(oDomain) {
-    var sLocRoot = GetLocRoot()
+    var sLocRoot = g_sLocRoot
     if (sLocRoot == '/') {
         // We do not need to fix addresses of anything:
         return
@@ -1236,8 +1236,8 @@ function MyReady_Part2() {
     SetOpdateret()
     LoadAllJPlayers() // <- New functionality: Load when everything ready
     if (!IsTinyScreen()) {
-        document.title = GetLocRoot()
-        var s = GetLocRoot() + 'js+css/20_navigation.html #idNav'
+        document.title = g_sLocRoot
+        var s = g_sLocRoot + 'js+css/20_navigation.html #idNav'
         $('td.nav').load(s, function(responseText, textStatus){
             if (textStatus != "success") {
                 $('td.nav').html('Error loading 20_navigation.html<br>try reloading page')
@@ -1250,7 +1250,7 @@ function MyReady_Part2() {
         })
         if (!bXlatsTextAlreadyLoading) {
             bXlatsTextAlreadyLoading = true
-            s = GetLocRoot() + 'js+css/20_xlats.html div.xlats'
+            s = g_sLocRoot + 'js+css/20_xlats.html div.xlats'
             $('div.xlats').load(
                 s,
                 function(responseText, textStatus){
@@ -1275,7 +1275,7 @@ function MyReady_Part2() {
         $('div.creative_commons_40').css('fontSize', '22pt')
         $('.broedtekst').css('fontSize', '22pt').css('paddingLeft','10px')
         $('.copyright').css('fontSize', '22pt')
-        $('#idNavMobile').load(GetLocRoot() + 'NavMobile.html #idNavToLoad', function(responseText, textStatus) {
+        $('#idNavMobile').load(g_sLocRoot + 'NavMobile.html #idNavToLoad', function(responseText, textStatus) {
             if (textStatus != "success") {
                 $('#idNavMobile').html('error loading NavMobile.html<br>try reloading page')
             }
