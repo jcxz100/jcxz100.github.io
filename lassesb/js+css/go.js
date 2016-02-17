@@ -163,6 +163,7 @@ var iGoCount = 0
 function go(bDummy_ignored)
 {
 document.title = 'g_sLocRoot == ' + g_sLocRoot
+return
     //alert('go - entry')
     iGoCount++
     if (iGoCount > 1) {
