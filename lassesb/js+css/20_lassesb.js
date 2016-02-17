@@ -747,6 +747,7 @@ function LoadJPlayer_worker(oContainer, sToLoad) {
                         msg
                         + "xhr.status:" + xhr.status 
                         + " xhr.statusText:" + xhr.statusText
+                        + " GetLocRoot():" + GetLocRoot()
                     );
                     g_iLoadFailures++
                     iJPlayersFailed++
