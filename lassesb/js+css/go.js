@@ -162,6 +162,7 @@ var iGoCount = 0
 // Entry point:
 function go(bDummy_ignored)
 {
+document.title = 'g_sLocRoot == ' + g_sLocRoot
     //alert('go - entry')
     iGoCount++
     if (iGoCount > 1) {
@@ -174,7 +175,7 @@ function go(bDummy_ignored)
       show_hang('(typeof(g_sLocRoot) == "undefined")');
    }
    else
-   { document.title = 'g_sLocRoot == ' + g_sLocRoot
+   { 
    /*
       load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
       load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
