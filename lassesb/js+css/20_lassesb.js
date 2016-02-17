@@ -18,10 +18,10 @@ function IsFileProtocol() {
 
 function GetLocRoot() {
 //    return '/'
-    if ((typeof(g_sLocRoot) == 'undefined') || (g_sLocRoot == null)) {
-        // Fallback. This is *not* going to be be a good day.
-        return '/'
-    }
+//    if ((typeof(g_sLocRoot) == 'undefined') || (g_sLocRoot == null)) {
+//        // Fallback. This is *not* going to be be a good day.
+//        return '/'
+//    }
     return g_sLocRoot
 } // GetLocRoot
 
@@ -1235,6 +1235,7 @@ function MyReady_Part2() {
     SetOpdateret()
     LoadAllJPlayers() // <- New functionality: Load when everything ready
     if (!IsTinyScreen()) {
+        document.title = GetLocRoot()
         var s = GetLocRoot() + 'js+css/20_navigation.html #idNav'
         $('td.nav').load(s, function(responseText, textStatus){
             if (textStatus != "success") {
