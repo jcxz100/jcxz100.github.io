@@ -176,6 +176,7 @@ function go(bDummy_ignored)
    else
    {
         // Fix domain switching g_sLocRoot:
+        document.title = g_sLocRoot
         if (g_sLocRoot == '/') {
             g_sLocRoot = document.location.toString()
             document.title=g_sLocRoot
@@ -202,7 +203,7 @@ function go(bDummy_ignored)
             //alert(g_sLocRoot)
         }
         
-      load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
+/*      load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
       load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
       //load_dyn(g_sLocRoot + 'js+css/lassesb_18.css', false);
       load_dyn(g_sLocRoot + 'js+css/jquery-1-11-1/jquery.min.js', true);
@@ -220,9 +221,10 @@ function go(bDummy_ignored)
       //document.writeln('æbæ...<br/>')
 
       //load_dyn(g_sLocRoot + 'Favicon.ico', true);
-      load_dyn(g_sLocRoot + 'Favicon.png', false);/* */
+      load_dyn(g_sLocRoot + 'Favicon.png', false);
       //alert('nedern')
         //document.writeln('hest?<br/>')
+*/
    }
 } // go()
 
