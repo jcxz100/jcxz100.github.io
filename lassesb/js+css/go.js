@@ -1,8 +1,8 @@
-// /js+css/go.js
+// /js+css/20_go.js
 
 function show_hang(s)
 {
-   if ((g_bHangShown == undefined) || (!g_bHangShown))
+   if ((typeof(g_bHangShown) == 'undefined') || (!g_bHangShown))
    {
       g_bHangShown = true;
       try
@@ -162,8 +162,6 @@ var iGoCount = 0
 // Entry point:
 function go(bDummy_ignored)
 {
-document.title = 'g_sLocRoot == ' + g_sLocRoot
-return
     //alert('go - entry')
     iGoCount++
     if (iGoCount > 1) {
@@ -174,10 +172,9 @@ return
    if (typeof(g_sLocRoot) == 'undefined')
    {
       show_hang('(typeof(g_sLocRoot) == "undefined")');
+      return
    }
-   else
-   { 
-   /*
+        
       load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
       load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
       //load_dyn(g_sLocRoot + 'js+css/lassesb_18.css', false);
@@ -196,10 +193,10 @@ return
       //document.writeln('æbæ...<br/>')
 
       //load_dyn(g_sLocRoot + 'Favicon.ico', true);
-      load_dyn(g_sLocRoot + 'Favicon.png', false);/* */
+      load_dyn(g_sLocRoot + 'Favicon.png', false);
       //alert('nedern')
         //document.writeln('hest?<br/>')
-   */}
-} // go()
 
+} // go()
+//document.title = 'hest'
 go()

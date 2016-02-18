@@ -2,7 +2,7 @@
 
 function show_hang(s)
 {
-   if ((g_bHangShown == undefined) || (!g_bHangShown))
+   if ((typeof(g_bHangShown) == 'undefined') || (!g_bHangShown))
    {
       g_bHangShown = true;
       try
@@ -172,38 +172,10 @@ function go(bDummy_ignored)
    if (typeof(g_sLocRoot) == 'undefined')
    {
       show_hang('(typeof(g_sLocRoot) == "undefined")');
+      return
    }
-   else
-   {
-        // Fix domain switching g_sLocRoot:
-        document.title = g_sLocRoot
-        if (g_sLocRoot == '/') {
-            g_sLocRoot = document.location.toString()
-            document.title=g_sLocRoot
-
-            var sLSB = '/lassesb/'
-            var i = g_sLocRoot.indexOf(sLSB)
-            if (i >= 0) {
-                g_sLocRoot = g_sLocRoot.substr(0, i+sLSB.length+1)
-            }
-            else {
-            //if (i < 0) {
-                var j = g_sLocRoot.indexOf('://')
-                if (j >= 0) {
-                    i = g_sLocRoot.indexOf('/', j+3)
-                }
-                if (i < 0) {
-                    // Fallback. This is *not* going to be be a good day.
-                    g_sLocRoot = 'http://localhost/' 
-                }
-                else {
-                    g_sLocRoot = g_sLocRoot.substr(0, i+1)
-                }
-            }
-            //alert(g_sLocRoot)
-        }
         
-/*      load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
+      load_dyn(g_sLocRoot + 'js+css/20_loading.js', true);
       load_dyn(g_sLocRoot + 'js+css/20_lassesb.css', false);
       //load_dyn(g_sLocRoot + 'js+css/lassesb_18.css', false);
       load_dyn(g_sLocRoot + 'js+css/jquery-1-11-1/jquery.min.js', true);
@@ -224,8 +196,7 @@ function go(bDummy_ignored)
       load_dyn(g_sLocRoot + 'Favicon.png', false);
       //alert('nedern')
         //document.writeln('hest?<br/>')
-*/
-   }
-} // go()
 
+} // go()
+//document.title = 'hest'
 go()
