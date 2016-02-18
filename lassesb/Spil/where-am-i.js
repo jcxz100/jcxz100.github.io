@@ -18,6 +18,10 @@ function wai_hook(oOnLoad, bLoadMusicPlayer)
 
         var sLSB = '/lassesb/';
         var i = s.lastIndexOf(sLSB);
+        if (i < 0) {
+        	sLSB = '/lasse/'
+	        i = s.lastIndexOf(sLSB);
+        }
         if (i < 0) g_sLocRoot = '/';
         else g_sLocRoot = s.substr(0, i + sLSB.length);
 
@@ -33,7 +37,7 @@ function wai_hook(oOnLoad, bLoadMusicPlayer)
         catch (err)
         {
             // That didn't work:
-           if ((g_bHangShown == undefined) || (!g_bHangShown))
+           if (!g_bHangShown)
            {
               g_bHangShown = true;
               alert('Hang that programmer!\n' + err.message);
