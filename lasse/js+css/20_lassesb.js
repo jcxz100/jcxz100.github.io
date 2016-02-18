@@ -286,9 +286,9 @@ function getURLPathOnly(sSubPathToAdd)
 
     var sPathName = location.pathname
     var iFirstSlash = sPathName.indexOf('/')
-    var iLastlassesb = sPathName.lastIndexOf('/lassesb/')
+    var iLastlassesb = sPathName.lastIndexOf('/lasse/')
     if (iFirstSlash < 0) return "/" + sSubPathToAdd
-    if (iLastlassesb >= 0) return sPathName.substr(0, iLastlassesb + 9) + sSubPathToAdd
+    if (iLastlassesb >= 0) return sPathName.substr(0, iLastlasse + 9) + sSubPathToAdd
     return sPathName.substr(0, iFirstSlash + 1) + sSubPathToAdd
 } // getURLPathOnly
 
@@ -1130,7 +1130,7 @@ function MaybeFixUrls(oDomain) {
     //else alert(oDomain)
 
     // Find loc-root without lassesb:
-    var sLSB = '/lassesb/';
+    var sLSB = '/lasse/';
     var i = sLocRoot.lastIndexOf(sLSB);
     if (i < 0) g_sLocRoot_without_lassesb = sLocRoot;
     else g_sLocRoot_without_lassesb = sLocRoot.substr(0, i + 1);
