@@ -1236,7 +1236,7 @@ function MyReady_Part2() {
     SetOpdateret()
     LoadAllJPlayers() // <- New functionality: Load when everything ready
     if (!IsTinyScreen()) {
-        document.title = g_sLocRoot
+        //document.title = g_sLocRoot
         var s = g_sLocRoot + 'js+css/20_navigation.html #idNav'
         $('td.nav').load(s, function(responseText, textStatus){
             if (textStatus != "success") {
