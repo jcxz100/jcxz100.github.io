@@ -186,7 +186,8 @@ div.header-overview
 
 div.hosting
 {
-    text-align: center;
+    /*text-align: center;*/
+    text-align: left;
     background: #FF7; /*White; /*#0D4; /*#98F;*/
     /*border-top: 2px solid #FFF0FF; /*2px solid #BBD; /*#888; /*black; /*#0D4; /*#CCC; /*#EF7; /*orange; /*#98F;*/
     background-image: url('/pix/common/20_hosting-bg.png');
@@ -200,6 +201,14 @@ div.hosting
     /*border-bottom: 0px; /*2px solid #BBD;*/
     /*border-left: 2px solid #FFF0FF;*/
     /*border-right: 2px solid #988;*/
+}
+
+div.hosting span
+{
+    padding-left: 5px;
+    padding-right: 0px;
+    /*font-style: italic;*/
+    color: #777;
 }
 
 div.main

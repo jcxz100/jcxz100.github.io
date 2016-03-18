@@ -674,6 +674,8 @@ function ModifyH1AndH2AndTitle() {
 
 
 function SetHosting() {
+    // host-ed.net er nogle paphoveder - ingen link mere:
+    /*
     $('div.hosting').html(
         'Free <a href="http://host-ed.net/" target="_blank">Web Hosting</a>'
         + ' by <a href="http://host-ed.net/" target="_blank">'
@@ -685,6 +687,14 @@ function SetHosting() {
     )//.css('background', g_sLocRoot+'pix/common/20_hosting-bg.png').css('background-color', 'transparent')
     //$('div.hosting').html('')
     //alert(g_sLocRoot+'pix/common/hosting-bg.png')
+    */
+    $('div.hosting').html(
+        //'<p style="padding-top:5px;">'
+        '<span>2016-03-18</span> '
+        +'Har flyttet hjemmesiderne til ucoz.net. '
+        +'Forrige udbyder er vist ved at gå fallit...'
+        //+'</p>'
+    ).css('padding-top', '5px')
 } // SetHosting
 
 //function SetHosting_fixImgBaseline
@@ -743,9 +753,9 @@ function LoadJPlayer_worker(oContainer, sToLoad) {
                 if ( status == "error" ) {
                     var msg = "Sorry but there was an error:<br/>";
                     msg = msg + " - loading: '" + sToLoad + "'<br/>"
-                    $(oContainer).after( 
+                    $(oContainer).after(
                         msg
-                        + "xhr.status:" + xhr.status 
+                        + "xhr.status:" + xhr.status
                         + " xhr.statusText:" + xhr.statusText
                         + " g_sLocRoot:" + g_sLocRoot
                     );
