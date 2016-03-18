@@ -1,0 +1,93 @@
+----------------------------------------------- 
+Autogenereret før svn revision commit 4 
+----------------------------------------------- 
+ 
+Tidsstempel: 31-01-2014  8:34:08,56 
+ 
+ Directory of O:\Web.svn\lassesb 
+ 
+_History 
+_Zips 
+Benja 
+bolgen 
+Brain-gym-plancher 
+Errors 
+Hjerte 
+Hvem-mig$ 
+jQuery.jPlayer.2.1.0 
+Loensedler 
+Mad 
+Musik 
+Papirer 
+pdf 
+Spil 
+ 
+04-07-2011  07:41                97 _make-zip-for-upload.bat 
+15-08-2012  09:20               163 _zip-exclude-list.txt 
+15-08-2012  09:20           206.516 _zip-for-upload.zip 
+18-03-2013  18:56            13.449 117108.user.js 
+22-01-2013  16:00             1.192 404.shtml 
+22-01-2013  16:00             1.081 500.shtml 
+07-09-2012  20:52               201 Anim16.gif 
+30-11-2008  22:49                59 ArrowRight.gif 
+29-05-2011  18:13               967 audio.gif 
+29-05-2011  18:16             1.295 audio_32x32.gif 
+22-01-2013  16:00             1.963 CC.html 
+31-07-2012  22:50             1.803 CC.html.bak 
+30-01-2014  10:13             3.820 DIR-_A-D.TXT 
+07-09-2012  19:29               179 Dot000.png 
+07-09-2012  19:29               179 Dot00F.png 
+14-09-2012  09:38            24.854 Favicon.ico 
+14-09-2012  10:24            11.520 Favicon.png 
+11-02-2012  12:54            24.854 Favicon-old.ico 
+04-08-2012  19:48                53 google49dda7d7dec7638e.html 
+06-08-2012  11:33             7.568 host-ed-logo.gif 
+06-08-2012  11:42             4.664 host-ed-logo-smaller.gif 
+29-05-2011  18:20               830 html.png 
+22-01-2013  16:00             5.477 index.html 
+22-01-2013  16:00             6.370 indexOld.html 
+29-11-2008  19:56               840 jcxz100.gif 
+18-11-2011  17:58            94.020 jquery-1.7.min.js 
+07-03-2012  10:45            26.876 kors.png 
+07-03-2012  10:53            12.393 kors2.png 
+10-02-2012  17:47             2.659 lassesb.png 
+27-08-2013  09:54             1.517 lassesb.sln 
+27-08-2013  11:59            74.752 lassesb.suo 
+04-08-2012  16:01             6.363 lassesb_11.css 
+06-08-2012  14:03            22.032 lassesb_11.js 
+04-08-2012  16:01             6.363 lassesb_12.css 
+06-08-2012  19:10            23.566 lassesb_12.js 
+07-08-2012  07:57             7.105 lassesb_13.css 
+06-08-2012  19:10            23.566 lassesb_13.js 
+24-08-2012  12:42             7.109 lassesb_14.css 
+15-08-2012  08:06            24.898 lassesb_14.js 
+01-09-2012  16:17             7.152 lassesb_15.css 
+01-09-2012  16:16            24.970 lassesb_15.js 
+01-09-2012  17:17             7.152 lassesb_16.css 
+14-09-2012  09:44            25.060 lassesb_16.js 
+22-01-2013  16:10             7.189 js+css/lassesb_18.css 
+31-01-2013  14:00            25.223 js+css/lassesb_18.js 
+21-01-2012  18:03             5.328 lyrics.js 
+06-08-2012  21:10               647 Mig.html 
+27-08-2013  11:58             1.243 Navigation.html 
+27-08-2013  11:58             1.778 NavMobile.html 
+01-12-2008  07:24               980 pdf.gif 
+25-08-2012  23:18               974 play16.gif 
+20-02-2012  23:40               565 play16.png 
+25-08-2012  20:38               505 play16-grayed.png 
+25-08-2012  23:34               509 play16-invert.png 
+01-12-2008  07:24             1.200 printer.gif 
+20-09-2012  09:53               187 robots.txt 
+16-06-2012  22:24               276 robots.txt.bak 
+14-09-2012  10:57               187 robots.txt.bak2 
+14-09-2012  10:57             4.157 Sitemap.xml 
+03-08-2012  21:40             2.463 Sitemap.xml.bak 
+07-09-2012  23:19               568 Stop16.png 
+07-09-2012  23:20               474 stop16-invert.png 
+26-08-2011  19:51            31.265 TehMe_mini.jpg 
+29-05-2011  18:06               950 txt.gif 
+02-08-2011  13:12             6.395 Why.html 
+22-01-2013  16:00             6.290 WishBooks.html 
+22-01-2013  16:00             9.172 WishMusic.html 
+11-07-2009  10:38            12.912 WishXXXX.js 
+29-05-2011  19:01               933 YouTube.gif 
