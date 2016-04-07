@@ -691,8 +691,8 @@ function SetHosting() {
     $('div.hosting').html(
         //'<p style="padding-top:5px;">'
         '<span>2016-03-18</span> '
-        +'Har flyttet hjemmesiderne til ucoz.net. '
-        +'Forrige udbyder er vist ved at gå fallit...'
+        +'Har flyttet hjemmesiden til <b>github</b>. '
+        +'host-ed.net er vist ved at gå fallit...'
         //+'</p>'
     ).css('padding-top', '5px')
 } // SetHosting
